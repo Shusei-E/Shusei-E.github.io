@@ -4,7 +4,7 @@ title: Tips
 permalink: /tips/
 author_profile: true
 ---
-Tips that might be useful for research.
+Tips for research.
 <br>
 
 ## Setting Environment
