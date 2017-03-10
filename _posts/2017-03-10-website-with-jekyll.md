@@ -4,7 +4,7 @@ categories:
  - Tips
 author_profile: true
 ---
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 Jekyll and Github Pages are great tools to create a website. I used [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes) template.
 
 ## Features
@@ -15,7 +15,7 @@ Jekyll and Github Pages are great tools to create a website. I used [minimal-mis
 ### Equations
 Write equations in LaTex Style. You need to add
 ```md
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 ```
 For example,
 ```latex
