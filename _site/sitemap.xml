@@ -14,7 +14,7 @@
 <loc>https://shusei-e.github.io/blog/</loc>
 </url>
 <url>
-<loc>https://shusei-e.github.io/categories/</loc>
+<loc>https://shusei-e.github.io/blog-categories/</loc>
 </url>
 <url>
 <loc>https://shusei-e.github.io/data/</loc>
@@ -30,5 +30,8 @@
 </url>
 <url>
 <loc>https://shusei-e.github.io/tips/</loc>
+</url>
+<url>
+<loc>https://shusei-e.github.io/blog-year/</loc>
 </url>
 </urlset>

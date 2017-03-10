@@ -4,12 +4,13 @@ title: Setting Environment (MacOS)
 permalink: /tips/setMac/
 author_profile: true
 ---
+{% include toc %}
 
-## 1. Homebrew
+# 1. Homebrew
 ## R
 * `brew upgrade xxx`
 
-## 2. Manual Install
+# 2. Manual Install
 ## XCode
 * From AppStore
 
@@ -44,7 +45,7 @@ Then, you can install python:
   * Delete the environment:　`$ pyenv uninstall NAME`
   * List Current Environments: `$ pyenv versions`
   
-## 3. Tex
+# 3. Tex
 [Reference](http://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9)
 
 ### Install Ghostscript
@@ -69,7 +70,7 @@ sudo mktexlsr
 sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 ```
 
-## 4. Set TexShop
+# 4. Set TexShop
 1. Update Software
 2. TexShop >> Preferences >> Source >> Set Default Values >> pTeX (ptex2pdf)
 
@@ -77,14 +78,14 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 `sudo tlmgr update --self --all`
 
   
-## 5. pip
+# 5. pip
 `pip install jupyter pandas matplotlib beautifulsoup4`
 
    
-## 6. R Packages
+# 6. R Packages
 ## RStan
 * `install.packages('rstan', dependencies=T)`
 
-## 7. Chrome Extension
+# 7. Chrome Extension
 [Change Tab Size](https://github.com/Shusei-E/tab-size-on-github)
 
