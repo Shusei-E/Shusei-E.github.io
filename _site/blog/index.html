@@ -19,7 +19,7 @@
 
 
 
-<title>Setting Environment (MacOS) - Shusei’s Website</title>
+<title>Posts by Year - Shusei’s Website</title>
 
 
 
@@ -33,11 +33,11 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
-<meta property="og:title" content="Setting Environment (MacOS)">
+<meta property="og:title" content="Posts by Year">
 
 
-  <link rel="canonical" href="http://localhost:4000/tips/setMac/">
-  <meta property="og:url" content="http://localhost:4000/tips/setMac/">
+  <link rel="canonical" href="http://localhost:4000/blog/">
+  <meta property="og:url" content="http://localhost:4000/blog/">
 
 
 
@@ -115,7 +115,7 @@
 <!-- end custom head snippets -->
   </head>
 
-  <body class="layout--single">
+  <body class="layout--archive">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -256,144 +256,55 @@
   </div>
 
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Setting Environment (MacOS)">
+  <div class="archive">
     
+      <h1 class="page__title">Posts by Year</h1>
     
+    <span style="color: #52adc8; font-size: 0.9em;">
+<a href="/categories/">Sort By Category</a>
+</span>
+
+
+
+
+  
+  
+    <h2 id="2017" class="archive__subtitle">2017</h2>
     
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">Setting Environment (MacOS)
-</h1>
-          
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        <h2 id="1-homebrew">1. Homebrew</h2>
-<h2 id="r">R</h2>
-<ul>
-  <li><code class="highlighter-rouge">brew upgrade xxx</code></li>
-</ul>
-
-<h2 id="2-manual-install">2. Manual Install</h2>
-<h2 id="xcode">XCode</h2>
-<ul>
-  <li>From AppStore</li>
-</ul>
-
-<h2 id="rstudio">RStudio</h2>
-<ul>
-  <li>From website</li>
-</ul>
-
-<h2 id="python">Python</h2>
-<ul>
-  <li><code class="highlighter-rouge">$ brew install pyenv</code></li>
-</ul>
-
-<p>Update <code class="highlighter-rouge">bash_profile</code>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>vi ~/.bash_profile
-</code></pre>
-</div>
-<p>In <code class="highlighter-rouge">bash_profile</code>,</p>
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>export PYENV_ROOT="/usr/local/var/pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-if which pyenv &gt; /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init &gt; /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-</code></pre>
-</div>
-<p>Do not forget to <code class="highlighter-rouge">source ~/.bash_profile</code> after editing!!</p>
-
-<p>Then, you can install python:</p>
-<ul>
-  <li><code class="highlighter-rouge">$ pyenv install 3.5.2</code></li>
-  <li>If error occures, try <code class="highlighter-rouge">xcode-select --install</code> and install again</li>
-  <li><code class="highlighter-rouge">$ brew install pyenv-virtualenv</code></li>
-  <li>Usage of pyenv-virtualenv
-    <ul>
-      <li>It’s easier to use virtualenv than pyenv to use multiuple versions of Python</li>
-      <li>Make a new environment: <code class="highlighter-rouge">$ pyenv virtualenv 3.5.2 NAME</code></li>
-      <li>Activate the environment: <code class="highlighter-rouge">$ pyenv activate NAME</code> or <code class="highlighter-rouge">source activate NAME</code></li>
-      <li>Deactivate the environment: <code class="highlighter-rouge">$ pyenv deactivate</code></li>
-      <li>Delete the environment:　<code class="highlighter-rouge">$ pyenv uninstall NAME</code></li>
-      <li>List Current Environments: <code class="highlighter-rouge">$ pyenv versions</code></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="3-tex">3. Tex</h2>
-<p><a href="http://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9">Reference</a></p>
-
-<h3 id="install-ghostscript">Install Ghostscript</h3>
-<p><code class="highlighter-rouge">brew install ghostscript</code></p>
-
-<h3 id="download-mactex">Download MacTex</h3>
-<p>https://tug.org/mactex/mactex-download.html</p>
-
-<h3 id="install">Install</h3>
-<p>Do not forget to select custom install and <strong>clear the checkbox for Ghostscript</strong></p>
-
-<h3 id="update-texlive">Update TexLive</h3>
-<p><code class="highlighter-rouge">sudo tlmgr update --self --all</code> <br />
-If there is an error, relaunch Terminal.</p>
-
-<h3 id="set-japanse-fonts">Set Japanse Fonts</h3>
-<p>Enter the following commands line by line.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate
-sudo perl cjk-gs-integrate.pl --link-texmf --force
-sudo mktexlsr
-sudo kanji-config-updmap-sys hiragino-elcapitan-pron
-</code></pre>
-</div>
-
-<h2 id="4-set-texshop">4. Set TexShop</h2>
-<ol>
-  <li>Update Software</li>
-  <li>TexShop » Preferences » Source » Set Default Values » pTeX (ptex2pdf)</li>
-</ol>
-
-<h3 id="update">Update</h3>
-<p><code class="highlighter-rouge">sudo tlmgr update --self --all</code></p>
-
-<h2 id="5-pip">5. pip</h2>
-<p><code class="highlighter-rouge">pip install jupyter pandas matplotlib beautifulsoup4</code></p>
-
-<h2 id="6-r-packages">6. R Packages</h2>
-<h2 id="rstan">RStan</h2>
-<ul>
-  <li><code class="highlighter-rouge">install.packages('rstan', dependencies=T)</code></li>
-</ul>
-
-<h2 id="7-chrome-extension">7. Chrome Extension</h2>
-<p><a href="https://github.com/Shusei-E/tab-size-on-github">Change Tab Size</a></p>
+  
+  
 
 
-        
-      </section>
 
-      <footer class="page__meta">
-        
-        
-
-
-        
-      </footer>
-
-      
-
-      
-    </div>
-
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/tips/website-with-jekyll/" rel="permalink">Create a website with Jekyll
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+
+Jekyll and Github Pages are great tools to create a website. I used minimal-mistakes template.
+
+</p>
   </article>
-
-  
-  
 </div>
 
+
+  </div>
+</div>
 
     <div class="page__footer">
       <footer>

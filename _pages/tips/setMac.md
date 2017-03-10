@@ -5,18 +5,18 @@ permalink: /tips/setMac/
 author_profile: true
 ---
 
-## Homebrew
-### R
+## 1. Homebrew
+## R
 * `brew upgrade xxx`
 
-## Manual Install
-### XCode
+## 2. Manual Install
+## XCode
 * From AppStore
 
-### RStudio
+## RStudio
 * From website
 
-### Python
+## Python
 * `$ brew install pyenv`
 
 Update `bash_profile`:
@@ -44,23 +44,23 @@ Then, you can install python:
   * Delete the environment:　`$ pyenv uninstall NAME`
   * List Current Environments: `$ pyenv versions`
   
-### Tex
+## 3. Tex
 [Reference](http://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9)
 
-#### Install Ghostscript
+### Install Ghostscript
 `brew install ghostscript`
 
-#### Download MacTex
+### Download MacTex
 https://tug.org/mactex/mactex-download.html
 
-#### Install
+### Install
 Do not forget to select custom install and **clear the checkbox for Ghostscript**
 
-#### Update TexLive
+### Update TexLive
 `sudo tlmgr update --self --all`   
 If there is an error, relaunch Terminal.
 
-#### Set Japanse Fonts
+### Set Japanse Fonts
 Enter the following commands line by line.
 ```
 cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate
@@ -69,22 +69,22 @@ sudo mktexlsr
 sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 ```
 
-### Set TexShop
+## 4. Set TexShop
 1. Update Software
 2. TexShop >> Preferences >> Source >> Set Default Values >> pTeX (ptex2pdf)
 
-#### Update
+### Update
 `sudo tlmgr update --self --all`
 
   
-## pip
+## 5. pip
 `pip install jupyter pandas matplotlib beautifulsoup4`
 
    
-## In R
-### RStan
+## 6. R Packages
+## RStan
 * `install.packages('rstan', dependencies=T)`
 
-## Chrome Extension
+## 7. Chrome Extension
 [Change Tab Size](https://github.com/Shusei-E/tab-size-on-github)
 

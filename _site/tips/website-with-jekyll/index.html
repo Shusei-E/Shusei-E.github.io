@@ -1,0 +1,423 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.2.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Create a website with Jekyll - Shusei’s Website</title>
+
+
+
+
+<meta name="description" content="Jekyll and Github Pages are great tools to create a website. I used minimal-mistakes template.">
+
+
+
+
+<meta name="author" content="Shusei Eshima">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Shusei's Website">
+<meta property="og:title" content="Create a website with Jekyll">
+
+
+  <link rel="canonical" href="http://localhost:4000/tips/website-with-jekyll/">
+  <meta property="og:url" content="http://localhost:4000/tips/website-with-jekyll/">
+
+
+
+  <meta property="og:description" content="Jekyll and Github Pages are great tools to create a website. I used minimal-mistakes template.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-03-10T00:00:00+09:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Shusei",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Shusei's Website</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/biocv/">Bio/CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/research/">Research</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/data/">Data</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tips/">Tips</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Shusei Eshima</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Graduate Student. I am interested in Political Methodology and Comparative Politics.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Japan</span>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://shusei-e.github.io" itemprop="url">
+            <i class="fa fa-fw fa-chain" aria-hidden="true"></i> Website
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/Shusei-E" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Create a website with Jekyll">
+    <meta itemprop="description" content="Jekyll and Github Pages are great tools to create a website. I used minimal-mistakes template.">
+    <meta itemprop="datePublished" content="March 10, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Create a website with Jekyll
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p>Jekyll and Github Pages are great tools to create a website. I used <a href="https://github.com/mmistakes/minimal-mistakes">minimal-mistakes</a> template.</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="japanese">Japanese</h3>
+<p>日本語でも書くことができる</p>
+
+<h3 id="equations">Equations</h3>
+<p>Write equations in LaTex Style. You need to add</p>
+<div class="language-md highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>For example,</p>
+<div class="language-latex highlighter-rouge"><pre class="highlight"><code><span class="p">$$</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bx</span><span class="p">}{</span><span class="nv">\mathbf</span><span class="p">{</span><span class="nb">x</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\btheta</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\theta</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bmu</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\mu</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bmu</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\mu</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\balpha</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\alpha</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bz</span><span class="p">}{</span><span class="nv">\mathbf</span><span class="p">{</span><span class="nb">z</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\begin</span><span class="p">{</span><span class="nb">align</span><span class="p">}</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="nv">\quad\quad</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb">, </span><span class="nv">\btheta</span><span class="nb">, </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb"> | </span><span class="nv">\balpha</span><span class="nb">, </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nv">\\</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb"> | </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">, </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb"> | </span><span class="nv">\balpha</span><span class="nb">, </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nv">\\</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb"> | </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bz</span><span class="nb">|</span><span class="nv">\btheta</span><span class="o">)</span><span class="nb">p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">|</span><span class="nv">\balpha</span><span class="o">)</span><span class="nb">p</span><span class="o">(</span><span class="nv">\bmu</span><span class="nb">|</span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P</span><span class="o">)</span><span class="nv">\\</span><span class="o">[</span><span class="m">3</span><span class="nb">pt</span><span class="o">]</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\prod</span><span class="p">_{</span><span class="nb">i</span><span class="o">=</span><span class="m">1</span><span class="p">}^{</span><span class="nb">D</span><span class="p">}</span><span class="nb"> </span><span class="nv">\left\{</span><span class="nb"> p</span><span class="o">(</span><span class="nb">x</span><span class="p">_</span><span class="nb">i | </span><span class="nv">\mu</span><span class="p">_{</span><span class="nb">z</span><span class="p">_</span><span class="nb">i</span><span class="p">}</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nb">z</span><span class="p">_</span><span class="nb">i|</span><span class="nv">\btheta</span><span class="o">)</span><span class="nb"> </span><span class="nv">\right\}</span><span class="nb"> </span><span class="nv">\cdot</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">|</span><span class="nv">\balpha</span><span class="o">)</span><span class="nb"> </span><span class="nv">\cdot</span><span class="nb"> </span><span class="nv">\prod</span><span class="p">_{</span><span class="nb">k</span><span class="o">=</span><span class="m">1</span><span class="p">}^{</span><span class="nb">K</span><span class="p">}</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\mu</span><span class="p">_</span><span class="nb">k | </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">_</span><span class="nb">P</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb">
+</span><span class="nv">\end</span><span class="p">{</span><span class="nb">align</span><span class="p">}</span><span class="nb">
+</span><span class="p">$$</span>
+</code></pre>
+</div>
+<p>becomes <br />
+<script type="math/tex">% <![CDATA[
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bz}{\mathbf{z}}
+\begin{align}
+  &\quad\quad p(\bx, \btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &= p(\bx | \bz, \bmu, \sigma^2) p(\btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &= p(\bx | \bz, \bmu, \sigma^2) p(\bz|\btheta)p(\btheta|\balpha)p(\bmu|\mu_P, \sigma^2_P)\\[3pt]
+  &= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
+\end{align} %]]></script></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#tips" class="page__taxonomy-item" rel="tag">Tips</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-10T00:00:00+09:00">March 10, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Create a website with Jekyll http://localhost:4000/tips/website-with-jekyll/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/tips/website-with-jekyll/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/tips/website-with-jekyll/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/tips/website-with-jekyll/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/Shusei-E"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Shusei. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
