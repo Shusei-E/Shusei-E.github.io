@@ -9,7 +9,7 @@ Full cv (PDF) is [here](https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZ
 <br>
 
 ## Education
-* Master in Arts (Political Science) 
+* Master of Arts (Political Science) 
 	* Graduate Schools for Law and Politics, the University of Tokyo, Japan
 	* 2016 - present
 * Bachelor of Liberal Arts (Political Science)
