@@ -19,12 +19,12 @@
 
 
 
-<title>Posts by Category - Shusei’s Website</title>
+<title>Why can we consider expectation in Gibbs Sampling - Shusei’s Website</title>
 
 
 
 
-<meta name="description" content="Website for Shusei">
+<meta name="description" content="">
 
 
 
@@ -33,13 +33,15 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
-<meta property="og:title" content="Posts by Category">
+<meta property="og:title" content="Why can we consider expectation in Gibbs Sampling">
 
 
-  <link rel="canonical" href="https://shusei-e.github.io/categories/">
-  <meta property="og:url" content="https://shusei-e.github.io/categories/">
+  <link rel="canonical" href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">
+  <meta property="og:url" content="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">
 
 
+
+  <meta property="og:description" content="">
 
 
 
@@ -52,6 +54,9 @@
 
 
 
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-03-17T00:00:00+09:00">
 
 
 
@@ -115,7 +120,7 @@
 <!-- end custom head snippets -->
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -256,239 +261,131 @@
   </div>
 
 
-  <div class="archive">
-    
-      <h1 class="page__title">Posts by Category</h1>
-    
-    <span style="color: #52adc8; font-size: 0.9em;">
-<a href="/blog/">Recent Posts</a><br>
-</span>
-<span style="color: #52adc8; font-size: 0.9em;">
-<a href="/blog-year/">Sort By Year</a>
-</span>
-
-
-<!--
-# Jekyll Group-By-Array 0.1.0
-# https://github.com/mushishi78/jekyll-group-by-array
-# © 2015 Max White <mushishi78@gmail.com>
-# MIT License
--->
-
-<!-- Initialize -->
-
-
-
-
-<!-- Map -->
-
-
-<!-- Flatten -->
-
-
-<!-- Uniq -->
-
-
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-
-<!-- Push to group_names -->
-
-
-
-
-
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-
-
-
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-
-<!-- Push to group_names -->
-
-
-
-
-
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-
-<!-- Push to group_names -->
-
-
-
-
-
-
-
-<!-- group_items -->
-
-
-<!-- Collect if contains -->
-
-
-
-<!-- Push to group_items -->
-
-
-
-<!-- Collect if contains -->
-
-
-
-<!-- Push to group_items -->
-
-
-
-<!-- Collect if contains -->
-
-
-
-<!-- Push to group_items -->
-
-
-
-
-  
-  <h2 id="machine-learning" class="archive__subtitle">Machine Learning</h2>
-  
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Why can we consider expectation in Gibbs Sampling">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="March 17, 2017">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" rel="permalink">Why can we consider expectation in Gibbs Sampling
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+        <header>
+          <h1 class="page__title" itemprop="headline">Why can we consider expectation in Gibbs Sampling
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
 
 
   less than 1 minute read
 </p>
-    
-    <p class="archive__item-excerpt" itemprop="description">
+          
+        </header>
+      
 
-</p>
+      <section class="page__content" itemprop="text">
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<p>Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose new <script type="math/tex">z_i</script> from this histogram),</p>
+
+<p><span style="font-size:0.8em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\begin{align}
+&\qquad \int p(x_i | z_i=k, \mu_k, \sigma^2) p(\mu_k | \bx^{-i}, \bz^{-i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k \int p(z_i =k|\btheta) p(\btheta | \bz^{-i},\balpha) d\btheta \\
+&= \cN(x_i | \mu_{\rm New}, \sigma^2) \cdot \frac{n_k^{\backslash i} + \alpha_k}{\sum_{k=1}^{K} n_k^{\backslash i} + \alpha_k}
+\end{align} %]]></script>
+</span></p>
+
+<p>Each integral shows posterior predictive distribution of <script type="math/tex">x_i</script> and <script type="math/tex">z_i</script>, respectively. We can consider the expectation of <script type="math/tex">\mu_k</script> for the first term instead of calculating everything. <script type="math/tex">\mu_k</script> can take various values, but it follows Normal distribution. Enough amount of data makes the posterior distribution of <script type="math/tex">\mu_k</script> sharp. The expectation can be a good approximation.</p>
+
+<p><span style="font-size:0.8em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\begin{align}
+  &\qquad p(x_i | z_i=k, {\mu_k}, \sigma^2) \int  p(\mu_k | \bx^{-i}, \bz^{-i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k\\
+  &= p(x_i | z_i=k, \overline{\mu_k}, \sigma^2)
+\end{align} %]]></script>
+</span></p>
+
+<p>Code can be found <a href="https://github.com/Shusei-E/Code_Tips/tree/master/Algorithm/MCMC/Gibbs_Sampling/GMM1D">here</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://shusei-e.github.io/categories/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-17T00:00:00+09:00">March 17, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Why can we consider expectation in Gibbs Sampling https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="pagination--pager" title="Metropolis-Hastings Sampling Tips
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
+
+  
+  
 </div>
 
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" rel="permalink">Metropolis-Hastings Sampling Tips
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">
-
-</p>
-  </article>
-</div>
-
-  
-
-  
-  <h2 id="natural-language-processing" class="archive__subtitle">Natural Language Processing</h2>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" rel="permalink">Variational Bayes Derivation of Latent Dirichlet Allocation
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">This is not a smoothed LDA. The model is Beli, Ng, and Jordan (2003) Figure 1.
-You can find another useful derivation note.
-
-</p>
-  </article>
-</div>
-
-  
-
-  
-  <h2 id="tips" class="archive__subtitle">Tips</h2>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://shusei-e.github.io/tips/website-with-jekyll/" rel="permalink">Create a website with Jekyll
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">
-
-Jekyll and Github Pages are great tools to create a website. I used minimal-mistakes template.
-
-</p>
-  </article>
-</div>
-
-  
-
-
-  </div>
-</div>
 
     <div class="page__footer">
       <footer>
