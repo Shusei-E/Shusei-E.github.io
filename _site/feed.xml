@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-03-18T00:36:56+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Why can we consider expectation in Gibbs Sampling</title><link href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" rel="alternate" type="text/html" title="Why can we consider expectation in Gibbs Sampling" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">&lt;script src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-03-18T08:22:46+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Why can we consider expectation in Gibbs Sampling</title><link href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" rel="alternate" type="text/html" title="Why can we consider expectation in Gibbs Sampling" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">&lt;script src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose new &lt;script type=&quot;math/tex&quot;&gt;z_i&lt;/script&gt; from this histogram),&lt;/p&gt;
+&lt;p&gt;Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new &lt;script type=&quot;math/tex&quot;&gt;z_i&lt;/script&gt; from this histogram),&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;font-size:0.8em; line-height:0%&quot;&gt;
 &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
@@ -10,7 +10,7 @@
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \begin{align}
-&amp;\qquad \int p(x_i | z_i=k, \mu_k, \sigma^2) p(\mu_k | \bx^{-i}, \bz^{-i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k \int p(z_i =k|\btheta) p(\btheta | \bz^{-i},\balpha) d\btheta \\
+&amp;\qquad \int p(x_i | z_i=k, \mu_k, \sigma^2) p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k \int p(z_i =k|\btheta) p(\btheta | \bz^{\backslash i},\balpha) d\btheta \\
 &amp;= \cN(x_i | \mu_{\rm New}, \sigma^2) \cdot \frac{n_k^{\backslash i} + \alpha_k}{\sum_{k=1}^{K} n_k^{\backslash i} + \alpha_k}
 \end{align} %]]&gt;&lt;/script&gt;
 &lt;/span&gt;&lt;/p&gt;
@@ -25,7 +25,7 @@
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \begin{align}
-  &amp;\qquad p(x_i | z_i=k, {\mu_k}, \sigma^2) \int  p(\mu_k | \bx^{-i}, \bz^{-i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k\\
+  &amp;\qquad p(x_i | z_i=k, {\mu_k}, \sigma^2) \int  p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k\\
   &amp;= p(x_i | z_i=k, \overline{\mu_k}, \sigma^2)
 \end{align} %]]&gt;&lt;/script&gt;
 &lt;/span&gt;&lt;/p&gt;
@@ -34,20 +34,24 @@
 
 &lt;p&gt;You may wonder why &lt;script type=&quot;math/tex&quot;&gt;\log f(x) - {\rm exprand}(1)&lt;/script&gt; is the same as &lt;script type=&quot;math/tex&quot;&gt;u \sim {\rm Uniform}(0, f(x))&lt;/script&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;p&gt;&lt;span style=&quot;font-size:0.8em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 \begin{align}
 &amp;\qquad \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) &gt; r\\
 &amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) &gt; \log r\\
 &amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - \log r &gt; 0\\
 &amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - {\rm exprand}(1) &gt; 0,
 \end{align} %]]&gt;&lt;/script&gt;
+&lt;/span&gt;
 &lt;br /&gt;&lt;br /&gt;
 because&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
+&lt;p&gt;&lt;span style=&quot;font-size:0.8em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align}
 r \sim {\rm Uniform}(0,1)\\
 \exp(1) \sim - \log r
 \end{align}&lt;/script&gt;
+&lt;/span&gt;&lt;/p&gt;
 
 &lt;p&gt;You may find &lt;a href=&quot;http://www.nrbook.com/devroye/&quot;&gt;“Non-Uniform Random Variate Generation”&lt;/a&gt; useful for sampling.&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html"></summary></entry><entry><title type="html">Variational Bayes Derivation of Latent Dirichlet Allocation</title><link href="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" rel="alternate" type="text/html" title="Variational Bayes Derivation of Latent Dirichlet Allocation" /><published>2017-03-11T00:00:00+09:00</published><updated>2017-03-11T00:00:00+09:00</updated><id>https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes</id><content type="html" xml:base="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/">&lt;p&gt;This is not a smoothed LDA. The model is &lt;a href=&quot;http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf&quot;&gt;Beli, Ng, and Jordan (2003)&lt;/a&gt; Figure 1.&lt;br /&gt;
 You can find another useful derivation &lt;a href=&quot;http://chasen.org/~daiti-m/paper/lda-fullvb.pdf&quot;&gt;note&lt;/a&gt;.&lt;/p&gt;
