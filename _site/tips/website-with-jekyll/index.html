@@ -285,7 +285,8 @@
       
 
       <section class="page__content" itemprop="text">
-        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+        <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 <p>Jekyll and Github Pages are great tools to create a website. I used <a href="https://github.com/mmistakes/minimal-mistakes">minimal-mistakes</a> template.</p>
 
@@ -296,7 +297,13 @@
 
 <h3 id="equations">Equations</h3>
 <p>Write equations in LaTex Style. You need to add</p>
-<div class="language-md highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-md highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>or, this may faster</p>
+<div class="language-md highlighter-rouge"><pre class="highlight"><code>&lt;script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;
+<span class="nt">&lt;/script&gt;</span>
 </code></pre>
 </div>
 <p>For example,</p>
@@ -330,6 +337,9 @@
   &= p(\bx | \bz, \bmu, \sigma^2) p(\bz|\btheta)p(\btheta|\balpha)p(\bmu|\mu_P, \sigma^2_P)\\[3pt]
   &= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
 \end{align} %]]></script></p>
+
+<h2 id="how-to">How-To</h2>
+<p>Check <a href="https://github.com/Shusei-E/Code_Tips/blob/master/Website/README.md">this note</a>.</p>
 
         
       </section>

@@ -4,7 +4,9 @@ categories:
  - Tips
 author_profile: true
 ---
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 Jekyll and Github Pages are great tools to create a website. I used [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes) template.
 
 ## Features
@@ -15,7 +17,13 @@ Jekyll and Github Pages are great tools to create a website. I used [minimal-mis
 ### Equations
 Write equations in LaTex Style. You need to add
 ```md
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+```
+or, this may faster
+```md
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 ```
 For example,
 ```latex
@@ -49,3 +57,6 @@ $$
   &= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
 \end{align}
 $$
+
+## How-To
+Check [this note](https://github.com/Shusei-E/Code_Tips/blob/master/Website/README.md).

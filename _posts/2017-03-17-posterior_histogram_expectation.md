@@ -4,7 +4,9 @@ categories:
  - Machine Learning
 author_profile: true
 ---
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new $$z_i$$ from this histogram),
