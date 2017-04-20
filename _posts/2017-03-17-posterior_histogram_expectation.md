@@ -8,7 +8,6 @@ author_profile: true
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-
 Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new $$z_i$$ from this histogram),
 
 <span style="font-size:0.8em; line-height:0%">

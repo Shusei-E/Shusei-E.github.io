@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-04-13T10:12:54+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Why can we consider expectation in Gibbs Sampling</title><link href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" rel="alternate" type="text/html" title="Why can we consider expectation in Gibbs Sampling" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-04-20T17:59:31+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Use tanh instead of exp in sigmoid function</title><link href="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/" rel="alternate" type="text/html" title="Use tanh instead of exp in sigmoid function" /><published>2017-04-20T00:00:00+09:00</published><updated>2017-04-20T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/sigmoid_tanh</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/">&lt;p&gt;If the data is large, we encounter overrflow in sigmoid function.&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;&lt;span style=&quot;font-size:0.85em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;f(x) = \dfrac{1}{1 + e^{-ax}}  \ (a&gt;0)&lt;/script&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;A simple trick to avoid overflow is to use tanh.&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;font-size:0.85em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;\dfrac{1}{1+e^{-ax}}=\dfrac{1}{2}\dfrac{2e^{\frac{1}{2}ax}}{e^{\frac{1}{2}ax}+e^{-\frac{1}{2}ax}} 
+=\dfrac{1}{2}(1+\tanh(\frac{1}{2}ax))&lt;/script&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;In your code,&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;will become&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tanh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/pfnet/chainer/pull/1047&quot;&gt;Reference 1&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://mathtrain.jp/sigmoid&quot;&gt;Reference 2&lt;/a&gt;&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">If the data is large, we encounter overrflow in sigmoid function.</summary></entry><entry><title type="html">Why can we consider expectation in Gibbs Sampling</title><link href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" rel="alternate" type="text/html" title="Why can we consider expectation in Gibbs Sampling" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new &lt;script type=&quot;math/tex&quot;&gt;z_i&lt;/script&gt; from this histogram),&lt;/p&gt;
