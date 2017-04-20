@@ -4,7 +4,7 @@ categories:
  - Machine Learning
 author_profile: true
 ---
-If the data is large, we encounter overrflow in sigmoid function.
+If the data is large, we encounter overflow in sigmoid function.
 
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
