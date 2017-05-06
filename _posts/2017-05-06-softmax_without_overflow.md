@@ -12,7 +12,7 @@ S = \dfrac{e^{x - K}}{\sum_i e^{x - K}}
 $$
 </span>
 
-The result is inveriant even if we add/subtract constant $$K$$, because softmax function uses the sum of $$e$$ to normalize the result. We need to choose $$K$$. In the example below, $$K = \max (x)$$ is used.
+The result is inveriant even if we add/subtract constant $$K$$, because softmax function uses the sum of $$e$$ to normalize the result. We need to choose $$K$$. In the example below, $$K = \max (x)$$ is used, but any number should be fine.
 
 ```python
 def softmax(x):
