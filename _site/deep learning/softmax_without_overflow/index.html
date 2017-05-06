@@ -19,12 +19,12 @@
 
 
 
-<title>Metropolis-Hastings Sampling Tips - Shusei’s Website</title>
+<title>Softmax without Overflow - Shusei’s Website</title>
 
 
 
 
-<meta name="description" content="You may wonder why  is the same as .">
+<meta name="description" content="Overflow problems are common in neural network-like structures.">
 
 
 
@@ -33,15 +33,15 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
-<meta property="og:title" content="Metropolis-Hastings Sampling Tips">
+<meta property="og:title" content="Softmax without Overflow">
 
 
-  <link rel="canonical" href="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/">
-  <meta property="og:url" content="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/">
+  <link rel="canonical" href="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/">
+  <meta property="og:url" content="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/">
 
 
 
-  <meta property="og:description" content="You may wonder why  is the same as .">
+  <meta property="og:description" content="Overflow problems are common in neural network-like structures.">
 
 
 
@@ -56,7 +56,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-03-16T00:00:00+09:00">
+  <meta property="article:published_time" content="2017-05-06T00:00:00+09:00">
 
 
 
@@ -266,15 +266,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Metropolis-Hastings Sampling Tips">
-    <meta itemprop="description" content="You may wonder why  is the same as .">
-    <meta itemprop="datePublished" content="March 16, 2017">
+    <meta itemprop="headline" content="Softmax without Overflow">
+    <meta itemprop="description" content="Overflow problems are common in neural network-like structures.">
+    <meta itemprop="datePublished" content="May 06, 2017">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Metropolis-Hastings Sampling Tips
+          <h1 class="page__title" itemprop="headline">Softmax without Overflow
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -289,28 +289,31 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>You may wonder why <script type="math/tex">\log f(x) - {\rm exprand}(1)</script> is the same as <script type="math/tex">u \sim {\rm Uniform}(0, f(x))</script>.</p>
+        <p>Overflow problems are common in neural network-like structures.</p>
 
-<p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-&\qquad \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) > r\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) > \log r\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - \log r > 0\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - {\rm exprand}(1) > 0,
-\end{align} %]]></script>
-</span>
-<br /><br />
-because</p>
-
-<p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">\begin{align}
-r \sim {\rm Uniform}(0,1)\\
-\exp(1) \sim - \log r
-\end{align}</script>
+<p><span style="font-size:0.85em; line-height:0%">
+<script type="math/tex">S = \dfrac{e^{x - K}}{\sum_i e^{x - K}}</script>
 </span></p>
 
-<p>You may find <a href="http://www.nrbook.com/devroye/">“Non-Uniform Random Variate Generation”</a> useful for sampling.</p>
+<p>The result is inveriant even if we add/subtract constant <script type="math/tex">K</script>, because softmax function uses the sum of <script type="math/tex">e</script> to normalize the result. We need to choose <script type="math/tex">K</script>. In the example below, <script type="math/tex">K = \max (x)</script> is used.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="n">exp_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">exp_x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">exp_x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>will become</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">e</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c"># dim = 2</span>
+        <span class="k">return</span> <span class="n">e</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><br />
+<a href="http://rodresearch.blogspot.jp/2011/08/avoiding-overflow-problem-in-softmax.html">Reference 1</a></p>
 
         
       </section>
@@ -333,14 +336,14 @@ r \sim {\rm Uniform}(0,1)\\
     
       
       
-      <a href="https://shusei-e.github.io/categories/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+      <a href="https://shusei-e.github.io/categories/#deep-learning" class="page__taxonomy-item" rel="tag">Deep Learning</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-16T00:00:00+09:00">March 16, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-05-06T00:00:00+09:00">May 06, 2017</time></p>
         
       </footer>
 
@@ -349,25 +352,24 @@ r \sim {\rm Uniform}(0,1)\\
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Metropolis-Hastings Sampling Tips https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Softmax without Overflow https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" class="pagination--pager" title="Variational Bayes Derivation of Latent Dirichlet Allocation
+      <a href="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/" class="pagination--pager" title="Use tanh instead of exp in sigmoid function
 ">Previous</a>
     
     
-      <a href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="pagination--pager" title="Why can we consider expectation in Gibbs Sampling
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
