@@ -28,6 +28,7 @@ def softmax(x):
     else: # dim = 2
         return e / np.sum(e, axis=1, keepdims=True)
 ```
+You may need to use this `e = np.exp(x - np.max(x, axis=1)[:, np.newaxis])`.
 
 <br>
 [Reference 1](http://rodresearch.blogspot.jp/2011/08/avoiding-overflow-problem-in-softmax.html)

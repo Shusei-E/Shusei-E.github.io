@@ -311,6 +311,7 @@
         <span class="k">return</span> <span class="n">e</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre>
 </div>
+<p>You may need to use this <code class="highlighter-rouge">e = np.exp(x - np.max(x, axis=1)[:, np.newaxis])</code>.</p>
 
 <p><br />
 <a href="http://rodresearch.blogspot.jp/2011/08/avoiding-overflow-problem-in-softmax.html">Reference 1</a></p>
