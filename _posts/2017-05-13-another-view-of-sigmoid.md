@@ -46,3 +46,13 @@ text(-0.5, sigmoid(2), expression(sigma(2)))
 text(1.25, sigmoid(-2), expression(sigma(-2)==1-sigma(2)))
 ```
 
+Note:
+
+<span style="font-size:0.9em; line-height:0%">
+$$
+\begin{align}
+{\rm logit}(p) &= \log \left( \frac{p}{1-p} \right) = a \\[10pt]
+{\rm logit}^{-1}(a) &= \frac{\exp (a)}{\exp (a) + 1} = p
+\end{align}
+$$
+</span>
