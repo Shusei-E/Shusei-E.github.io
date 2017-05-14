@@ -333,7 +333,7 @@
 <script type="math/tex">% <![CDATA[
 \begin{align}
 {\rm logit}(p) &= \log \left( \frac{p}{1-p} \right) = a \\[10pt]
-{\rm logit}^{-1}(a) &= \frac{\exp (a)}{\exp (a) + 1} = p
+{\rm logit}^{-1}(a) &= \frac{\exp (a)}{\exp (a) + 1} = \frac{e^a \cdot e^{-a}}{(e^a + 1) \cdot e^{-1}} = \frac{1}{1 + e^{-a}} = p
 \end{align} %]]></script>
 </span></p>
 
