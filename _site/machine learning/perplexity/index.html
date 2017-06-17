@@ -19,12 +19,12 @@
 
 
 
-<title>Blog - Shusei’s Website</title>
+<title>Perplexity - Shusei’s Website</title>
 
 
 
 
-<meta name="description" content="Website for Shusei">
+<meta name="description" content="Perplexity is commonly used to evaluate language models.">
 
 
 
@@ -33,13 +33,15 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
-<meta property="og:title" content="Blog">
+<meta property="og:title" content="Perplexity">
 
 
-  <link rel="canonical" href="https://shusei-e.github.io/blog/">
-  <meta property="og:url" content="https://shusei-e.github.io/blog/">
+  <link rel="canonical" href="https://shusei-e.github.io/machine%20learning/perplexity/">
+  <meta property="og:url" content="https://shusei-e.github.io/machine%20learning/perplexity/">
 
 
+
+  <meta property="og:description" content="Perplexity is commonly used to evaluate language models.">
 
 
 
@@ -52,6 +54,9 @@
 
 
 
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-06-17T00:00:00+09:00">
 
 
 
@@ -115,7 +120,7 @@
 <!-- end custom head snippets -->
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -150,7 +155,11 @@
   </div>
 </div>
 
-    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+
 
 
 
@@ -256,171 +265,122 @@
   </div>
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Perplexity">
+    <meta itemprop="description" content="Perplexity is commonly used to evaluate language models.">
+    <meta itemprop="datePublished" content="June 17, 2017">
     
-      <h1 class="page__title">Blog</h1>
-    
-    <span style="color: #52adc8; font-size: 0.9em;">
-<a href="/blog-year/">Sort By Year</a><br>
-</span>
-<span style="color: #52adc8; font-size: 0.9em;">
-<a href="/categories/">Sort By Category</a>
-</span>
 
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="https://shusei-e.github.io/machine%20learning/perplexity/" rel="permalink">Perplexity
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+        <header>
+          <h1 class="page__title" itemprop="headline">Perplexity
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
 
 
   less than 1 minute read
 </p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Perplexity is commonly used to evaluate language models.
+          
+        </header>
+      
 
-</p>
-  </article>
-</div>
+      <section class="page__content" itemprop="text">
+        <p>Perplexity is commonly used to evaluate language models.</p>
+
+<p>First, we need to know</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&\quad {\rm probability}\ p = \frac{1}{\rm choices}, \\
+&\Leftrightarrow {\rm choices}\ c = \frac{1}{p}.
+\end{align} %]]></script>
+</span></p>
+
+<p>Perplexity is the geometric mean of choices. <script type="math/tex">N</script> is the number of data, <script type="math/tex">c</script> is the number of choices.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+\left( \prod_{i=1}^{N} c_i \right)^{\frac{1}{N}} &= \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \\[10pt]
+&= \exp \left( \log \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \right) \\[10pt]
+&= \exp \left( \dfrac{\sum_{i=1}^N -(\log p_i)}{N} \right) \\[10pt]
+&= \exp \left( \frac{-{\rm loglik}}{N} \right)
+\end{align} %]]></script>
+</span></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
 
 
   
 
 
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" rel="permalink">Log Likelihood of LDA in CGS
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.
-
-</p>
-  </article>
-</div>
-
-
+  
+  
   
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
     
-    <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://shusei-e.github.io/machine%20learning/another-view-of-sigmoid/" rel="permalink">Another view of Sigmoid function
-</a>
       
-    </h2>
+      <a href="https://shusei-e.github.io/categories/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
     
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+    </span>
+  </p>
 
 
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-06-17T00:00:00+09:00">June 17, 2017</time></p>
+        
+      </footer>
 
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Sigmoid function (standard logistic function) is defined as
-
-</p>
-  </article>
-</div>
-
-
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
   
 
+  <a href="https://twitter.com/intent/tweet?text=Perplexity https://shusei-e.github.io/machine%20learning/perplexity/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/machine%20learning/perplexity/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/machine%20learning/perplexity/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/machine%20learning/perplexity/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
 
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" rel="permalink">Softmax without Overflow
-</a>
-      
-    </h2>
+  <nav class="pagination">
     
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
+      <a href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" class="pagination--pager" title="Log Likelihood of LDA in CGS
+">Previous</a>
     
-    <p class="archive__item-excerpt" itemprop="description">Overflow problems are common in neural network-like structures.
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
 
-</p>
+    </div>
+
+    
   </article>
-</div>
-
 
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/" rel="permalink">Use tanh instead of exp in sigmoid function
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If the data is large, we encounter overflow in sigmoid function.
-
-</p>
-  </article>
+  
 </div>
 
-
-
-
-
-
-  </div>
-</div>
 
     <div class="page__footer">
       <footer>

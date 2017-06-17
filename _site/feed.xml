@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-05-14T17:05:59+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Log Likelihood of LDA in CGS</title><link href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" rel="alternate" type="text/html" title="Log Likelihood of LDA in CGS" /><published>2017-05-14T00:00:00+09:00</published><updated>2017-05-14T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/">&lt;p&gt;Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-06-17T15:41:56+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Perplexity</title><link href="https://shusei-e.github.io/machine%20learning/perplexity/" rel="alternate" type="text/html" title="Perplexity" /><published>2017-06-17T00:00:00+09:00</published><updated>2017-06-17T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/perplexity</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/perplexity/">&lt;p&gt;Perplexity is commonly used to evaluate language models.&lt;/p&gt;
+
+&lt;p&gt;First, we need to know&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;font-size:1.0em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+&amp;\quad {\rm probability}\ p = \frac{1}{\rm choices}, \\
+&amp;\Leftrightarrow {\rm choices}\ c = \frac{1}{p}.
+\end{align} %]]&gt;&lt;/script&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Perplexity is the geometric mean of choices. &lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt; is the number of data, &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt; is the number of choices.&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;font-size:1.0em; line-height:0%&quot;&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\left( \prod_{i=1}^{N} c_i \right)^{\frac{1}{N}} &amp;= \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \\[10pt]
+&amp;= \exp \left( \log \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \right) \\[10pt]
+&amp;= \exp \left( \dfrac{\sum_{i=1}^N -(\log p_i)}{N} \right) \\[10pt]
+&amp;= \exp \left( \frac{-{\rm loglik}}{N} \right)
+\end{align} %]]&gt;&lt;/script&gt;
+&lt;/span&gt;&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">Perplexity is commonly used to evaluate language models.</summary></entry><entry><title type="html">Log Likelihood of LDA in CGS</title><link href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" rel="alternate" type="text/html" title="Log Likelihood of LDA in CGS" /><published>2017-05-14T00:00:00+09:00</published><updated>2017-05-14T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/">&lt;p&gt;Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.&lt;/p&gt;
 
 &lt;p&gt;We want to calculate&lt;/p&gt;
 
@@ -102,7 +124,7 @@ p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &amp;= \prod_k \left[ \f
 &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 \begin{align}
 {\rm logit}(p) &amp;= \log \left( \frac{p}{1-p} \right) = a \\[10pt]
-{\rm logit}^{-1}(a) &amp;= \frac{\exp (a)}{\exp (a) + 1} = \frac{e^a \cdot e^{-a}}{(e^a + 1) \cdot e^{-1}} = \frac{1}{1 + e^{-a}} = p
+{\rm logit}^{-1}(a) &amp;= \frac{\exp (a)}{\exp (a) + 1} = \frac{e^a \cdot e^{-a}}{(e^a + 1) \cdot e^{-a}} = \frac{1}{1 + e^{-a}} = p
 \end{align} %]]&gt;&lt;/script&gt;
 &lt;/span&gt;&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">Sigmoid function (standard logistic function) is defined as</summary></entry><entry><title type="html">Softmax without Overflow</title><link href="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" rel="alternate" type="text/html" title="Softmax without Overflow" /><published>2017-05-06T00:00:00+09:00</published><updated>2017-05-06T00:00:00+09:00</updated><id>https://shusei-e.github.io/deep%20learning/softmax_without_overflow</id><content type="html" xml:base="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/">&lt;p&gt;Overflow problems are common in neural network-like structures.&lt;/p&gt;
 
