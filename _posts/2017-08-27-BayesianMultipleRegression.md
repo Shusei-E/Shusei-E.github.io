@@ -87,7 +87,7 @@ $$
 $$
 </span>
 
-Another important and useful property of Normal distribution is that,
+Another important and useful property of Normal distribution is that, when we focus on $$x$$,
 
 <span style="font-size:1.0em; line-height:0%">
 $$
