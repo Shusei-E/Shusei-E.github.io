@@ -58,7 +58,7 @@ cdef double gammaln_sum(np.ndarray[ftype_t, ndim=1] array1,
     return value
 ```
 
-In Python:
+In C++:
 ```cpp
 double CstmCpp::calc_loglik_doc_second_term(int &doc_id, int &word_id, SparseVector<int> &n_k_doc){
   // compute_second_term_of_log_probability_document
