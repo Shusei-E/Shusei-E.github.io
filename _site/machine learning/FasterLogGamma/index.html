@@ -1,0 +1,461 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.2.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Faster Log Gamma Calculation - Shusei’s Website</title>
+
+
+
+
+<meta name="description" content="We sometimes encounter the calculation of">
+
+
+
+
+<meta name="author" content="Shusei Eshima">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Shusei's Website">
+<meta property="og:title" content="Faster Log Gamma Calculation">
+
+
+  <link rel="canonical" href="https://shusei-e.github.io/machine%20learning/FasterLogGamma/">
+  <meta property="og:url" content="https://shusei-e.github.io/machine%20learning/FasterLogGamma/">
+
+
+
+  <meta property="og:description" content="We sometimes encounter the calculation of">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-09-21T00:00:00+09:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Shusei",
+      "url" : "https://shusei-e.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://shusei-e.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://shusei-e.github.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://shusei-e.github.io/">Shusei's Website</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/biocv/">Bio/CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/research/">Research</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/data/">Data</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/tips/">Tips</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/blog/">Blog</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Shusei Eshima</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Graduate Student. I am interested in Political Methodology and Comparative Politics.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Japan</span>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://shusei-e.github.io" itemprop="url">
+            <i class="fa fa-fw fa-chain" aria-hidden="true"></i> Website
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/Shusei-E" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Faster Log Gamma Calculation">
+    <meta itemprop="description" content="We sometimes encounter the calculation of">
+    <meta itemprop="datePublished" content="September 21, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Faster Log Gamma Calculation
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>We sometimes encounter the calculation of</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\newcommand{\Ga}{\Gamma}
+\begin{align}
+\log \frac{\Ga (\alpha + n)}{\Ga (\alpha)}.
+\end{align}</script>
+</span></p>
+
+<p>If <script type="math/tex">n</script> is small, there is a faster calculation. We use the property of Gamma function, <script type="math/tex">\Gamma(x+1) = x \Gamma (x)</script>.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Ga}{\Gamma}
+\begin{align}
+&\quad \log \frac{\Ga (\alpha + n)}{\Ga (\alpha)} \\
+&= \log \frac{(\alpha + n - 1) \Ga (\alpha + n - 1)}{\Ga (\alpha)} \\
+&= \log \frac{(\alpha + n -1) (\alpha + n -2) \Ga (\alpha + n -2) }{\Ga (\alpha)} \\
+&= \log \frac{(\alpha + n -1) (\alpha + n -2) \cdots (\alpha) \Ga (\alpha)}{\Ga (\alpha)} \\
+&= \log (\alpha + n -1) (\alpha + n -2) \cdots (\alpha)\\
+&= \log \prod_{m=1}^{n} (\alpha + n - m)
+\end{align} %]]></script>
+</span></p>
+
+<p>Example code in Cython:</p>
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">cdef</span> <span class="n">extern</span> <span class="kn">from</span> <span class="err">"</span><span class="nn">math.h</span><span class="err">":
+</span>   <span class="nn">double</span> <span class="nn">log</span> <span class="err">(</span><span class="nn">double</span> <span class="nn">x</span><span class="err">)
+</span>   <span class="nn">double</span> <span class="nn">lgamma</span> <span class="err">(</span><span class="nn">double</span> <span class="nn">x</span><span class="err">)
+
+</span><span class="nn">cdef</span> <span class="nn">double</span> <span class="nn">gammaln_sum</span><span class="err">(</span><span class="nn">np.ndarray</span><span class="err">[</span><span class="nn">ftype_t</span><span class="err">,</span> <span class="nn">ndim</span><span class="err">=1]</span> <span class="nn">array1</span><span class="err">,
+</span>                        <span class="nn">np.ndarray</span><span class="err">[</span><span class="nn">ftype_t</span><span class="err">,</span> <span class="nn">ndim</span><span class="err">=1]</span> <span class="nn">array2</span><span class="err">):
+</span>    <span class="err">#</span> <span class="err">(</span><span class="nn">special.gammaln</span><span class="err">(</span> <span class="nn">alpha_s</span> <span class="err">+</span> <span class="nn">n_s_temp</span> <span class="err">)</span> <span class="err">-</span> <span class="nn">special.gammaln</span><span class="err">(</span> <span class="nn">alpha_s</span> <span class="err">))</span><span class="nn">.sum</span><span class="err">()
+</span>    <span class="nn">cdef</span> <span class="nn">double</span> <span class="nn">value</span> <span class="err">=</span> <span class="err">0</span><span class="nn">.0</span><span class="err">
+</span>    <span class="nn">cdef</span> <span class="nn">int</span> <span class="nn">i</span><span class="err">
+</span>    <span class="nn">cdef</span> <span class="nn">int</span> <span class="nn">n</span> <span class="err">=</span> <span class="nn">array1.shape</span><span class="err">[0]</span> <span class="err">#</span> <span class="nn">length</span> <span class="nn">of</span> <span class="nn">array</span><span class="err">
+</span>    <span class="nn">cdef</span> <span class="nn">int</span> <span class="nn">m</span><span class="err">
+
+</span>    <span class="nn">for</span> <span class="nn">i</span> <span class="nn">in</span> <span class="nn">range</span><span class="err">(</span><span class="nn">n</span><span class="err">):
+</span>        <span class="nn">if</span> <span class="nn">array2</span><span class="err">[</span><span class="nn">i</span><span class="err">]</span> <span class="err">&lt;</span> <span class="err">18:
+</span>            <span class="err">#</span> <span class="nn">low</span> <span class="nn">frequency</span> <span class="nn">words</span><span class="err">
+</span>            <span class="nn">for</span> <span class="nn">m</span> <span class="nn">in</span> <span class="nn">range</span><span class="err">(</span><span class="nn">int</span><span class="err">(</span><span class="nn">array2</span><span class="err">[</span><span class="nn">i</span><span class="err">])):
+</span>                <span class="nn">value</span> <span class="err">+=</span> <span class="nn">log</span><span class="err">(</span><span class="nn">array1</span><span class="err">[</span><span class="nn">i</span><span class="err">]</span> <span class="err">+</span> <span class="nn">m</span><span class="err">)
+</span>        <span class="nn">else</span><span class="err">:
+</span>            <span class="nn">value</span> <span class="err">+=</span> <span class="nn">lgamma</span><span class="err">(</span><span class="nn">array1</span><span class="err">[</span><span class="nn">i</span><span class="err">])</span> <span class="err">-</span> <span class="nn">lgamma</span><span class="err">(</span><span class="nn">array2</span><span class="err">[</span><span class="nn">i</span><span class="err">])
+
+</span>    <span class="nn">return</span> <span class="nn">value</span><span class="err">
+</span></code></pre>
+</div>
+
+<p>In Python:</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">CstmCpp</span><span class="o">::</span><span class="n">calc_loglik_doc_second_term</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">doc_id</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">word_id</span><span class="p">,</span> <span class="n">SparseVector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">n_k_doc</span><span class="p">){</span>
+  <span class="c1">// compute_second_term_of_log_probability_document
+</span>  
+  <span class="kt">double</span> <span class="n">alpha_k</span> <span class="o">=</span> <span class="n">calc_alpha_word_given_doc</span><span class="p">(</span><span class="n">doc_id</span><span class="p">,</span> <span class="n">word_id</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">n_k_w</span> <span class="o">=</span> <span class="n">n_k_doc</span><span class="p">.</span><span class="n">coeffRef</span><span class="p">(</span><span class="n">word_id</span><span class="p">);</span> <span class="c1">// get_word_count_in_doc()
+</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">n_k_w</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">alpha_k</span> <span class="o">+</span> <span class="n">n_k_w</span><span class="p">)</span> <span class="o">-</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">alpha_k</span><span class="p">);</span>
+  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="kt">double</span> <span class="n">temp</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n_k_w</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">temp</span> <span class="o">+=</span> <span class="n">log</span><span class="p">(</span><span class="n">alpha_k</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://shusei-e.github.io/categories/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-09-21T00:00:00+09:00">September 21, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Faster Log Gamma Calculation https://shusei-e.github.io/machine%20learning/FasterLogGamma/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/machine%20learning/FasterLogGamma/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/machine%20learning/FasterLogGamma/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/machine%20learning/FasterLogGamma/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://shusei-e.github.io/bayesian%20analysis/BayesianMultipleRegression/" class="pagination--pager" title="Bayesian Multiple Regression
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/Shusei-E"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="https://shusei-e.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Shusei. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="https://shusei-e.github.io/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
