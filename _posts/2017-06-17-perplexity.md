@@ -31,7 +31,4 @@ $$
 $$
 </span>
 
-
-
-
-
+If perplexity becomes negative, you might need to take into account normalization constants.

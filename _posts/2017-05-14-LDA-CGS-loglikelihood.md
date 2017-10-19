@@ -23,7 +23,7 @@ Recall (49) and (50) in [Minka, T. (2000). Estimating a Dirichlet distribution](
 $$
 \begin{align}
 p(\mathbf{x} | \boldsymbol{\alpha}) &= \int_{\mathbf{p}} p(\mathbf{x} | \mathbf{p} ) p(\mathbf{p} | \boldsymbol{\alpha}) d\mathbf{p} \\[10pt]
-&= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k) + \alpha_k} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
+&= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k + \alpha_k)} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
 n_k &= \sum_j \delta(x_j = k)
 \end{align}
 $$
@@ -32,8 +32,8 @@ $$
 <span style="font-size:1.0em; line-height:0%">
 $$
 \begin{align}
-p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v}) + \beta_v} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
-&\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k}) + \alpha_k} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
+p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v} + \beta_v)} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
+&\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k} + \alpha_k)} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
 \end{align}
 $$
 </span>

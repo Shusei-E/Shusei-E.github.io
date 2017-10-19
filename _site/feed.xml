@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-09-21T08:52:19+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Faster Log Gamma Calculation</title><link href="https://shusei-e.github.io/machine%20learning/FasterLogGamma/" rel="alternate" type="text/html" title="Faster Log Gamma Calculation" /><published>2017-09-21T00:00:00+09:00</published><updated>2017-09-21T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/FasterLogGamma</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/FasterLogGamma/">&lt;p&gt;We sometimes encounter the calculation of&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://shusei-e.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shusei-e.github.io/" rel="alternate" type="text/html" /><updated>2017-10-19T18:57:15+09:00</updated><id>https://shusei-e.github.io/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">Faster Log Gamma Calculation</title><link href="https://shusei-e.github.io/machine%20learning/FasterLogGamma/" rel="alternate" type="text/html" title="Faster Log Gamma Calculation" /><published>2017-09-21T00:00:00+09:00</published><updated>2017-09-21T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/FasterLogGamma</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/FasterLogGamma/">&lt;p&gt;We sometimes encounter the calculation of&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;font-size:1.0em; line-height:0%&quot;&gt;
 &lt;script type=&quot;math/tex&quot;&gt;\newcommand{\Ga}{\Gamma}
@@ -479,7 +479,9 @@ p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,
 &amp;= \exp \left( \dfrac{\sum_{i=1}^N -(\log p_i)}{N} \right) \\[10pt]
 &amp;= \exp \left( \frac{-{\rm loglik}}{N} \right)
 \end{align} %]]&gt;&lt;/script&gt;
-&lt;/span&gt;&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">Perplexity is commonly used to evaluate language models.</summary></entry><entry><title type="html">Log Likelihood of LDA in CGS</title><link href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" rel="alternate" type="text/html" title="Log Likelihood of LDA in CGS" /><published>2017-05-14T00:00:00+09:00</published><updated>2017-05-14T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/">&lt;p&gt;Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.&lt;/p&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;If perplexity becomes negative, you might need to take into account normalization constants.&lt;/p&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">Perplexity is commonly used to evaluate language models.</summary></entry><entry><title type="html">Log Likelihood of LDA in CGS</title><link href="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/" rel="alternate" type="text/html" title="Log Likelihood of LDA in CGS" /><published>2017-05-14T00:00:00+09:00</published><updated>2017-05-14T00:00:00+09:00</updated><id>https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood</id><content type="html" xml:base="https://shusei-e.github.io/machine%20learning/LDA-CGS-loglikelihood/">&lt;p&gt;Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.&lt;/p&gt;
 
 &lt;p&gt;We want to calculate&lt;/p&gt;
 
@@ -495,7 +497,7 @@ p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) = \sum_{\mathbf{z}} \int
 &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 \begin{align}
 p(\mathbf{x} | \boldsymbol{\alpha}) &amp;= \int_{\mathbf{p}} p(\mathbf{x} | \mathbf{p} ) p(\mathbf{p} | \boldsymbol{\alpha}) d\mathbf{p} \\[10pt]
-&amp;= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k) + \alpha_k} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
+&amp;= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k + \alpha_k)} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
 n_k &amp;= \sum_j \delta(x_j = k)
 \end{align} %]]&gt;&lt;/script&gt;
 &lt;/span&gt;&lt;/p&gt;
@@ -503,8 +505,8 @@ n_k &amp;= \sum_j \delta(x_j = k)
 &lt;p&gt;&lt;span style=&quot;font-size:1.0em; line-height:0%&quot;&gt;
 &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 \begin{align}
-p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &amp;= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v}) + \beta_v} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
-&amp;\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k}) + \alpha_k} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
+p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &amp;= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v} + \beta_v)} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
+&amp;\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k} + \alpha_k)} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
 \end{align} %]]&gt;&lt;/script&gt;
 &lt;/span&gt;&lt;/p&gt;
 
