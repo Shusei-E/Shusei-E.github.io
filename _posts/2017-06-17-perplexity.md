@@ -7,6 +7,8 @@ author_profile: true
 
 Perplexity is commonly used to evaluate language models.
 
+## Definition and Calculation
+
 First, we need to know
 
 <span style="font-size:1.0em; line-height:0%">
@@ -31,4 +33,17 @@ $$
 $$
 </span>
 
-If perplexity becomes negative, you might need to take into account normalization constants.
+If perplexity becomes negative, you might need to take into account normalization constants. If you calculate the perplexity right after you initialize the model (randomly fill parameters), perplexity could be greater than the number of unique words in the corpus.
+
+## Explanation
+Ideally, we want to know $$p(w)$$, but we need to consider the complete data log-likelihood $$p(w,z)$$. So, we take
+
+<span style="font-size:1.0em; line-height:0%">
+$$
+\begin{align}
+&\sum_z p(w,z) \approx \frac{1}{S} \sum_{s=1}^S p(w, z(s))
+\end{align}
+$$
+</span>
+
+$$S$$ is the number of simulation after enough number of iterations. $$z(s)$$ is the value of latent variable under $$s^{\rm th}$$ simulation. If we take the mean of perplexity, it could be an approximation of all possible $$z$$.

@@ -282,7 +282,7 @@
 
 
 
-  less than 1 minute read
+  1 minute read
 </p>
           
         </header>
@@ -350,6 +350,24 @@ p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{
 <span class="p">}</span>
 </code></pre>
 </div>
+
+<p>We need to use Polya distribution, because in LDA model,</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+p(z_1, z_2, \cdots, z_N | \alpha) \neq \prod_{n=1}^N p(z_n | \alpha)
+\end{align}</script>
+</span></p>
+
+<p>More specifically if we observe two or more <script type="math/tex">z</script>, they are not independent each other.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+p(z_1, z_2 | \alpha) = p(z_2 | z_1, \alpha) p(z_1 | \alpha)
+\end{align}</script>
+</span></p>
+
+<p>In language, if we observe a certain topic (or a word) in a document, it is likely that we observe the same topic (word) again in the document (Polya’s Urn).</p>
 
         
       </section>

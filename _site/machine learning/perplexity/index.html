@@ -291,6 +291,8 @@
       <section class="page__content" itemprop="text">
         <p>Perplexity is commonly used to evaluate language models.</p>
 
+<h2 id="definition-and-calculation">Definition and Calculation</h2>
+
 <p>First, we need to know</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
@@ -313,7 +315,19 @@
 \end{align} %]]></script>
 </span></p>
 
-<p>If perplexity becomes negative, you might need to take into account normalization constants.</p>
+<p>If perplexity becomes negative, you might need to take into account normalization constants. If you calculate the perplexity right after you initialize the model (randomly fill parameters), perplexity could be greater than the number of unique words in the corpus.</p>
+
+<h2 id="explanation">Explanation</h2>
+<p>Ideally, we want to know <script type="math/tex">p(w)</script>, but we need to consider the complete data log-likelihood <script type="math/tex">p(w,z)</script>. So, we take</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&\sum_z p(w,z) \approx \frac{1}{S} \sum_{s=1}^S p(w, z(s))
+\end{align} %]]></script>
+</span></p>
+
+<p><script type="math/tex">S</script> is the number of simulation after enough number of iterations. <script type="math/tex">z(s)</script> is the value of latent variable under <script type="math/tex">s^{\rm th}</script> simulation. If we take the mean of perplexity, it could be an approximation of all possible <script type="math/tex">z</script>.</p>
 
         
       </section>

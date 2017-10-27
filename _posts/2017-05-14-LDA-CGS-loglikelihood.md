@@ -70,3 +70,25 @@ double llik(DATA_STRUCT *data, Parameters *parameters){
   return llik;
 }
 ```
+
+We need to use Polya distribution, because in LDA model,
+
+<span style="font-size:1.0em; line-height:0%">
+$$
+\begin{align}
+p(z_1, z_2, \cdots, z_N | \alpha) \neq \prod_{n=1}^N p(z_n | \alpha)
+\end{align}
+$$
+</span>
+
+More specifically if we observe two or more $$z$$, they are not independent each other.
+
+<span style="font-size:1.0em; line-height:0%">
+$$
+\begin{align}
+p(z_1, z_2 | \alpha) = p(z_2 | z_1, \alpha) p(z_1 | \alpha)
+\end{align}
+$$
+</span>
+
+In language, if we observe a certain topic (or a word) in a document, it is likely that we observe the same topic (word) again in the document (Polya's Urn).
