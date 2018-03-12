@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.2.2 by Michael Rose
-  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.10.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
 -->
@@ -9,36 +9,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin SEO -->
-
-
-
-
-
-
-
-
-
-<title>Variational Bayes Derivation of Latent Dirichlet Allocation - Shusei’s Website</title>
-
-
-
-
+<!-- begin _includes/seo.html --><title>Variational Bayes Derivation of Latent Dirichlet Allocation - Shusei’s Website</title>
 <meta name="description" content="This is not a smoothed LDA. The model is Beli, Ng, and Jordan (2003) Figure 1.You can find another useful derivation note.">
 
 
 
-
-<meta name="author" content="Shusei Eshima">
-
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
 <meta property="og:title" content="Variational Bayes Derivation of Latent Dirichlet Allocation">
-
-
-  <link rel="canonical" href="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/">
-  <meta property="og:url" content="https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/">
-
+<meta property="og:url" content="http://localhost:4000/natural%20language%20processing/lda-variational-bayes/">
 
 
   <meta property="og:description" content="This is not a smoothed LDA. The model is Beli, Ng, and Jordan (2003) Figure 1.You can find another useful derivation note.">
@@ -47,17 +27,20 @@
 
 
 
-  
-
-  
 
 
-
-
-
-  <meta property="og:type" content="article">
   <meta property="article:published_time" content="2017-03-11T00:00:00+09:00">
 
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/natural%20language%20processing/lda-variational-bayes/">
 
 
 
@@ -67,11 +50,11 @@
 
   <script type="application/ld+json">
     {
-      "@context" : "http://schema.org",
-      "@type" : "Person",
-      "name" : "Shusei",
-      "url" : "https://shusei-e.github.io",
-      "sameAs" : null
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Shusei",
+      "url": "http://localhost:4000",
+      "sameAs": null
     }
   </script>
 
@@ -80,10 +63,11 @@
 
 
 
-<!-- end SEO -->
+
+<!-- end _includes/seo.html -->
 
 
-<link href="https://shusei-e.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -95,7 +79,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://shusei-e.github.io/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <!--[if lte IE 9]>
   <style>
@@ -112,54 +96,73 @@
   </style>
 <![endif]-->
 
-<meta http-equiv="cleartype" content="on">
+
     <!-- start custom head snippets -->
 
-<!-- insert favicons. use http://realfavicongenerator.net/ -->
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
+
   </head>
 
   <body class="layout--single">
 
     <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
+
     <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="https://shusei-e.github.io/">Shusei's Website</a>
+        <a class="site-title" href="http://localhost:4000/">Shusei's Website</a>
         <ul class="visible-links">
           
             
-            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/biocv/">Bio/CV</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/biocv/" >Bio/CV</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/research/">Research</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/research/" >Research</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/data/">Data</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/software/" >Software</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/tips/">Tips</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/data/" >Data</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://shusei-e.github.io/blog/">Blog</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/blog/" >Blog</a>
+            </li>
           
         </ul>
-        <button><div class="navicon"></div></button>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
 </div>
 
-    <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-</script>
-
-
+    <div class="initial-content">
+      
 
 
 
@@ -168,12 +171,15 @@
   <div class="sidebar sticky">
   
 
+
 <div itemscope itemtype="http://schema.org/Person">
 
   
 
   <div class="author__content">
-    <h3 class="author__name" itemprop="name">Shusei Eshima</h3>
+    
+      <h3 class="author__name" itemprop="name">Shusei Eshima</h3>
+    
     
       <p class="author__bio" itemprop="description">
         Graduate Student. I am interested in Political Methodology and Comparative Politics.
@@ -186,14 +192,14 @@
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
-          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Japan</span>
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Japan</span>
         </li>
       
 
       
         <li>
           <a href="https://shusei-e.github.io" itemprop="url">
-            <i class="fa fa-fw fa-chain" aria-hidden="true"></i> Website
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i> Website
           </a>
         </li>
       
@@ -221,9 +227,11 @@
       
         <li>
           <a href="https://github.com/Shusei-E" itemprop="sameAs">
-            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
           </a>
         </li>
+      
+
       
 
       
@@ -253,7 +261,7 @@
       <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
-      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
@@ -277,7 +285,7 @@
           <h1 class="page__title" itemprop="headline">Variational Bayes Derivation of Latent Dirichlet Allocation
 </h1>
           
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
 
 
@@ -289,6 +297,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p>This is not a smoothed LDA. The model is <a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Beli, Ng, and Jordan (2003)</a> Figure 1.<br />
 You can find another useful derivation <a href="http://chasen.org/~daiti-m/paper/lda-fullvb.pdf">note</a>.</p>
 
@@ -310,45 +319,32 @@ You can find another useful derivation <a href="http://chasen.org/~daiti-m/paper
   
 
   <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
       
       
-      <a href="https://shusei-e.github.io/categories/#natural-language-processing" class="page__taxonomy-item" rel="tag">Natural Language Processing</a>
+      <a href="http://localhost:4000/categories/#natural-language-processing" class="page__taxonomy-item" rel="tag">Natural Language Processing</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-11T00:00:00+09:00">March 11, 2017</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-11T00:00:00+09:00">March 11, 2017</time></p>
         
       </footer>
 
-      <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=Variational Bayes Derivation of Latent Dirichlet Allocation https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://plus.google.com/share?url=https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shusei-e.github.io/natural%20language%20processing/lda-variational-bayes/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
+      
 
       
   <nav class="pagination">
     
-      <a href="https://shusei-e.github.io/tips/website-with-jekyll/" class="pagination--pager" title="Create a website with Jekyll
+      <a href="http://localhost:4000/tips/website-with-jekyll/" class="pagination--pager" title="Create a website with Jekyll
 ">Previous</a>
     
     
-      <a href="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/" class="pagination--pager" title="Metropolis-Hastings Sampling Tips
+      <a href="http://localhost:4000/machine%20learning/MH_sampling_tips/" class="pagination--pager" title="Metropolis-Hastings Sampling Tips
 ">Next</a>
     
   </nav>
@@ -361,7 +357,14 @@ You can find another useful derivation <a href="http://chasen.org/~daiti-m/paper
   
   
 </div>
+    </div>
 
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
 
     <div class="page__footer">
       <footer>
@@ -376,18 +379,29 @@ You can find another useful derivation <a href="http://chasen.org/~daiti-m/paper
     
     
     
-      <li><a href="http://github.com/Shusei-E"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      <li><a href="https://github.com/Shusei-E"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
-    <li><a href="https://shusei-e.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2017 Shusei. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2018 Shusei. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
       </footer>
     </div>
 
-    <script src="https://shusei-e.github.io/assets/js/main.min.js"></script>
+    
+  <script src="http://localhost:4000/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+
+
+
+<script src="http://localhost:4000/assets/js/lunr/lunr.min.js"></script>
+<script src="http://localhost:4000/assets/js/lunr/lunr-store.js"></script>
+<script src="http://localhost:4000/assets/js/lunr/lunr-en.js"></script>
 
 
 
