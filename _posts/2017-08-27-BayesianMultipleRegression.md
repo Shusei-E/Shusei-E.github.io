@@ -77,7 +77,7 @@ $$
 </span>
 
 Note that 
-$$p(y|\beta_0, \beta_1, \beta_2, \tau, x)$$ and $$p(\beta_0 | \mu_0, \tau_0)$$ are Normal distibution, so we can rewrite them. Also, log Normal PDF is important in deriving.
+$$p(y|\beta_0, \beta_1, \beta_2, \tau, x)$$ and $$p(\beta_0 | \mu_0, \tau_0)$$ are Normal distribution, so we can rewrite them. Also, log Normal PDF is important in deriving.
 
 <span style="font-size:1.0em; line-height:0%">
 $$
