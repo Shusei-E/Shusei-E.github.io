@@ -1,7 +1,7 @@
 ---
 title: Perplexity
 categories:
- - Machine Learning
+ - Natural Language Processing
 author_profile: true
 ---
 
@@ -47,3 +47,22 @@ $$
 </span>
 
 $$S$$ is the number of simulation after enough number of iterations. $$z(s)$$ is the value of latent variable under $$s^{\rm th}$$ simulation. If we take the mean of perplexity, it could be an approximation of all possible $$z$$.
+
+
+## Test Perplexity
+$$
+\begin{align}
+p(\mathbf{w}^{\rm Test} | \mathbf{w}^{\rm Train}) = \int p(\mathbf{w}^{\rm Test} | \theta) p(\theta | \mathbf{w}^{\rm Train}) d\theta
+\end{align}
+$$
+
+
+This is a weighted average by the trained parameters. In the following example, we consider three topics.
+
+| Topics $$p(z)$$ | $$p(w\|z)$$ | $$p(w,z)$$  |
+|----------------|------------|-----------|
+| $$p(z=1)=0.5$$ | $$0.05$$   | $$0.025$$ |
+| $$p(z=2)=0.2$$ | $$0.03$$   | $$0.006$$ |
+| $$p(z=3)=0.1$$ | $$0.01$$   | $$0.001$$ |
+
+We sum up $$p(w,z)$$.
