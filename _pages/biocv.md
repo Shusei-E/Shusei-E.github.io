@@ -10,19 +10,24 @@ Full cv (PDF) is [here](https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZ
 
 ## Education
 <ul>
+ <li>Ph.D. in Government</li>
+   <ul>
+	 		<li>Graduate School of Arts & Sciences, Harvard University</li>
+		  <li>2018 - (in progress)</li>
+	 </ul>
  <li>Master of Arts (Political Science)</li>
    <ul>
-	 		<li>Graduate Schools for Law and Politics, the University of Tokyo, Japan</li>
-		  <li>2016 - present</li>
+	 		<li>Graduate Schools for Law and Politics, The University of Tokyo</li>
+		  <li>2016 - 2018</li>
 	 </ul>
  <li>Bachelor of Liberal Arts (Political Science)</li>
    <ul>
-	 		<li>Department of Advanced Social and International Studies, the University of Tokyo, Japan</li>
+	 		<li>Department of Advanced Social and International Studies, The University of Tokyo</li>
 		  <li>2011 - 2016</li>
 	 </ul>
  <li>Exchange Student</li>
    <ul>
-	 		<li>Department of Politics and International Studies, University of Warwick, UK</li>
+	 		<li>Department of Politics and International Studies, The University of Warwick</li>
 		  <li>2013 - 2014</li>
 	 </ul>
 </ul>
