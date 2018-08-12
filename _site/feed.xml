@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-08T10:10:03-04:00</updated><id>http://localhost:4000/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">アメリカに引っ越す</title><link href="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="alternate" type="text/html" title="アメリカに引っ越す" /><published>2018-08-08T00:00:00-04:00</published><updated>2018-08-08T00:00:00-04:00</updated><id>http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS</id><content type="html" xml:base="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/">&lt;h1 id=&quot;ビザ&quot;&gt;ビザ&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-12T16:22:55-04:00</updated><id>http://localhost:4000/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">アメリカに引っ越す</title><link href="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="alternate" type="text/html" title="アメリカに引っ越す" /><published>2018-08-08T00:00:00-04:00</published><updated>2018-08-08T00:00:00-04:00</updated><id>http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS</id><content type="html" xml:base="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/">&lt;h2 id=&quot;出発まで&quot;&gt;出発まで&lt;/h2&gt;
+
+&lt;h3 id=&quot;ビザ&quot;&gt;ビザ&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;F1ビザの場合、I-20が届いてからすぐに手続きを始めた方が良い
     &lt;ul&gt;
@@ -14,7 +16,7 @@
   &lt;li&gt;I-20は毎回の入国時に必要になるので、大切に保管&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;住民票&quot;&gt;住民票&lt;/h1&gt;
+&lt;h3 id=&quot;住民票&quot;&gt;住民票&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;税金などを考えるのなら、国外転出すべき&lt;/li&gt;
   &lt;li&gt;一時帰国の際の健康保険は、日本の滞在先(ホテルなどではなく)があれば住民票を戻すことで可能
@@ -26,14 +28,25 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;年金&quot;&gt;年金&lt;/h1&gt;
+&lt;h3 id=&quot;年金&quot;&gt;年金&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;住民票あり+大学休学: 両親を代理人として学生免除の申請&lt;/li&gt;
   &lt;li&gt;住民票あり+大学退学: 源泉徴収票を元に日本での所得を計算して所得による免除&lt;/li&gt;
   &lt;li&gt;住民票なし: 任意加入できる、免除などはない&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;荷物を送る&quot;&gt;荷物を送る&lt;/h1&gt;
+&lt;h3 id=&quot;マイナンバー&quot;&gt;マイナンバー&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;番号自体は残る&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;国際免許証&quot;&gt;国際免許証&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;住むなら、各州で運転免許証を取らないといけないが、一応日本からも持参した&lt;/li&gt;
+  &lt;li&gt;免許更新センターなどで入手可能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;荷物を送る&quot;&gt;荷物を送る&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;郵便局のEMSが(それなりに)安くて早い(東海岸で税関に止まらなければ5日程度)
     &lt;ul&gt;
@@ -44,17 +57,25 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;simカードの入手&quot;&gt;SIMカードの入手&lt;/h1&gt;
+&lt;h2 id=&quot;到着後&quot;&gt;到着後&lt;/h2&gt;
+
+&lt;h3 id=&quot;simカードの入手&quot;&gt;SIMカードの入手&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SIMフリーの携帯があればAT&amp;amp;Tなどでプリペイド式のカードをすぐ入手できる&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;銀行口座の開設&quot;&gt;銀行口座の開設&lt;/h1&gt;
+&lt;h3 id=&quot;銀行口座の開設&quot;&gt;銀行口座の開設&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Bank of AmericaはI-20とパスポートだけで開設できた&lt;/li&gt;
+  &lt;li&gt;一定金額口座($1500-)にあればクレジットカードの発行もできるとのこと
+    &lt;ul&gt;
+      &lt;li&gt;日本からの送金にはTransferWiseが便利&lt;/li&gt;
+      &lt;li&gt;念のためにキャッシュパスポートも準備しておくと、いざという時に送金に使える&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;家具などの入手&quot;&gt;家具などの入手&lt;/h1&gt;
+&lt;h3 id=&quot;家具などの入手&quot;&gt;家具などの入手&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Amazonでも色々手に入る&lt;/li&gt;
   &lt;li&gt;ベッド
@@ -62,7 +83,29 @@
       &lt;li&gt;Twin: 日本のシングルぐらいのサイズ&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">ビザ F1ビザの場合、I-20が届いてからすぐに手続きを始めた方が良い 6月の頭はそれなりに空いている 書類の作成には相当時間がかかるので、その時間も考慮する必要がある 写真をアップロードするセクションがあるが、結局使われるのは大使館に持参する写真なので、アップロードする方は最悪規定に沿っていなくても大丈夫 銀行の残高証明書も持って行ったが、大学から奨学金などがもらえる場合は不要だったかもしれない I-20は毎回の入国時に必要になるので、大切に保管</summary></entry><entry><title type="html">Debug, Debug, Debug</title><link href="http://localhost:4000/tips/DebugDebugDebug/" rel="alternate" type="text/html" title="Debug, Debug, Debug" /><published>2018-06-22T00:00:00-04:00</published><updated>2018-06-22T00:00:00-04:00</updated><id>http://localhost:4000/tips/DebugDebugDebug</id><content type="html" xml:base="http://localhost:4000/tips/DebugDebugDebug/">&lt;p&gt;We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;i-20の登録&quot;&gt;I-20の登録&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;International Officeに持って行ってサインをもらう&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;税&quot;&gt;税&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;F-1ビザで、大学からstipendをもらっている場合は、Individual Taxpayer Identification Numbersが必要なので、Form W-7を作成する&lt;/li&gt;
+  &lt;li&gt;RAとかで働くのなら、Social Security Numberが必要になる&lt;/li&gt;
+  &lt;li&gt;大学のOfficeに書類を提出したりと手続きが必要&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;運転免許証&quot;&gt;運転免許証&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;州によって違う&lt;/li&gt;
+  &lt;li&gt;まず試験の準備をする
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://driving-tests.org/&quot;&gt;このサイト&lt;/a&gt;に練習問題があるので解く&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">出発まで</summary></entry><entry><title type="html">Debug, Debug, Debug</title><link href="http://localhost:4000/tips/DebugDebugDebug/" rel="alternate" type="text/html" title="Debug, Debug, Debug" /><published>2018-06-22T00:00:00-04:00</published><updated>2018-06-22T00:00:00-04:00</updated><id>http://localhost:4000/tips/DebugDebugDebug</id><content type="html" xml:base="http://localhost:4000/tips/DebugDebugDebug/">&lt;p&gt;We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.&lt;/p&gt;
 
 &lt;h1 id=&quot;bug&quot;&gt;Bug??&lt;/h1&gt;
 &lt;ul&gt;

@@ -3,6 +3,7 @@ title: Faster Log Gamma Calculation
 categories:
  - Machine Learning
 author_profile: true
+classes: wide
 ---
 
 We sometimes encounter the calculation of 

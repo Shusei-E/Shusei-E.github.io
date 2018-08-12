@@ -3,6 +3,7 @@ title: Bayesian Multiple Regression
 categories:
  - Bayesian Analysis
 author_profile: true
+classes: wide
 ---
 
 We can replace normal multiple regression with Bayesian Multiple Regression.
