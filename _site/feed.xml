@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-12T16:22:55-04:00</updated><id>http://localhost:4000/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">アメリカに引っ越す</title><link href="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="alternate" type="text/html" title="アメリカに引っ越す" /><published>2018-08-08T00:00:00-04:00</published><updated>2018-08-08T00:00:00-04:00</updated><id>http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS</id><content type="html" xml:base="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/">&lt;h2 id=&quot;出発まで&quot;&gt;出発まで&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-19T16:05:11-04:00</updated><id>http://localhost:4000/</id><title type="html">Shusei’s Website</title><subtitle>Website for Shusei</subtitle><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><entry><title type="html">アメリカに引っ越す</title><link href="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="alternate" type="text/html" title="アメリカに引っ越す" /><published>2018-08-08T00:00:00-04:00</published><updated>2018-08-08T00:00:00-04:00</updated><id>http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS</id><content type="html" xml:base="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/">&lt;h2 id=&quot;出発まで&quot;&gt;出発まで&lt;/h2&gt;
 
 &lt;h3 id=&quot;ビザ&quot;&gt;ビザ&lt;/h3&gt;
 &lt;ul&gt;
@@ -13,7 +13,7 @@
       &lt;li&gt;銀行の残高証明書も持って行ったが、大学から奨学金などがもらえる場合は不要だったかもしれない&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;I-20は毎回の入国時に必要になるので、大切に保管&lt;/li&gt;
+  &lt;li&gt;I-20は毎回の入国時に必要になるので、大切に保管・携帯&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;住民票&quot;&gt;住民票&lt;/h3&gt;
@@ -59,6 +59,11 @@
 
 &lt;h2 id=&quot;到着後&quot;&gt;到着後&lt;/h2&gt;
 
+&lt;h3 id=&quot;i-20の登録&quot;&gt;I-20の登録&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;International Officeに持って行ってサインをもらう&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;simカードの入手&quot;&gt;SIMカードの入手&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SIMフリーの携帯があればAT&amp;amp;Tなどでプリペイド式のカードをすぐ入手できる&lt;/li&gt;
@@ -73,6 +78,7 @@
       &lt;li&gt;念のためにキャッシュパスポートも準備しておくと、いざという時に送金に使える&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;Overdraftに注意&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;家具などの入手&quot;&gt;家具などの入手&lt;/h3&gt;
@@ -83,44 +89,66 @@
       &lt;li&gt;Twin: 日本のシングルぐらいのサイズ&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;i-20の登録&quot;&gt;I-20の登録&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;International Officeに持って行ってサインをもらう&lt;/li&gt;
+  &lt;li&gt;照明
+    &lt;ul&gt;
+      &lt;li&gt;家によっては天井に照明がない&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;税&quot;&gt;税&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;F-1ビザで、大学からstipendをもらっている場合は、Individual Taxpayer Identification Numbersが必要なので、Form W-7を作成する&lt;/li&gt;
   &lt;li&gt;RAとかで働くのなら、Social Security Numberが必要になる&lt;/li&gt;
-  &lt;li&gt;大学のOfficeに書類を提出したりと手続きが必要&lt;/li&gt;
+  &lt;li&gt;大学のOfficeに書類を提出したりと手続きが必要
+    &lt;ul&gt;
+      &lt;li&gt;ITINが届いたら、GLACIERというシステムの情報の更新と書類の再提出が必要になる&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;運転免許証&quot;&gt;運転免許証&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;州によって違う&lt;/li&gt;
-  &lt;li&gt;まず試験の準備をする
+  &lt;li&gt;書類の準備
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://driving-tests.org/&quot;&gt;このサイト&lt;/a&gt;に練習問題があるので解く&lt;/li&gt;
+      &lt;li&gt;住所の証明 (Bank statementが一番簡単だけど、ない場合は大学からの学費の請求書など)&lt;/li&gt;
+      &lt;li&gt;SSN Denial Letter: オフィスに行かないともらえない&lt;/li&gt;
+      &lt;li&gt;Passport、I-20など&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;試験の準備をする
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://driving-tests.org/&quot;&gt;このサイト&lt;/a&gt;に練習問題があるので解く&lt;/li&gt;
+      &lt;li&gt;17時にRMV Officeが閉まるのなら、15時ギリギリになると再受験させてもらえなくなるので注意&lt;/li&gt;
+      &lt;li&gt;問題はランダムに表示されるので、難しい回と簡単な回があるらしい&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;自動車学校に通う&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">出発まで</summary></entry><entry><title type="html">Debug, Debug, Debug</title><link href="http://localhost:4000/tips/DebugDebugDebug/" rel="alternate" type="text/html" title="Debug, Debug, Debug" /><published>2018-06-22T00:00:00-04:00</published><updated>2018-06-22T00:00:00-04:00</updated><id>http://localhost:4000/tips/DebugDebugDebug</id><content type="html" xml:base="http://localhost:4000/tips/DebugDebugDebug/">&lt;p&gt;We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.&lt;/p&gt;
 
-&lt;h1 id=&quot;bug&quot;&gt;Bug??&lt;/h1&gt;
+&lt;h2 id=&quot;bug&quot;&gt;Bug??&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Values go wrong even if you are sure that you implemented the code correctly&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;write-a-debug-function&quot;&gt;Write a debug function&lt;/h1&gt;
+&lt;h2 id=&quot;write-a-debug-function&quot;&gt;Write a debug function&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Write a debug function and try the code with a tiny data&lt;/li&gt;
   &lt;li&gt;Make sure all counters work well&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;coding&quot;&gt;Coding&lt;/h1&gt;
+&lt;h2 id=&quot;coding&quot;&gt;Coding&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Break your function into small parts and make sure each component works fine.&lt;/li&gt;
+  &lt;li&gt;Introduce a linting tool: &lt;a href=&quot;https://github.com/w0rp/ale&quot;&gt;ALE&lt;/a&gt; in Vim&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;write-a-documentation&quot;&gt;Write a documentation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;R: &lt;a href=&quot;https://github.com/Shusei-E/Code_Tips/blob/master/R/devtools.md&quot;&gt;devtools&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Python: &lt;a href=&quot;https://github.com/Shusei-E/Code_Tips/tree/master/Python&quot;&gt;Sphinx&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;C++: Doxygen&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Shusei Eshima</name><uri>https://shusei-e.github.io</uri></author><summary type="html">We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.</summary></entry><entry><title type="html">Faster Log Gamma Calculation</title><link href="http://localhost:4000/machine%20learning/FasterLogGamma/" rel="alternate" type="text/html" title="Faster Log Gamma Calculation" /><published>2017-09-21T00:00:00-04:00</published><updated>2017-09-21T00:00:00-04:00</updated><id>http://localhost:4000/machine%20learning/FasterLogGamma</id><content type="html" xml:base="http://localhost:4000/machine%20learning/FasterLogGamma/">&lt;p&gt;We sometimes encounter the calculation of&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;font-size:1.0em; line-height:0%&quot;&gt;
