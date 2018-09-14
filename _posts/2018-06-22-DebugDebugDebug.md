@@ -22,3 +22,8 @@ We would like to minimize bugs when we write code. If we encounter errors, we kn
 * R: [devtools](https://github.com/Shusei-E/Code_Tips/blob/master/R/devtools.md)
 * Python: [Sphinx](https://github.com/Shusei-E/Code_Tips/tree/master/Python)
 * C++: Doxygen
+
+## Case Studies
+
+### Number order and text order
+When I read text files, the order was `text_1`, `text_10`, `text_101`, `text_102`. However, in a csv file that stores covariates, the order was `text_1`, `text_2`, `text_3`. There was a mismatch.
