@@ -1,7 +1,7 @@
 ---
 title: Log Likelihood of LDA in CGS
 categories:
- - Machine Learning
+ - Natural Language Processing
 author_profile: true
 ---
 

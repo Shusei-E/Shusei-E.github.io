@@ -1,12 +1,11 @@
 ---
 layout: single
 permalink: /research/bathesis/
+title: The Mechanism of Foreign Aid for Democratization
 author_profile: true
 ---
+<span style="font-size: 1.2em;font-weight: bold;">Cross-National Analysis 1990-2010</span>
 [← Back to Research](/research/)
-
-<span style="font-size: 1.2em; font-weight: bold;">The Mechanism of Foreign Aid for Democratization:</span><br>
-<span style="font-size: 1em;font-weight: bold;">Cross-National Analysis 1990-2010</span>
 
 ## Abstract
 <span style="font-size: 0.9em">

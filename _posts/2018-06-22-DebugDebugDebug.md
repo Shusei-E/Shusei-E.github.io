@@ -17,11 +17,15 @@ We would like to minimize bugs when we write code. If we encounter errors, we kn
 ## Coding
 * Break your function into small parts and make sure each component works fine.
 * Introduce a linting tool: [ALE](https://github.com/w0rp/ale) in Vim
+* Be careful especially when you copy and paste a part of code
 
 ## Write a documentation
 * R: [devtools](https://github.com/Shusei-E/Code_Tips/blob/master/R/devtools.md)
 * Python: [Sphinx](https://github.com/Shusei-E/Code_Tips/tree/master/Python)
 * C++: Doxygen
+
+## Rewrite
+Do not hesitate to rewrite the entire code. Rewriting takes shorter time than debugging unorganized code (which could be infinite).
 
 ## Case Studies
 
