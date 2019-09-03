@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Use tanh instead of exp in sigmoid function - Shusei’s Website</title>
-<meta name="description" content="If the data is large, we encounter overflow in sigmoid function.">
+<!-- begin _includes/seo.html --><title>Yet another expression of Bernoulli distribution - Shusei’s Website</title>
+<meta name="description" content="The probability mass function of Bernoulli distribution is">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Shusei's Website">
-<meta property="og:title" content="Use tanh instead of exp in sigmoid function">
-<meta property="og:url" content="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/">
+<meta property="og:title" content="Yet another expression of Bernoulli distribution">
+<meta property="og:url" content="https://shusei-e.github.io/statistics/Bernoulli/">
 
 
-  <meta property="og:description" content="If the data is large, we encounter overflow in sigmoid function.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2017-04-20T00:00:00-04:00">
+  <meta property="og:description" content="The probability mass function of Bernoulli distribution is">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-09-03T00:00:00-04:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://shusei-e.github.io/machine%20learning/sigmoid_tanh/">
+
+<link rel="canonical" href="https://shusei-e.github.io/statistics/Bernoulli/">
 
 
 
@@ -278,15 +278,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Use tanh instead of exp in sigmoid function">
-    <meta itemprop="description" content="If the data is large, we encounter overflow in sigmoid function.">
-    <meta itemprop="datePublished" content="April 20, 2017">
+    <meta itemprop="headline" content="Yet another expression of Bernoulli distribution">
+    <meta itemprop="description" content="The probability mass function of Bernoulli distribution is">
+    <meta itemprop="datePublished" content="September 03, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Use tanh instead of exp in sigmoid function
+          <h1 class="page__title" itemprop="headline">Yet another expression of Bernoulli distribution
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -302,29 +302,24 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>If the data is large, we encounter overflow in sigmoid function.</p>
+        <p>The probability mass function of Bernoulli distribution is</p>
 
-<p><span style="font-size:0.85em; line-height:0%">
-<script type="math/tex">f(x) = \dfrac{1}{1 + e^{-ax}}  \ (a>0)</script>
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+f(k) = p^k (1-p)^{1-k}.
+\end{align}</script>
 </span></p>
 
-<p>A simple trick to avoid overflow is to use tanh.</p>
+<p>If we take the proportion of it,</p>
 
-<p><span style="font-size:0.85em; line-height:0%">
-<script type="math/tex">\dfrac{1}{1+e^{-ax}}=\dfrac{1}{2}\dfrac{2e^{\frac{1}{2}ax}}{e^{\frac{1}{2}ax}+e^{-\frac{1}{2}ax}} 
-=\dfrac{1}{2}(1+\tanh(\frac{1}{2}ax))</script>
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+f(k) \propto \frac{f(k)}{f(0)} = \frac{p^k (1-p)^{1-k}}{(1-p)} = \left( \frac{p}{1-p}  \right)^k.
+\end{align}</script>
 </span></p>
 
-<p>In your code,</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
-</code></pre></div></div>
-<p>will become</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
-</code></pre></div></div>
+<p>Note that <script type="math/tex">f(0)</script> works here as a constant.</p>
 
-<p><br />
-<a href="https://github.com/pfnet/chainer/pull/1047">Reference 1</a><br />
-<a href="http://mathtrain.jp/sigmoid">Reference 2</a></p>
 
         
       </section>
@@ -347,14 +342,14 @@
     
       
       
-      <a href="https://shusei-e.github.io/categories/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a>
+      <a href="https://shusei-e.github.io/categories/#statistics" class="page__taxonomy-item" rel="tag">Statistics</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-04-20T00:00:00-04:00">April 20, 2017</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-03T00:00:00-04:00">September 03, 2019</time></p>
         
       </footer>
 
@@ -363,12 +358,11 @@
       
   <nav class="pagination">
     
-      <a href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/" class="pagination--pager" title="Why can we consider expectation in Gibbs Sampling
+      <a href="https://shusei-e.github.io/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" class="pagination--pager" title="アメリカに引っ越す
 ">Previous</a>
     
     
-      <a href="https://shusei-e.github.io/deep%20learning/softmax_without_overflow/" class="pagination--pager" title="Softmax without Overflow
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
