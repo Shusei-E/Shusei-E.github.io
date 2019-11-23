@@ -1,9 +1,9 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.10.0 by Michael Rose
-  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
 <html lang="en" class="no-js">
   <head>
@@ -13,13 +13,17 @@
 <meta name="description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
 
 
+  <meta name="author" content="Shusei Eshima">
+
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei's Website">
 <meta property="og:title" content="Blog">
 <meta property="og:url" content="http://localhost:4000/blog/">
 
+
+  <meta property="og:description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
 
 
 
@@ -41,19 +45,16 @@
 
 
 
-
-
-
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
       "@type": "Person",
       "name": "Shusei Eshima",
-      "url": "http://localhost:4000",
-      "sameAs": null
-    }
-  </script>
-
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
 
 
 
@@ -63,11 +64,9 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Shusei's Website Feed">
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
+<!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
@@ -75,9 +74,9 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/main.css">
 
-<!--[if lte IE 9]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -93,6 +92,7 @@
 <![endif]-->
 
 
+
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
@@ -102,46 +102,44 @@
   </head>
 
   <body class="layout--archive">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
 
-    <div class="masthead">
+    
+
+<div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="http://localhost:4000/">Shusei's Website</a>
-        <ul class="visible-links">
+        
+        <a class="site-title" href="/">
+          Shusei's Website
           
-            
-            <li class="masthead__menu-item">
-              <a href="http://localhost:4000/biocv/" >Bio/CV</a>
-            </li>
-          
-            
-            <li class="masthead__menu-item">
-              <a href="http://localhost:4000/research/" >Research</a>
-            </li>
-          
-            
-            <li class="masthead__menu-item">
-              <a href="http://localhost:4000/software/" >Software</a>
-            </li>
-          
-            
-            <li class="masthead__menu-item">
-              <a href="http://localhost:4000/data/" >Data</a>
-            </li>
-          
-            
-            <li class="masthead__menu-item">
-              <a href="http://localhost:4000/blog/" >Blog</a>
-            </li>
-          
-        </ul>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/biocv/" >Bio/CV</a>
+            </li><li class="masthead__menu-item">
+              <a href="/research/" >Research</a>
+            </li><li class="masthead__menu-item">
+              <a href="/software/" >Software</a>
+            </li><li class="masthead__menu-item">
+              <a href="/data/" >Data</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog/" >Blog</a>
+            </li></ul>
         
         <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
           <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
             <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
           </svg>
@@ -157,6 +155,7 @@
   </div>
 </div>
 
+
     <div class="initial-content">
       
 
@@ -168,7 +167,7 @@
   
 
 
-<div itemscope itemtype="http://schema.org/Person">
+<div itemscope itemtype="https://schema.org/Person">
 
   
 
@@ -177,9 +176,10 @@
       <h3 class="author__name" itemprop="name">Shusei Eshima</h3>
     
     
-      <p class="author__bio" itemprop="description">
-        PhD Student. I am interested in Political Methodology and Comparative Politics.
-      </p>
+      <div class="author__bio" itemprop="description">
+        <p>PhD Student. I am interested in Political Methodology and Comparative Politics.</p>
+
+      </div>
     
   </div>
 
@@ -187,17 +187,29 @@
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
-        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
           <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Cambridge, MA</span>
         </li>
       
 
       
-        <li>
-          <a href="https://shusei-e.github.io" itemprop="url">
-            <i class="fas fa-fw fa-link" aria-hidden="true"></i> Website
-          </a>
-        </li>
+        
+          
+        
+          
+            <li><a href="https://shusei-e.github.io/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Shusei-E" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
       
 
       
@@ -220,12 +232,6 @@
 
       
 
-      
-        <li>
-          <a href="https://github.com/Shusei-E" itemprop="sameAs">
-            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
-          </a>
-        </li>
       
 
       
@@ -256,7 +262,7 @@
 
       <!--
   <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
@@ -271,7 +277,7 @@
 
   <div class="archive">
     
-      <h1 class="page__title">Blog</h1>
+      <h1 id="page-title" class="page__title">Blog</h1>
     
     <span style="color: #52adc8; font-size: 0.9em;">
 <a href="/blog-year/">Sort By Year</a><br>
@@ -295,11 +301,11 @@
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/statistics/Bernoulli/" rel="permalink">Yet another expression of Bernoulli distribution
+        <a href="/statistics/Bernoulli/" rel="permalink">Yet another expression of Bernoulli distribution
 </a>
       
     </h2>
@@ -310,24 +316,25 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">The probability mass function of Bernoulli distribution is
-
 </p>
   </article>
 </div>
+
 
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="permalink">アメリカに引っ越す
+        <a href="/%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%98%E4%BA%8B/MovingToUS/" rel="permalink">アメリカに引っ越す
 </a>
       
     </h2>
@@ -338,24 +345,25 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">出発まで
-
 </p>
   </article>
 </div>
+
 
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/tips/DebugDebugDebug/" rel="permalink">Debug, Debug, Debug
+        <a href="/tips/DebugDebugDebug/" rel="permalink">Debug, Debug, Debug
 </a>
       
     </h2>
@@ -366,24 +374,25 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.
-
 </p>
   </article>
 </div>
+
 
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/machine%20learning/FasterLogGamma/" rel="permalink">Faster Log Gamma Calculation
+        <a href="/machine%20learning/FasterLogGamma/" rel="permalink">Faster Log Gamma Calculation
 </a>
       
     </h2>
@@ -394,24 +403,25 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">We sometimes encounter the calculation of
-
 </p>
   </article>
 </div>
+
 
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/bayesian%20analysis/BayesianMultipleRegression/" rel="permalink">Bayesian Multiple Regression
+        <a href="/bayesian%20analysis/BayesianMultipleRegression/" rel="permalink">Bayesian Multiple Regression
 </a>
       
     </h2>
@@ -422,13 +432,14 @@
 
 
   5 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">We can replace normal multiple regression with Bayesian Multiple Regression.
-
 </p>
   </article>
 </div>
+
 
 
 
@@ -440,12 +451,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -455,14 +472,26 @@
     
       <li><strong>Follow:</strong></li>
     
+
     
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/Shusei-E" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
     
-    
-      <li><a href="https://github.com/Shusei-E"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
-    
-    
-    
-    <li><a href="http://localhost:4000/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
@@ -472,15 +501,17 @@
     </div>
 
     
-  <script src="http://localhost:4000/assets/js/main.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 
 
-<script src="http://localhost:4000/assets/js/lunr/lunr.min.js"></script>
-<script src="http://localhost:4000/assets/js/lunr/lunr-store.js"></script>
-<script src="http://localhost:4000/assets/js/lunr/lunr-en.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
 
 
 
