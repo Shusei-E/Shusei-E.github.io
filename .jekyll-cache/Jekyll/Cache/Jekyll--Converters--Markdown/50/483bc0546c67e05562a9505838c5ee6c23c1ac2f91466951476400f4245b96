@@ -1,0 +1,388 @@
+I"�$<p>We can replace normal multiple regression with Bayesian Multiple Regression.</p>
+
+<h2 id="model-and-data">Model and Data</h2>
+<p>First, we need to create simulation data. Let’s consider this model:</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\Ga}{\rm Gamma}
+\begin{align}
+y_i &\sim \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau ) \\
+\beta_0 &\sim \Normal (\mu_0,\ 1/ \tau_0 ) \\
+\beta_1 &\sim \Normal (\mu_1,\ 1/ \tau_1 ) \\
+\beta_2 &\sim \Normal (\mu_2,\ 1/ \tau_2 )\\
+\tau &\sim \Ga (\alpha, \beta)
+\end{align} %]]></script>
+</span></p>
+
+<p>Generate data with R:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">num_data</span><span class="w">
+
+</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">15</span><span class="p">)</span><span class="w">
+</span><span class="n">income</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="c1"># using Normal might be wrong, but just for simulation data</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">income</span><span class="p">)</span><span class="w">
+</span><span class="n">covariates</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"age"</span><span class="p">,</span><span class="w"> </span><span class="s2">"income"</span><span class="p">)])</span><span class="w">
+
+
+</span><span class="c1">## Muliple Regression</span><span class="w">
+</span><span class="n">true_beta0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1.5</span><span class="w">
+</span><span class="n">true_beta1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2.8</span><span class="w">
+</span><span class="n">true_beta2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">-1.2</span><span class="w">
+</span><span class="n">tau_true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="n">betaX</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">true_beta1</span><span class="p">,</span><span class="w"> </span><span class="n">true_beta2</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">true_beta0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">covariates</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">betaX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">tau_true</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="likelihood-function">Likelihood function</h2>
+<p>Likelihood function is simple:</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+\mathcal{L} = \prod_{i=1}^N \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau )
+\end{align}</script>
+</span></p>
+
+<h2 id="update-equations">Update Equations</h2>
+
+<p><strong>Update for <script type="math/tex">\beta_0</script> (intercept)</strong></p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+&p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&\propto p(\beta_0 , \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&= p(y|\beta_0,\beta_1,\beta_2,\tau,x)\ p(\beta_0|\mu_0,\tau_0)\ p(\beta_1|\mu_1,\tau_1)\ p(\beta_2|\mu_2,\tau_2)\ p(x) \\
+&\propto p(y|\beta_0, \beta_1, \beta_2, \tau, x)\ p(\beta_0 | \mu_0, \tau_0)\\
+&= \Normal(\mu_0,\ 1/\tau_0)\ \prod_{i=1}^N (\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau) \\[10pt]
+&= -\frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau_0} \right) - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} + \sum_{i=1}^{N} - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau(y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2}{2} \right)\\
+&\propto  - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} - \frac{\tau}{2} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2  \ \ \ \cdots\cdots (1)
+\end{align} %]]></script>
+</span></p>
+
+<p>Note that 
+<script type="math/tex">p(y|\beta_0, \beta_1, \beta_2, \tau, x)</script> and <script type="math/tex">p(\beta_0 | \mu_0, \tau_0)</script> are Normal distribution, so we can rewrite them. Also, log Normal PDF is important in deriving.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+-\frac{1}{2} \log (2 \pi \sigma^2) - \frac{(x - \mu)^2}{2 \sigma^2} = -\frac{1}{2} \log \left( \frac{2 \pi}{\tau} \right) - \frac{\tau(x - \mu)^2}{2}
+\end{align}</script>
+</span></p>
+
+<p>Another important and useful property of Normal distribution is that, when we focus on <script type="math/tex">x</script>,</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+&{\rm if}\ \  x \sim \Normal(u,\ 1/t),\\
+&-\frac{t}{2} (x - u)^2 \propto - \frac{t}{2} x^2 + tux  \ \ \ \cdots\cdots (2)
+\end{align} %]]></script>
+</span></p>
+
+<p>Also, remember <script type="math/tex">(x + y + z + w)^2 = (y + (x + z + w))^2</script>. Now, let’s resume (1).</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+(1) &\propto - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} \sum_{i=1}^N \left(\beta_0^2 - 2 \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})  \right)  \ \ \ \cdots\cdots (3) \\
+&= - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} N \beta_0^2 + \tau \sum_{i=i}^N \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i}) \\
+&= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + \left( \tau_0 + \tau N   \right) \left(  \frac{\tau_0}{\tau_0 + \tau N}  \right) \mu_0 \beta_0 + \left( \tau_0 + \tau N  \right) \left( \frac{\tau}{\tau_0 + \tau N} \right) \beta_0 \sum_{i=1}^N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})\\
+&= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + (\tau_0 + \tau N)  \cdot \left( \frac{\tau_0 \mu_0 + \tau \sum_N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})}{\tau_0 + \tau N} \right) \cdot \beta_0
+\end{align} %]]></script>
+</span></p>
+
+<p>By comparing the last equation with (2), we can say</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim \Normal \left( \frac{\tau_0 \mu_0 + \tau \sum_N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})}{\tau_0 + \tau N} ,\  1/(\tau_0 + \tau N) \right)
+\end{align}</script>
+</span></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_0</span><span class="w">
+</span><span class="n">sample_beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_0</span><span class="p">,</span><span class="w"> </span><span class="n">tau_0</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Update for <script type="math/tex">\beta_1</script> (coefficient)</strong></p>
+
+<p>Derivation is quite similar until (1). We have slightly different form for (3) because we now focus on <script type="math/tex">\beta_1</script>.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+&p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&\propto - \frac{\tau_1}{2} \beta_1^2 + \tau_1 \mu_1 \beta_1 - \frac{\tau}{2} \sum_{i=1}^N \left( \beta_1^2 x_{1i}^2 - 2 \beta_1 x_{1i}^2 (y_i - \beta_0 - \beta_2 x_{2i})  \right) \\
+&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \tau_1 \mu_1 \beta_1 + \tau \sum_{i=1}^2 \left( \beta_1 x_{i1} (y_i - \beta_0 - \beta_2 x_{2i}) \right) \\
+&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \left[ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  \right] \beta_1\\
+&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + (\tau_1 + \tau \sum_N x_{i1}^2) \frac{ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  }{\tau_1 + \tau \sum_N x_{i1}^2} \beta_1
+\end{align} %]]></script>
+</span></p>
+
+<p>Now, we get</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim \Normal \left( \frac{\tau_1 \mu_1 + \tau \sum_N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})}{\tau_1 + \tau \sum_N x_{1i}^2} ,\  1/(\tau_1 + \tau \sum_N x_{1i}^2) \right)
+\end{align}</script>
+</span></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_1</span><span class="w">
+</span><span class="n">sample_beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_1</span><span class="p">,</span><span class="w"> </span><span class="n">tau_1</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We can get the similar equation for <script type="math/tex">\beta_2</script>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_2</span><span class="w">
+</span><span class="n">sample_beta_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau_2</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Update for <script type="math/tex">\tau</script> (precision)</strong></p>
+
+<p>Let’s recall log PDF of <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Gamma distribution</a>:</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+\log \frac{\beta^\alpha}{\Gamma (\alpha)} + (\alpha-1) \log x - \beta x \propto (\alpha - 1) \log x - \beta x
+\end{align}</script>
+</span></p>
+
+<p>We can get updat equation:</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+&p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \\
+&\propto p(y | \beta_0, \beta_1, \beta_2, \tau, x) p(\tau | \alpha, \beta)\\
+&= \sum_{i=1}^N - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&= \sum_{i=1}^N - \left( \frac{1}{2} \left(\log 2 + \log \pi + \log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&\propto \sum_{i=1}^N - \left( \frac{1}{2} \left(\log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&= - \frac{N}{2} \log \frac{1}{\tau} - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
+&= \frac{N}{2} \log \tau - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
+&= \left( \alpha + \frac{N}{2} - 1 \right) \log \tau - \left( \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2}  \right) \tau
+\end{align} %]]></script>
+</span></p>
+
+<p>So, we get
+<span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\newcommand{\Normal}{\mathcal{N}}
+\begin{align}
+&p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim {\rm Gamma} \left(\alpha + \frac{N}{2} , \  \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2} \right)
+\end{align} %]]></script>
+</span></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># tau</span><span class="w">
+</span><span class="n">sample_tau</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="p">){</span><span class="w">
+  </span><span class="n">alpha_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="m">2</span><span class="w">
+  </span><span class="n">resid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">resid</span><span class="o">*</span><span class="n">resid</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgamma</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="o">=</span><span class="n">alpha_new</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="o">=</span><span class="n">beta_new</span><span class="p">)</span><span class="w">
+    </span><span class="c1"># alpha = shape, beta = 1/rate in rgamma()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="sampling">Sampling</h2>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iter_num</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">15000</span><span class="w">
+
+</span><span class="c1"># Prepare storages</span><span class="w">
+</span><span class="n">beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">beta_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">tau</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Initialization</span><span class="w">
+</span><span class="n">beta_0</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="n">beta_1</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="n">beta_2</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="n">tau</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="c1"># Run</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">iter_num</span><span class="m">-1</span><span class="p">)){</span><span class="w">
+  </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_0</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_1</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_2</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_tau</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="result">Result</h2>
+
+<p><img src="/assets/images/posts/170827mr_hist.png" width="750" /></p>
+
+<p><img src="/assets/images/posts/170827mr_trace.png" width="750" /></p>
+
+<h2 id="code">Code</h2>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set working directory</span><span class="w">
+</span><span class="n">setwd</span><span class="p">(</span><span class="s2">"/Users/Study/Analysis/"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Load library</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="c1">###############################################</span><span class="w">
+</span><span class="c1"># Bayesian Linear Regression (Gibbs Sampling) #</span><span class="w">
+</span><span class="c1">###############################################</span><span class="w">
+</span><span class="n">iter_num</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">15000</span><span class="w">
+</span><span class="n">burn_in_num</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">12000</span><span class="w">
+
+</span><span class="c1">####################</span><span class="w">
+</span><span class="c1"># Create fake data #</span><span class="w">
+</span><span class="c1">####################</span><span class="w">
+</span><span class="n">num_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">num_data</span><span class="w">
+
+</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">15</span><span class="p">)</span><span class="w">
+</span><span class="n">income</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">100</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">income</span><span class="p">)</span><span class="w">
+</span><span class="n">covariates</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"age"</span><span class="p">,</span><span class="w"> </span><span class="s2">"income"</span><span class="p">)])</span><span class="w">
+
+
+</span><span class="c1">## Multiple Regression</span><span class="w">
+</span><span class="n">true_beta0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1.5</span><span class="w">
+</span><span class="n">true_beta1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2.8</span><span class="w">
+</span><span class="n">true_beta2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">-1.2</span><span class="w">
+</span><span class="n">tau_true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="n">betaX</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">true_beta1</span><span class="p">,</span><span class="w"> </span><span class="n">true_beta2</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">true_beta0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">covariates</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">betaX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">num_data</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">tau_true</span><span class="p">))</span><span class="w">
+
+
+</span><span class="c1">## Check with package</span><span class="w">
+</span><span class="n">res_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">Y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w">
+</span><span class="n">summary</span><span class="p">(</span><span class="n">res_lm</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#############</span><span class="w">
+</span><span class="c1"># Inference #</span><span class="w">
+</span><span class="c1">#############</span><span class="w">
+</span><span class="n">sample_beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_0</span><span class="p">,</span><span class="w"> </span><span class="n">tau_0</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="n">sample_beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_1</span><span class="p">,</span><span class="w"> </span><span class="n">tau_1</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">sample_beta_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau_2</span><span class="p">){</span><span class="w">
+  </span><span class="n">precision</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tau_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">))</span><span class="w">
+  </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">precision</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">sample_tau</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="p">){</span><span class="w">
+  </span><span class="n">alpha_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="m">2</span><span class="w">
+  </span><span class="n">resid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta_0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">beta_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x2</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">resid</span><span class="o">*</span><span class="n">resid</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgamma</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="o">=</span><span class="n">alpha_new</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="o">=</span><span class="n">beta_new</span><span class="p">)</span><span class="w">
+    </span><span class="c1"># alpha = shape, beta = 1/rate</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Prepare storages</span><span class="w">
+</span><span class="n">beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">beta_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+</span><span class="n">tau</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">iter_num</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Initialization</span><span class="w">
+</span><span class="n">beta_0</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="n">beta_1</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="n">beta_2</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="n">tau</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="c1"># Run</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">iter_num</span><span class="m">-1</span><span class="p">)){</span><span class="w">
+  </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_0</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_1</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_beta_2</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+  </span><span class="n">tau</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample_tau</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="c1"># Make Figure</span><span class="w">
+</span><span class="n">make_figure</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">true_values</span><span class="p">,</span><span class="w"> </span><span class="n">params_names</span><span class="p">,</span><span class="w"> </span><span class="n">burn_in</span><span class="o">=</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="n">slice</span><span class="o">=</span><span class="m">5</span><span class="p">){</span><span class="w">
+  </span><span class="n">num_params</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w">
+
+  </span><span class="n">tidy_params</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
+  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num_params</span><span class="p">){</span><span class="w">
+    </span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">params</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span><span class="w">
+    </span><span class="n">temp</span><span class="o">$</span><span class="n">parameter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">params_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">
+    </span><span class="n">temp</span><span class="o">$</span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">nrow</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="w">
+
+    </span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">temp</span><span class="p">[</span><span class="n">burn_in</span><span class="o">:</span><span class="n">nrow</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="p">,]</span><span class="w">
+    </span><span class="n">slice_index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span><span class="w"> </span><span class="n">slice</span><span class="p">)</span><span class="c1"># slice data</span><span class="w">
+    </span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">temp</span><span class="p">[</span><span class="n">slice_index</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="n">tidy_params</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">temp</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="n">tidy_params</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind.data.frame</span><span class="p">,</span><span class="w"> </span><span class="n">tidy_params</span><span class="p">)</span><span class="w">
+
+  </span><span class="n">true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+    </span><span class="n">parameter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params_names</span><span class="p">,</span><span class="w">
+    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">true_values</span><span class="w">
+    </span><span class="p">)</span><span class="w">
+
+  </span><span class="n">param</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tidy_params</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">iter</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">parameter</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+      </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+      </span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+      </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"free"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+      </span><span class="n">geom_hline</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+      </span><span class="n">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+      </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+
+  </span><span class="n">param_density</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tidy_params</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">parameter</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_density</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"free"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_vline</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+
+  </span><span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">param_density</span><span class="p">))</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">params</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">beta_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">)</span><span class="w">
+</span><span class="n">true_values</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">true_beta0</span><span class="p">,</span><span class="w"> </span><span class="n">true_beta1</span><span class="p">,</span><span class="w"> </span><span class="n">true_beta2</span><span class="p">,</span><span class="w"> </span><span class="n">tau_true</span><span class="p">)</span><span class="w">
+</span><span class="n">params_names</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"beta_0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"beta_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"beta_2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tau"</span><span class="p">)</span><span class="w">
+</span><span class="n">gs_res3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">make_figure</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">true_values</span><span class="p">,</span><span class="w"> </span><span class="n">params_names</span><span class="p">,</span><span class="w"> </span><span class="n">burn_in</span><span class="o">=</span><span class="n">burn_in_num</span><span class="p">,</span><span class="w"> </span><span class="n">slice</span><span class="o">=</span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="n">gs_res3</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+</span><span class="n">gs_res3</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w">
+</span><span class="n">saveRDS</span><span class="p">(</span><span class="n">gs_res3</span><span class="p">,</span><span class="s2">"figure.obj"</span><span class="p">)</span><span class="w">
+</span><span class="n">saveRDS</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="s2">"data.obj"</span><span class="p">)</span><span class="w">
+</span><span class="n">ggsave</span><span class="p">(</span><span class="s2">"trace.png"</span><span class="p">,</span><span class="w"> </span><span class="n">gs_res3</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="n">ggsave</span><span class="p">(</span><span class="s2">"hist.png"</span><span class="p">,</span><span class="w"> </span><span class="n">gs_res3</span><span class="p">[[</span><span class="m">2</span><span class="p">]],</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="m">6</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+:ET

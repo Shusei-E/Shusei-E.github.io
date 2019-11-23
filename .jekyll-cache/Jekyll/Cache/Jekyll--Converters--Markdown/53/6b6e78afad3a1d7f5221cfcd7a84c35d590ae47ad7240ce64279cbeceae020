@@ -1,0 +1,76 @@
+I"÷<p>Perplexity is commonly used to evaluate language models.</p>
+
+<h2 id="definition-and-calculation">Definition and Calculation</h2>
+
+<p>First, we need to know</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&\quad {\rm probability}\ p = \frac{1}{\rm choices}, \\
+&\Leftrightarrow {\rm choices}\ c = \frac{1}{p}.
+\end{align} %]]></script>
+</span></p>
+
+<p>Perplexity is the geometric mean of choices. <script type="math/tex">N</script> is the number of data, <script type="math/tex">c</script> is the number of choices.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+\left( \prod_{i=1}^{N} c_i \right)^{\frac{1}{N}} &= \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \\[10pt]
+&= \exp \left( \log \left( \prod_{i=1}^{N} \frac{1}{p_i} \right)^{\frac{1}{N}} \right) \\[10pt]
+&= \exp \left( \dfrac{\sum_{i=1}^N -(\log p_i)}{N} \right) \\[10pt]
+&= \exp \left( \frac{-{\rm loglik}}{N} \right)
+\end{align} %]]></script>
+</span></p>
+
+<p>If perplexity becomes negative, you might need to take into account normalization constants. If you calculate the perplexity right after you initialize the model (randomly fill parameters), perplexity could be greater than the number of unique words in the corpus.</p>
+
+<h2 id="explanation">Explanation</h2>
+<p>Ideally, we want to know <script type="math/tex">p(w)</script>, but we need to consider the complete data log-likelihood <script type="math/tex">p(w,z)</script>. So, we take</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&\sum_z p(w,z) \approx \frac{1}{S} \sum_{s=1}^S p(w, z(s))
+\end{align} %]]></script>
+</span></p>
+
+<p><script type="math/tex">S</script> is the number of simulation after enough number of iterations. <script type="math/tex">z(s)</script> is the value of latent variable under <script type="math/tex">s^{\rm th}</script> simulation. If we take the mean of perplexity, it could be an approximation of all possible <script type="math/tex">z</script>.</p>
+
+<h2 id="test-perplexity">Test Perplexity</h2>
+<p><script type="math/tex">\begin{align}
+p(\mathbf{w}^{\rm Test} | \mathbf{w}^{\rm Train}) = \int p(\mathbf{w}^{\rm Test} | \theta) p(\theta | \mathbf{w}^{\rm Train}) d\theta
+\end{align}</script></p>
+
+<p>This is a weighted average by the trained parameters. In the following example, we consider three topics.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topics <script type="math/tex">p(z)</script></th>
+      <th><script type="math/tex">p(w|z)</script></th>
+      <th><script type="math/tex">p(w,z)</script></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><script type="math/tex">p(z=1)=0.5</script></td>
+      <td><script type="math/tex">0.05</script></td>
+      <td><script type="math/tex">0.025</script></td>
+    </tr>
+    <tr>
+      <td><script type="math/tex">p(z=2)=0.2</script></td>
+      <td><script type="math/tex">0.03</script></td>
+      <td><script type="math/tex">0.006</script></td>
+    </tr>
+    <tr>
+      <td><script type="math/tex">p(z=3)=0.1</script></td>
+      <td><script type="math/tex">0.01</script></td>
+      <td><script type="math/tex">0.001</script></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We sum up <script type="math/tex">p(w,z)</script>.</p>
+:ET

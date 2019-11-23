@@ -1,0 +1,19 @@
+I",<p>The probability mass function of Bernoulli distribution is</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+f(k) = p^k (1-p)^{1-k}.
+\end{align}</script>
+</span></p>
+
+<p>If we take the proportion of it,</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+f(k) \propto \frac{f(k)}{f(0)} = \frac{p^k (1-p)^{1-k}}{(1-p)} = \left( \frac{p}{1-p}  \right)^k.
+\end{align}</script>
+</span></p>
+
+<p>Note that <script type="math/tex">f(0)</script> works here as a constant.</p>
+
+:ET
