@@ -1,0 +1,79 @@
+I"®!<p>Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.</p>
+
+<p>We want to calculate</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) = \sum_{\mathbf{z}} \int  \underbrace{p(w_{d,i} | \boldsymbol{\phi})}_{\phi_{k,v}} p(\boldsymbol{\phi} | \boldsymbol{\beta}) d \boldsymbol{\phi} \int  \underbrace{p(z_{d,i} | \boldsymbol{\theta})}_{\theta_{d,k}} p(\theta_{d,k} | \boldsymbol{\alpha}) d \boldsymbol{\theta}.
+\end{align}</script>
+</span></p>
+
+<p>Recall (49) and (50) in <a href="https://tminka.github.io/papers/dirichlet/minka-dirichlet.pdf">Minka, T. (2000). Estimating a Dirichlet distribution</a>. <script type="math/tex">\boldsymbol{\alpha}</script> is a Dirichlet parameter and <script type="math/tex">\mathbf{p}</script> is drawn. Then a <script type="math/tex">\mathbf{x}</script> is drawn from a multinomial with probability vector <script type="math/tex">\mathbf{p}</script>. <script type="math/tex">n_k</script> is the number of times the outcome is <script type="math/tex">k</script>.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+p(\mathbf{x} | \boldsymbol{\alpha}) &= \int_{\mathbf{p}} p(\mathbf{x} | \mathbf{p} ) p(\mathbf{p} | \boldsymbol{\alpha}) d\mathbf{p} \\[10pt]
+&= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k + \alpha_k)} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
+n_k &= \sum_j \delta(x_j = k)
+\end{align} %]]></script>
+</span></p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">% <![CDATA[
+\begin{align}
+p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v} + \beta_v)} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
+&\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k} + \alpha_k)} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
+\end{align} %]]></script>
+</span></p>
+
+<p>Now we take log so that we get log likelihood.</p>
+
+<p>Code for C++:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="nf">llik</span><span class="p">(</span><span class="n">DATA_STRUCT</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">Parameters</span> <span class="o">*</span><span class="n">parameters</span><span class="p">){</span>
+  <span class="kt">int</span> <span class="n">V</span> <span class="o">=</span> <span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">V</span><span class="p">;</span> <span class="c1">// number of unique words</span>
+  <span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">M</span><span class="p">;</span> <span class="c1">// number of documents</span>
+
+  <span class="kt">double</span> <span class="n">polyaw</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">K</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">){</span>
+    <span class="kt">double</span> <span class="n">nw</span> <span class="o">=</span> <span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">Nkv</span><span class="p">.</span><span class="n">row</span><span class="p">(</span><span class="n">k</span><span class="p">).</span><span class="n">sum</span><span class="p">();</span>
+    <span class="n">polyaw</span> <span class="o">+=</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span> <span class="o">-</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">beta</span> <span class="o">+</span> <span class="n">nw</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">v</span><span class="o">&lt;</span><span class="n">V</span><span class="p">;</span> <span class="n">v</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">polyaw</span> <span class="o">+=</span> <span class="n">lgamma</span><span class="p">(</span> <span class="p">(</span><span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">Nkv</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">))</span> <span class="o">+</span> <span class="n">beta</span><span class="p">)</span> <span class="o">-</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">beta</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">double</span> <span class="n">polyad</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">d</span><span class="o">&lt;</span><span class="n">M</span><span class="p">;</span> <span class="n">d</span><span class="o">++</span><span class="p">){</span>
+    <span class="kt">double</span> <span class="n">nd</span> <span class="o">=</span> <span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">Ndk</span><span class="p">.</span><span class="n">row</span><span class="p">(</span><span class="n">d</span><span class="p">).</span><span class="n">sum</span><span class="p">();</span>
+    <span class="n">polyad</span> <span class="o">+=</span> <span class="n">lgamma</span><span class="p">(</span> <span class="n">K</span><span class="o">*</span><span class="n">alpha</span> <span class="p">)</span> <span class="o">-</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">nd</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">K</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">polyad</span> <span class="o">+=</span> <span class="n">lgamma</span><span class="p">(</span> <span class="p">(</span><span class="n">parameters</span> <span class="o">-&gt;</span> <span class="n">Ndk</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="o">+</span> <span class="n">alpha</span> <span class="p">)</span> <span class="o">-</span> <span class="n">lgamma</span><span class="p">(</span><span class="n">alpha</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">double</span> <span class="n">llik</span> <span class="o">=</span> <span class="n">polyad</span> <span class="o">+</span> <span class="n">polyaw</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">llik</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We need to use Polya distribution, because in LDA model,</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+p(z_1, z_2, \cdots, z_N | \alpha) \neq \prod_{n=1}^N p(z_n | \alpha)
+\end{align}</script>
+</span></p>
+
+<p>More specifically if we observe two or more <script type="math/tex">z</script>, they are not independent each other.</p>
+
+<p><span style="font-size:1.0em; line-height:0%">
+<script type="math/tex">\begin{align}
+p(z_1, z_2 | \alpha) = p(z_2 | z_1, \alpha) p(z_1 | \alpha)
+\end{align}</script>
+</span></p>
+
+<p>In language, if we observe a certain topic (or a word) in a document, it is likely that we observe the same topic (word) again in the document (Polyaâ€™s Urn).</p>
+:ET

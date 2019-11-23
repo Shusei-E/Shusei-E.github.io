@@ -1,0 +1,35 @@
+I"<p>We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.</p>
+
+<h2 id="bug">Bug??</h2>
+<ul>
+  <li>Values go wrong even if you are sure that you implemented the code correctly</li>
+</ul>
+
+<h2 id="write-a-debug-function">Write a debug function</h2>
+<ul>
+  <li>Write a debug function and try the code with a tiny data</li>
+  <li>Make sure all counters work well</li>
+</ul>
+
+<h2 id="coding">Coding</h2>
+<ul>
+  <li>Break your function into small parts and make sure each component works fine.</li>
+  <li>Introduce a linting tool: <a href="https://github.com/w0rp/ale">ALE</a> in Vim</li>
+  <li>Be careful especially when you copy and paste a part of code</li>
+</ul>
+
+<h2 id="write-a-documentation">Write a documentation</h2>
+<ul>
+  <li>R: <a href="https://github.com/Shusei-E/Code_Tips/blob/master/R/devtools.md">devtools</a></li>
+  <li>Python: <a href="https://github.com/Shusei-E/Code_Tips/tree/master/Python">Sphinx</a></li>
+  <li>C++: Doxygen</li>
+</ul>
+
+<h2 id="rewrite">Rewrite</h2>
+<p>Do not hesitate to rewrite the entire code. Rewriting takes shorter time than debugging unorganized code (which could be infinite).</p>
+
+<h2 id="case-studies">Case Studies</h2>
+
+<h3 id="number-order-and-text-order">Number order and text order</h3>
+<p>When I read text files, the order was <code class="highlighter-rouge">text_1</code>, <code class="highlighter-rouge">text_10</code>, <code class="highlighter-rouge">text_101</code>, <code class="highlighter-rouge">text_102</code>. However, in a csv file that stores covariates, the order was <code class="highlighter-rouge">text_1</code>, <code class="highlighter-rouge">text_2</code>, <code class="highlighter-rouge">text_3</code>. There was a mismatch.</p>
+:ET

@@ -1,0 +1,53 @@
+I"�"<script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<p>Jekyll and Github Pages are great tools to create a website. I used <a href="https://github.com/mmistakes/minimal-mistakes">minimal-mistakes</a> template.</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="japanese">Japanese</h3>
+<p>日本語でも書くことができる</p>
+
+<h3 id="equations">Equations</h3>
+<p>Write equations in LaTex Style. You need to add</p>
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>or, this may faster</p>
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>For example,</p>
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">$$</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bx</span><span class="p">}{</span><span class="nv">\mathbf</span><span class="p">{</span><span class="nb">x</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\btheta</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\theta</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bmu</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\mu</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bmu</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\mu</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\balpha</span><span class="p">}{</span><span class="nv">\boldsymbol</span><span class="p">{</span><span class="nv">\alpha</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\newcommand</span><span class="p">{</span><span class="nv">\bz</span><span class="p">}{</span><span class="nv">\mathbf</span><span class="p">{</span><span class="nb">z</span><span class="p">}}</span><span class="nb">
+</span><span class="nv">\begin</span><span class="p">{</span><span class="nb">align</span><span class="p">}</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="nv">\quad\quad</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb">, </span><span class="nv">\btheta</span><span class="nb">, </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb"> | </span><span class="nv">\balpha</span><span class="nb">, </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nv">\\</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb"> | </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">, </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb"> | </span><span class="nv">\balpha</span><span class="nb">, </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nv">\\</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bx</span><span class="nb"> | </span><span class="nv">\bz</span><span class="nb">, </span><span class="nv">\bmu</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\bz</span><span class="nb">|</span><span class="nv">\btheta</span><span class="o">)</span><span class="nb">p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">|</span><span class="nv">\balpha</span><span class="o">)</span><span class="nb">p</span><span class="o">(</span><span class="nv">\bmu</span><span class="nb">|</span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="p">_</span><span class="nb">P</span><span class="o">)</span><span class="nv">\\</span><span class="o">[</span><span class="m">3</span><span class="nb">pt</span><span class="o">]</span><span class="nb">
+  </span><span class="p">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\prod</span><span class="p">_{</span><span class="nb">i</span><span class="o">=</span><span class="m">1</span><span class="p">}^{</span><span class="nb">D</span><span class="p">}</span><span class="nb"> </span><span class="nv">\left\{</span><span class="nb"> p</span><span class="o">(</span><span class="nb">x</span><span class="p">_</span><span class="nb">i | </span><span class="nv">\mu</span><span class="p">_{</span><span class="nb">z</span><span class="p">_</span><span class="nb">i</span><span class="p">}</span><span class="nb">, </span><span class="nv">\sigma</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb"> p</span><span class="o">(</span><span class="nb">z</span><span class="p">_</span><span class="nb">i|</span><span class="nv">\btheta</span><span class="o">)</span><span class="nb"> </span><span class="nv">\right\}</span><span class="nb"> </span><span class="nv">\cdot</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\btheta</span><span class="nb">|</span><span class="nv">\balpha</span><span class="o">)</span><span class="nb"> </span><span class="nv">\cdot</span><span class="nb"> </span><span class="nv">\prod</span><span class="p">_{</span><span class="nb">k</span><span class="o">=</span><span class="m">1</span><span class="p">}^{</span><span class="nb">K</span><span class="p">}</span><span class="nb"> p</span><span class="o">(</span><span class="nv">\mu</span><span class="p">_</span><span class="nb">k | </span><span class="nv">\mu</span><span class="p">_</span><span class="nb">P, </span><span class="nv">\sigma</span><span class="p">_</span><span class="nb">P</span><span class="p">^</span><span class="m">2</span><span class="o">)</span><span class="nb">
+</span><span class="nv">\end</span><span class="p">{</span><span class="nb">align</span><span class="p">}</span><span class="nb">
+</span><span class="p">$$</span>
+</code></pre></div></div>
+<p>becomes <br />
+<script type="math/tex">% <![CDATA[
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bz}{\mathbf{z}}
+\begin{align}
+  &\quad\quad p(\bx, \btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &= p(\bx | \bz, \bmu, \sigma^2) p(\btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &= p(\bx | \bz, \bmu, \sigma^2) p(\bz|\btheta)p(\btheta|\balpha)p(\bmu|\mu_P, \sigma^2_P)\\[3pt]
+  &= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
+\end{align} %]]></script></p>
+
+<h2 id="how-to">How-To</h2>
+<p>Check <a href="https://github.com/Shusei-E/Code_Tips/blob/master/Website/README.md">this note</a>.</p>
+:ET

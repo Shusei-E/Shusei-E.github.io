@@ -1,0 +1,24 @@
+I"o<p>If the data is large, we encounter overflow in sigmoid function.</p>
+
+<p><span style="font-size:0.85em; line-height:0%">
+<script type="math/tex">f(x) = \dfrac{1}{1 + e^{-ax}}  \ (a>0)</script>
+</span></p>
+
+<p>A simple trick to avoid overflow is to use tanh.</p>
+
+<p><span style="font-size:0.85em; line-height:0%">
+<script type="math/tex">\dfrac{1}{1+e^{-ax}}=\dfrac{1}{2}\dfrac{2e^{\frac{1}{2}ax}}{e^{\frac{1}{2}ax}+e^{-\frac{1}{2}ax}} 
+=\dfrac{1}{2}(1+\tanh(\frac{1}{2}ax))</script>
+</span></p>
+
+<p>In your code,</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+<p>will become</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
+</code></pre></div></div>
+
+<p><br />
+<a href="https://github.com/pfnet/chainer/pull/1047">Reference 1</a><br />
+<a href="http://mathtrain.jp/sigmoid">Reference 2</a></p>
+:ET
