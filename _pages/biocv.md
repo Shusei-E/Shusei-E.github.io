@@ -2,7 +2,7 @@
 layout: single
 title: Biography and CV
 permalink: /biocv/
-author_profile: true
+author_profile: false
 ---
 
 Full cv (PDF) is [here](https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZsRkE/view?usp=sharing).

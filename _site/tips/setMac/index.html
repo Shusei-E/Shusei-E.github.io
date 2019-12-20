@@ -203,8 +203,6 @@
           
         
           
-            <li><a href="https://shusei-e.github.io/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
-          
         
           
         
@@ -347,7 +345,7 @@
 <h1 id="1-homebrew">1. Homebrew</h1>
 <h2 id="r">R</h2>
 <ul>
-  <li><code class="highlighter-rouge">brew upgrade xxx</code></li>
+  <li><code class="language-plaintext highlighter-rouge">brew upgrade xxx</code></li>
 </ul>
 
 <h1 id="2-manual-install">2. Manual Install</h1>
@@ -363,33 +361,33 @@
 
 <h2 id="python">Python</h2>
 <ul>
-  <li><code class="highlighter-rouge">$ brew install pyenv</code></li>
+  <li><code class="language-plaintext highlighter-rouge">$ brew install pyenv</code></li>
 </ul>
 
-<p>Update <code class="highlighter-rouge">bash_profile</code>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi ~/.bash_profile
+<p>Update <code class="language-plaintext highlighter-rouge">bash_profile</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi ~/.bash_profile
 </code></pre></div></div>
-<p>In <code class="highlighter-rouge">bash_profile</code>,</p>
+<p>In <code class="language-plaintext highlighter-rouge">bash_profile</code>,</p>
 <div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 </span><span class="gp">if which pyenv &gt;</span><span class="w"> </span>/dev/null<span class="p">;</span> <span class="k">then </span><span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>pyenv init -<span class="si">)</span><span class="s2">"</span><span class="p">;</span> <span class="k">fi</span>
 <span class="gp">if which pyenv-virtualenv-init &gt;</span><span class="w"> </span>/dev/null<span class="p">;</span> <span class="k">then </span><span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>pyenv virtualenv-init -<span class="si">)</span><span class="s2">"</span><span class="p">;</span> <span class="k">fi</span>
 </code></pre></div></div>
-<p>Do not forget to <code class="highlighter-rouge">source ~/.bash_profile</code> after editing!!</p>
+<p>Do not forget to <code class="language-plaintext highlighter-rouge">source ~/.bash_profile</code> after editing!!</p>
 
 <p>Then, you can install python:</p>
 <ul>
-  <li><code class="highlighter-rouge">$ pyenv install 3.5.2</code></li>
-  <li>If error occures, try <code class="highlighter-rouge">xcode-select --install</code> and install again</li>
-  <li><code class="highlighter-rouge">$ brew install pyenv-virtualenv</code></li>
+  <li><code class="language-plaintext highlighter-rouge">$ pyenv install 3.5.2</code></li>
+  <li>If error occures, try <code class="language-plaintext highlighter-rouge">xcode-select --install</code> and install again</li>
+  <li><code class="language-plaintext highlighter-rouge">$ brew install pyenv-virtualenv</code></li>
   <li>Usage of pyenv-virtualenv
     <ul>
       <li>It’s easier to use virtualenv than pyenv to use multiuple versions of Python</li>
-      <li>Make a new environment: <code class="highlighter-rouge">$ pyenv virtualenv 3.5.2 NAME</code></li>
-      <li>Activate the environment: <code class="highlighter-rouge">$ pyenv activate NAME</code> or <code class="highlighter-rouge">source activate NAME</code></li>
-      <li>Deactivate the environment: <code class="highlighter-rouge">$ pyenv deactivate</code></li>
-      <li>Delete the environment:　<code class="highlighter-rouge">$ pyenv uninstall NAME</code></li>
-      <li>List Current Environments: <code class="highlighter-rouge">$ pyenv versions</code></li>
+      <li>Make a new environment: <code class="language-plaintext highlighter-rouge">$ pyenv virtualenv 3.5.2 NAME</code></li>
+      <li>Activate the environment: <code class="language-plaintext highlighter-rouge">$ pyenv activate NAME</code> or <code class="language-plaintext highlighter-rouge">source activate NAME</code></li>
+      <li>Deactivate the environment: <code class="language-plaintext highlighter-rouge">$ pyenv deactivate</code></li>
+      <li>Delete the environment:　<code class="language-plaintext highlighter-rouge">$ pyenv uninstall NAME</code></li>
+      <li>List Current Environments: <code class="language-plaintext highlighter-rouge">$ pyenv versions</code></li>
     </ul>
   </li>
 </ul>
@@ -398,7 +396,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 <p><a href="http://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9">Reference</a></p>
 
 <h3 id="install-ghostscript">Install Ghostscript</h3>
-<p><code class="highlighter-rouge">brew install ghostscript</code></p>
+<p><code class="language-plaintext highlighter-rouge">brew install ghostscript</code></p>
 
 <h3 id="download-mactex">Download MacTex</h3>
 <p>https://tug.org/mactex/mactex-download.html</p>
@@ -407,12 +405,12 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 <p>Do not forget to select custom install and <strong>clear the checkbox for Ghostscript</strong></p>
 
 <h3 id="update-texlive">Update TexLive</h3>
-<p><code class="highlighter-rouge">sudo tlmgr update --self --all</code> <br />
+<p><code class="language-plaintext highlighter-rouge">sudo tlmgr update --self --all</code> <br />
 If there is an error, relaunch Terminal.</p>
 
 <h3 id="set-japanse-fonts">Set Japanse Fonts</h3>
 <p>Enter the following commands line by line.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate
 sudo perl cjk-gs-integrate.pl --link-texmf --force
 sudo mktexlsr
 sudo kanji-config-updmap-sys hiragino-elcapitan-pron
@@ -425,15 +423,15 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 </ol>
 
 <h3 id="update">Update</h3>
-<p><code class="highlighter-rouge">sudo tlmgr update --self --all</code></p>
+<p><code class="language-plaintext highlighter-rouge">sudo tlmgr update --self --all</code></p>
 
 <h1 id="5-pip">5. pip</h1>
-<p><code class="highlighter-rouge">pip install jupyter pandas matplotlib beautifulsoup4</code></p>
+<p><code class="language-plaintext highlighter-rouge">pip install jupyter pandas matplotlib beautifulsoup4</code></p>
 
 <h1 id="6-r-packages">6. R Packages</h1>
 <h2 id="rstan">RStan</h2>
 <ul>
-  <li><code class="highlighter-rouge">install.packages('rstan', dependencies=T)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">install.packages('rstan', dependencies=T)</code></li>
 </ul>
 
 <h1 id="7-chrome-extension">7. Chrome Extension</h1>
@@ -512,6 +510,7 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">The probability mass function of Bernoulli distribution is
+
 </p>
   </article>
 </div>
@@ -541,6 +540,7 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">出発まで
+
 </p>
   </article>
 </div>
@@ -570,6 +570,7 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don’t stop the code.
+
 </p>
   </article>
 </div>
@@ -599,6 +600,7 @@ sudo kanji-config-updmap-sys hiragino-elcapitan-pron
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">We sometimes encounter the calculation of
+
 </p>
   </article>
 </div>
