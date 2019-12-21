@@ -5,4 +5,4 @@ permalink: /software/
 author_profile: true
 ---
 
-* [keyATM: Keyword Assisted Topic Models](https://shusei-e.github.io/keyATM/)
+* [keyATM: Keyword Assisted Topic Models](https://keyatm.github.io/keyATM/)
