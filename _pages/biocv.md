@@ -33,5 +33,5 @@ Full cv (PDF) is [here](https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZ
 </ul>
 
 ## Fields of Interest
-* Political Methodology: Bayesian Modeling, Machine Learning, Natural Language Processing
-* Comparative Politics: Democracy and Democratization, Media, Civil Society
+* Political Methodology: Bayesian Machine Learning, Causal Inference, Natural Language Processing
+* Comparative Politics: Representation, Civil Society
