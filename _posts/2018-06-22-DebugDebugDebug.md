@@ -13,6 +13,11 @@ We would like to minimize bugs when we write code. If we encounter errors, we kn
 ## Write a debug function
 * Write a debug function and try the code with a tiny data
 * Make sure all counters work well
+* Debug functions need to test:
+  * Each file (class)
+  * Entire code (can the program give you a desirable output?)
+  * Test codes are important because you will forget what you've done if your project get longer
+* Test with both small and large test datasets
 
 ## Coding
 * Break your function into small parts and make sure each component works fine.
