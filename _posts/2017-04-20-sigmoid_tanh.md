@@ -2,7 +2,7 @@
 title: Use tanh instead of exp in sigmoid function
 categories:
  - Machine Learning
-author_profile: true
+author_profile: false
 ---
 If the data is large, we encounter overflow in sigmoid function.
 

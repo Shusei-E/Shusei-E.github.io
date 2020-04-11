@@ -2,7 +2,7 @@
 title: Log Likelihood of LDA in CGS
 categories:
  - Natural Language Processing
-author_profile: true
+author_profile: false
 ---
 
 Log likelihood of Latent Dirichlet in Collapsed Gibbs Sampling.

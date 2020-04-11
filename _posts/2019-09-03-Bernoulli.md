@@ -2,7 +2,7 @@
 title: Yet another expression of Bernoulli distribution 
 categories:
  - Statistics
-author_profile: true
+author_profile: false
 ---
 
 The probability mass function of Bernoulli distribution is

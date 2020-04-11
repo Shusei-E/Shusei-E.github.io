@@ -2,7 +2,7 @@
 title: Bayesian Multiple Regression
 categories:
  - Bayesian Analysis
-author_profile: true
+author_profile: false
 classes: wide
 ---
 

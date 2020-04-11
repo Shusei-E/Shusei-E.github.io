@@ -3,6 +3,8 @@ layout: single
 title: Biography and CV
 permalink: /biocv/
 author_profile: false
+header:
+  image: /assets/images/header/mountain_morning.jpg
 ---
 
 Full cv (PDF) is [here](https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZsRkE/view?usp=sharing).

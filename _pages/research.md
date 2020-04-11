@@ -2,7 +2,9 @@
 layout: single
 title: Research
 permalink: /research/
-author_profile: true
+author_profile: false
+header:
+  image: /assets/images/header/penguin.jpg
 ---
 
 * [Keyword Assisted Topic Models](/research/keyATM/)

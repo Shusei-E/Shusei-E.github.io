@@ -4,7 +4,7 @@ categories:
  - 日本語記事
 toc: true
 toc_label: "目次"
-author_profile: true
+author_profile: false
 ---
 
 ## 出発まで
