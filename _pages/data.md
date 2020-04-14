@@ -2,7 +2,9 @@
 layout: single
 title: Data
 permalink: /data/
-author_profile: true
+author_profile: false
+header:
+  image: /assets/images/header/bookstore.jpg
 ---
 ## Dataset
 * Japanese Election

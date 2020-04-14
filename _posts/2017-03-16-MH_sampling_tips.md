@@ -2,7 +2,7 @@
 title: Metropolis-Hastings Sampling Tips 
 categories:
  - Machine Learning
-author_profile: true
+author_profile: false
 ---
 You may wonder why $$\log f(x) - {\rm exprand}(1)$$ is the same as $$u \sim {\rm Uniform}(0, f(x))$$.
 
