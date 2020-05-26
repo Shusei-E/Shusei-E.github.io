@@ -21,6 +21,9 @@ Social scientists have long conducted content analysis by using their substantiv
 * Annual Conference of the Society for Political Methodology
   * Virtual conference, July 2020
   * Poster
+* International Methods Colloquium
+  * Online colloquium, May 2020
+  * Presentation
 * Midwest Political Science Association, Annual Meeting
   * Chicago, IL, April 2020
   * Presentation (cancelled due to the COVID-19)
