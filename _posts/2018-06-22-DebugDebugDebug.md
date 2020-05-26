@@ -36,3 +36,6 @@ Do not hesitate to rewrite the entire code. Rewriting takes shorter time than de
 
 ### Number order and text order
 When I read text files, the order was `text_1`, `text_10`, `text_101`, `text_102`. However, in a csv file that stores covariates, the order was `text_1`, `text_2`, `text_3`. There was a mismatch.
+
+### Reduce the number of member variables
+* In C++, defining `int` and `double` as member variables slows down the code.
