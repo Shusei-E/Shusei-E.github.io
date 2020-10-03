@@ -7,5 +7,11 @@ header:
   image: /assets/images/header/penguin.jpg
 ---
 
-* [Keyword Assisted Topic Models](/research/keyATM/)
-* [The Mechanism of Foreign Aid for Democratization: Cross-National Analysis 1990-2010](/research/bathesis/)
+### Political Methodology
+* [Keyword Assisted Topic Models](/research/keyATM/) <small>(with <a href="https://imai.fas.harvard.edu/" target="_blank">Kosuke Imai</a> and <a href="https://polisci.mit.edu/people/tomoya-sasaki" target="_blank">Tomoya Sasaki</a>)</small>
+
+### Comparative Politics
+* [Just a Number? Voter Evaluations of Age in Candidate Choice Experiments](/research/conjoint-age) <small>(with <a href="https://sites.google.com/site/danielmarkhamsmith/home?authuser=0" target="_blank">Daniel M. Smith</a>)</small>
+
+
+
