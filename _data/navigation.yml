@@ -6,10 +6,10 @@ main:
     url: "/biocv/"
   - title: "Research"
     url:  "/research/"
-  - title: "Software"
-    url: /software/
-  - title: "Data"
-    url: /data/
+    #  - title: "Software"
+    #    url: /software/
+    #  - title: "Data"
+    #    url: /data/
   - title: "Blog"
     url: /blog/
   #- title: "Categories"

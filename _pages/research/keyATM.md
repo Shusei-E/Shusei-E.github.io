@@ -12,7 +12,7 @@ Social scientists have long conducted content analysis by using their substantiv
 </span>
 
 ## Paper
-* Shusei Eshima, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
+* Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
 
 ## Presentation
 * American Political Science Association, Annual Meeting
