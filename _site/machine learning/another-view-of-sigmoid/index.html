@@ -133,10 +133,6 @@
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/software/" >Software</a>
-            </li><li class="masthead__menu-item">
-              <a href="/data/" >Data</a>
-            </li><li class="masthead__menu-item">
               <a href="/blog/" >Blog</a>
             </li></ul>
         
@@ -199,20 +195,19 @@
         <p>Sigmoid function (standard logistic function) is defined as</p>
 
 <p><span style="font-size:0.9em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 \sigma (x) = \frac{1}{1 + e^{-x}}.
-\end{align}</script>
+\end{align}\)
 </span></p>
 
-<p>Now, let’s show <script type="math/tex">1- \sigma (x) = \sigma(-x)</script>.</p>
+<p>Now, let’s show \(1- \sigma (x) = \sigma(-x)\).</p>
 
 <p><span style="font-size:0.9em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-1 - \frac{1}{1 + e^{-x}} &= \frac{1 + e^{-x} - 1}{1 + e^{-x}}\\[10pt]
-												 &= \frac{e^{-x} \cdot e^{x}}{(1 + e^{-x})e^{x}}\\[10pt]
-												 &= \frac{1}{1 + e^{x}}
-\end{align} %]]></script>
+\(\begin{align}
+1 - \frac{1}{1 + e^{-x}} &amp;= \frac{1 + e^{-x} - 1}{1 + e^{-x}}\\[10pt]
+												 &amp;= \frac{e^{-x} \cdot e^{x}}{(1 + e^{-x})e^{x}}\\[10pt]
+												 &amp;= \frac{1}{1 + e^{x}}
+\end{align}\)
 </span></p>
 
 <p><img src="/assets/images/posts/sigmoid_another_view.png" width="560" /></p>
@@ -236,11 +231,10 @@
 <p>Note:</p>
 
 <p><span style="font-size:0.9em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-{\rm logit}(p) &= \log \left( \frac{p}{1-p} \right) = a \\[10pt]
-{\rm logit}^{-1}(a) &= \frac{\exp (a)}{\exp (a) + 1} = \frac{e^a \cdot e^{-a}}{(e^a + 1) \cdot e^{-a}} = \frac{1}{1 + e^{-a}} = p
-\end{align} %]]></script>
+\(\begin{align}
+{\rm logit}(p) &amp;= \log \left( \frac{p}{1-p} \right) = a \\[10pt]
+{\rm logit}^{-1}(a) &amp;= \frac{\exp (a)}{\exp (a) + 1} = \frac{e^a \cdot e^{-a}}{(e^a + 1) \cdot e^{-a}} = \frac{1}{1 + e^{-a}} = p
+\end{align}\)
 </span></p>
 
         
@@ -466,7 +460,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2021 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

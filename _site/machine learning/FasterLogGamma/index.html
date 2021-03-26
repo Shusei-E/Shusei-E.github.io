@@ -133,10 +133,6 @@
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/software/" >Software</a>
-            </li><li class="masthead__menu-item">
-              <a href="/data/" >Data</a>
-            </li><li class="masthead__menu-item">
               <a href="/blog/" >Blog</a>
             </li></ul>
         
@@ -187,7 +183,7 @@
 
 
 
-  less than 1 minute read
+  1 minute read
 
 </p>
           
@@ -199,25 +195,24 @@
         <p>We sometimes encounter the calculation of</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\newcommand{\Ga}{\Gamma}
+\(\newcommand{\Ga}{\Gamma}
 \begin{align}
 \log \frac{\Ga (\alpha + n)}{\Ga (\alpha)}.
-\end{align}</script>
+\end{align}\)
 </span></p>
 
-<p>If <script type="math/tex">n</script> is small, there is a faster calculation. We use the property of Gamma function, <script type="math/tex">\Gamma(x+1) = x \Gamma (x)</script>.</p>
+<p>If \(n\) is small, there is a faster calculation. We use the property of Gamma function, \(\Gamma(x+1) = x \Gamma (x)\).</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Ga}{\Gamma}
+\(\newcommand{\Ga}{\Gamma}
 \begin{align}
-&\quad \log \frac{\Ga (\alpha + n)}{\Ga (\alpha)} \\
-&= \log \frac{(\alpha + n - 1) \Ga (\alpha + n - 1)}{\Ga (\alpha)} \\
-&= \log \frac{(\alpha + n -1) (\alpha + n -2) \Ga (\alpha + n -2) }{\Ga (\alpha)} \\
-&= \log \frac{(\alpha + n -1) (\alpha + n -2) \cdots (\alpha) \Ga (\alpha)}{\Ga (\alpha)} \\
-&= \log (\alpha + n -1) (\alpha + n -2) \cdots (\alpha)\\
-&= \log \prod_{m=1}^{n} (\alpha + n - m)
-\end{align} %]]></script>
+&amp;\quad \log \frac{\Ga (\alpha + n)}{\Ga (\alpha)} \\
+&amp;= \log \frac{(\alpha + n - 1) \Ga (\alpha + n - 1)}{\Ga (\alpha)} \\
+&amp;= \log \frac{(\alpha + n -1) (\alpha + n -2) \Ga (\alpha + n -2) }{\Ga (\alpha)} \\
+&amp;= \log \frac{(\alpha + n -1) (\alpha + n -2) \cdots (\alpha) \Ga (\alpha)}{\Ga (\alpha)} \\
+&amp;= \log (\alpha + n -1) (\alpha + n -2) \cdots (\alpha)\\
+&amp;= \log \prod_{m=1}^{n} (\alpha + n - m)
+\end{align}\)
 </span></p>
 
 <p>Example code in Cython:</p>
@@ -225,12 +220,12 @@
    <span class="n">double</span> <span class="n">log</span> <span class="p">(</span><span class="n">double</span> <span class="n">x</span><span class="p">)</span>
    <span class="n">double</span> <span class="n">lgamma</span> <span class="p">(</span><span class="n">double</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="n">cdef</span> <span class="n">double</span> <span class="n">gammaln_sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">ftype_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="n">array1</span><span class="p">,</span>
-                        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">ftype_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="n">array2</span><span class="p">):</span>
+<span class="n">cdef</span> <span class="n">double</span> <span class="n">gammaln_sum</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">ftype_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="n">array1</span><span class="p">,</span>
+                        <span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">ftype_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="n">array2</span><span class="p">):</span>
     <span class="c1"># (special.gammaln( alpha_s + n_s_temp ) - special.gammaln( alpha_s )).sum()
 </span>    <span class="n">cdef</span> <span class="n">double</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">cdef</span> <span class="nb">int</span> <span class="n">i</span>
-    <span class="n">cdef</span> <span class="nb">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">array1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># length of array
+    <span class="n">cdef</span> <span class="nb">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">array1</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># length of array
 </span>    <span class="n">cdef</span> <span class="nb">int</span> <span class="n">m</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -422,7 +417,7 @@
 
 
 
-  5 minute read
+  9 minute read
 
 </p>
     
@@ -487,7 +482,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2021 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

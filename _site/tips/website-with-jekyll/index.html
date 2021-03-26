@@ -133,10 +133,6 @@
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/software/" >Software</a>
-            </li><li class="masthead__menu-item">
-              <a href="/data/" >Data</a>
-            </li><li class="masthead__menu-item">
               <a href="/blog/" >Blog</a>
             </li></ul>
         
@@ -232,19 +228,18 @@
 </span><span class="p">$$</span>
 </code></pre></div></div>
 <p>becomes <br />
-<script type="math/tex">% <![CDATA[
-\newcommand{\bx}{\mathbf{x}}
+\(\newcommand{\bx}{\mathbf{x}}
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \newcommand{\bmu}{\boldsymbol{\mu}}
 \newcommand{\bmu}{\boldsymbol{\mu}}
 \newcommand{\balpha}{\boldsymbol{\alpha}}
 \newcommand{\bz}{\mathbf{z}}
 \begin{align}
-  &\quad\quad p(\bx, \btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
-  &= p(\bx | \bz, \bmu, \sigma^2) p(\btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
-  &= p(\bx | \bz, \bmu, \sigma^2) p(\bz|\btheta)p(\btheta|\balpha)p(\bmu|\mu_P, \sigma^2_P)\\[3pt]
-  &= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
-\end{align} %]]></script></p>
+  &amp;\quad\quad p(\bx, \btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &amp;= p(\bx | \bz, \bmu, \sigma^2) p(\btheta, \bz, \bmu | \balpha, \mu_P, \sigma^2_P, \sigma^2)\\
+  &amp;= p(\bx | \bz, \bmu, \sigma^2) p(\bz|\btheta)p(\btheta|\balpha)p(\bmu|\mu_P, \sigma^2_P)\\[3pt]
+  &amp;= \prod_{i=1}^{D} \left\{ p(x_i | \mu_{z_i}, \sigma^2) p(z_i|\btheta) \right\} \cdot p(\btheta|\balpha) \cdot \prod_{k=1}^{K} p(\mu_k | \mu_P, \sigma_P^2)
+\end{align}\)</p>
 
 <h2 id="how-to">How-To</h2>
 <p>Check <a href="https://github.com/Shusei-E/Code_Tips/blob/master/Website/README.md">this note</a>.</p>
@@ -472,7 +467,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2021 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
