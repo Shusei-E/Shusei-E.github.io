@@ -133,10 +133,6 @@
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/software/" >Software</a>
-            </li><li class="masthead__menu-item">
-              <a href="/data/" >Data</a>
-            </li><li class="masthead__menu-item">
               <a href="/blog/" >Blog</a>
             </li></ul>
         
@@ -201,28 +197,26 @@
 <p>We want to calculate</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) = \sum_{\mathbf{z}} \int  \underbrace{p(w_{d,i} | \boldsymbol{\phi})}_{\phi_{k,v}} p(\boldsymbol{\phi} | \boldsymbol{\beta}) d \boldsymbol{\phi} \int  \underbrace{p(z_{d,i} | \boldsymbol{\theta})}_{\theta_{d,k}} p(\theta_{d,k} | \boldsymbol{\alpha}) d \boldsymbol{\theta}.
-\end{align}</script>
+\end{align}\)
 </span></p>
 
-<p>Recall (49) and (50) in <a href="https://tminka.github.io/papers/dirichlet/minka-dirichlet.pdf">Minka, T. (2000). Estimating a Dirichlet distribution</a>. <script type="math/tex">\boldsymbol{\alpha}</script> is a Dirichlet parameter and <script type="math/tex">\mathbf{p}</script> is drawn. Then a <script type="math/tex">\mathbf{x}</script> is drawn from a multinomial with probability vector <script type="math/tex">\mathbf{p}</script>. <script type="math/tex">n_k</script> is the number of times the outcome is <script type="math/tex">k</script>.</p>
+<p>Recall (49) and (50) in <a href="https://tminka.github.io/papers/dirichlet/minka-dirichlet.pdf">Minka, T. (2000). Estimating a Dirichlet distribution</a>. \(\boldsymbol{\alpha}\) is a Dirichlet parameter and \(\mathbf{p}\) is drawn. Then a \(\mathbf{x}\) is drawn from a multinomial with probability vector \(\mathbf{p}\). \(n_k\) is the number of times the outcome is \(k\).</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-p(\mathbf{x} | \boldsymbol{\alpha}) &= \int_{\mathbf{p}} p(\mathbf{x} | \mathbf{p} ) p(\mathbf{p} | \boldsymbol{\alpha}) d\mathbf{p} \\[10pt]
-&= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k + \alpha_k)} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
-n_k &= \sum_j \delta(x_j = k)
-\end{align} %]]></script>
+\(\begin{align}
+p(\mathbf{x} | \boldsymbol{\alpha}) &amp;= \int_{\mathbf{p}} p(\mathbf{x} | \mathbf{p} ) p(\mathbf{p} | \boldsymbol{\alpha}) d\mathbf{p} \\[10pt]
+&amp;= \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_k + \alpha_k)} \prod_k \frac{\Gamma(n_k + \alpha_k)}{\Gamma(\alpha_k)} \\[12pt]
+n_k &amp;= \sum_j \delta(x_j = k)
+\end{align}\)
 </span></p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v} + \beta_v)} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
-&\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k} + \alpha_k)} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
-\end{align} %]]></script>
+\(\begin{align}
+p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &amp;= \prod_k \left[ \frac{\Gamma(\sum_v \beta_v) }{\Gamma(\sum_v n_{k,v} + \beta_v)} \prod_v \frac{\Gamma(n_{k,v} + \beta_v)}{\Gamma(\beta_v)} \right] \\[10pt] 
+&amp;\qquad \times \prod_d \left[ \frac{\Gamma(\sum_k \alpha_k) }{\Gamma(\sum_k n_{d,k} + \alpha_k)} \prod_k \frac{\Gamma(n_{d,k} + \alpha_k)}{\Gamma(\alpha_k)} \right]
+\end{align}\)
 </span></p>
 
 <p>Now we take log so that we get log likelihood.</p>
@@ -260,17 +254,17 @@ p(\mathbf{w} | \boldsymbol{\alpha}, \boldsymbol{\beta}) &= \prod_k \left[ \frac{
 <p>We need to use Polya distribution, because in LDA model,</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 p(z_1, z_2, \cdots, z_N | \alpha) \neq \prod_{n=1}^N p(z_n | \alpha)
-\end{align}</script>
+\end{align}\)
 </span></p>
 
-<p>More specifically if we observe two or more <script type="math/tex">z</script>, they are not independent each other.</p>
+<p>More specifically if we observe two or more \(z\), they are not independent each other.</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 p(z_1, z_2 | \alpha) = p(z_2 | z_1, \alpha) p(z_1 | \alpha)
-\end{align}</script>
+\end{align}\)
 </span></p>
 
 <p>In language, if we observe a certain topic (or a word) in a document, it is likely that we observe the same topic (word) again in the document (Polya’s Urn).</p>
@@ -498,7 +492,7 @@ p(z_1, z_2 | \alpha) = p(z_2 | z_1, \alpha) p(z_1 | \alpha)
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2021 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
