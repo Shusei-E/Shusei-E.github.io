@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Why can we consider expectation in Gibbs Sampling - Shusei’s Website</title>
-<meta name="description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new  from this histogram),">
+<meta name="description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new \(z_i\) from this histogram),">
 
 
   <meta name="author" content="Shusei Eshima">
@@ -20,10 +20,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei's Website">
 <meta property="og:title" content="Why can we consider expectation in Gibbs Sampling">
-<meta property="og:url" content="http://localhost:4000/machine%20learning/posterior_histogram_expectation/">
+<meta property="og:url" content="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">
 
 
-  <meta property="og:description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new  from this histogram),">
+  <meta property="og:description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new \(z_i\) from this histogram),">
 
 
 
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/machine%20learning/posterior_histogram_expectation/">
+<link rel="canonical" href="https://shusei-e.github.io/machine%20learning/posterior_histogram_expectation/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Shusei Eshima",
-      "url": "http://localhost:4000/"
+      "url": "https://shusei-e.github.io/"
     
   }
 </script>
@@ -168,7 +168,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Why can we consider expectation in Gibbs Sampling">
-    <meta itemprop="description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new  from this histogram),">
+    <meta itemprop="description" content="Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new \(z_i\) from this histogram),">
     <meta itemprop="datePublished" content="March 17, 2017">
     
 
@@ -192,34 +192,32 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new <script type="math/tex">z_i</script> from this histogram),</p>
+        <p>Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new \(z_i\) from this histogram),</p>
 
 <p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\balpha}{\boldsymbol{\alpha}}
+\(\newcommand{\balpha}{\boldsymbol{\alpha}}
 \newcommand{\bz}{\mathbf{z}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \begin{align}
-&\qquad \int p(x_i | z_i=k, \mu_k, \sigma^2) p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k \int p(z_i =k|\btheta) p(\btheta | \bz^{\backslash i},\balpha) d\btheta \\
-&= \cN(x_i | \mu_{\rm New}, \sigma^2) \cdot \frac{n_k^{\backslash i} + \alpha_k}{\sum_{k=1}^{K} n_k^{\backslash i} + \alpha_k}
-\end{align} %]]></script>
+&amp;\qquad \int p(x_i | z_i=k, \mu_k, \sigma^2) p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k \int p(z_i =k|\btheta) p(\btheta | \bz^{\backslash i},\balpha) d\btheta \\
+&amp;= \cN(x_i | \mu_{\rm New}, \sigma^2) \cdot \frac{n_k^{\backslash i} + \alpha_k}{\sum_{k=1}^{K} n_k^{\backslash i} + \alpha_k}
+\end{align}\)
 </span></p>
 
-<p>Each integral shows posterior predictive distribution of <script type="math/tex">x_i</script> and <script type="math/tex">z_i</script>, respectively. We can consider the expectation of <script type="math/tex">\mu_k</script> for the first term instead of calculating everything. <script type="math/tex">\mu_k</script> can take various values, but it follows Normal distribution. Enough amount of data makes the posterior distribution of <script type="math/tex">\mu_k</script> sharp. The expectation can be a good approximation.</p>
+<p>Each integral shows posterior predictive distribution of \(x_i\) and \(z_i\), respectively. We can consider the expectation of \(\mu_k\) for the first term instead of calculating everything. \(\mu_k\) can take various values, but it follows Normal distribution. Enough amount of data makes the posterior distribution of \(\mu_k\) sharp. The expectation can be a good approximation.</p>
 
 <p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\balpha}{\boldsymbol{\alpha}}
+\(\newcommand{\balpha}{\boldsymbol{\alpha}}
 \newcommand{\bz}{\mathbf{z}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \begin{align}
-  &\qquad p(x_i | z_i=k, {\mu_k}, \sigma^2) \int  p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k\\
-  &= p(x_i | z_i=k, \overline{\mu_k}, \sigma^2)
-\end{align} %]]></script>
+  &amp;\qquad p(x_i | z_i=k, {\mu_k}, \sigma^2) \int  p(\mu_k | \bx^{\backslash i}, \bz^{\backslash i}, \mu_P, \sigma^2_P, \sigma^2) d\mu_k\\
+  &amp;= p(x_i | z_i=k, \overline{\mu_k}, \sigma^2)
+\end{align}\)
 </span></p>
 
 <p>Code can be found <a href="https://github.com/Shusei-E/Code_Tips/tree/master/Algorithm/MCMC/Gibbs_Sampling/GMM1D">here</a>.</p>
@@ -242,11 +240,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Why+can+we+consider+expectation+in+Gibbs+Sampling%20http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Why+can+we+consider+expectation+in+Gibbs+Sampling%20https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2Fposterior_histogram_expectation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 

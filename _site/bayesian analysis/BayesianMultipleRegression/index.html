@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei's Website">
 <meta property="og:title" content="Bayesian Multiple Regression">
-<meta property="og:url" content="http://localhost:4000/bayesian%20analysis/BayesianMultipleRegression/">
+<meta property="og:url" content="https://shusei-e.github.io/bayesian%20analysis/BayesianMultipleRegression/">
 
 
   <meta property="og:description" content="We can replace normal multiple regression with Bayesian Multiple Regression.">
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/bayesian%20analysis/BayesianMultipleRegression/">
+<link rel="canonical" href="https://shusei-e.github.io/bayesian%20analysis/BayesianMultipleRegression/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Shusei Eshima",
-      "url": "http://localhost:4000/"
+      "url": "https://shusei-e.github.io/"
     
   }
 </script>
@@ -183,7 +183,7 @@
 
 
 
-  5 minute read
+  9 minute read
 
 </p>
           
@@ -198,16 +198,15 @@
 <p>First, we need to create simulation data. Let’s consider this model:</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \newcommand{\Ga}{\rm Gamma}
 \begin{align}
-y_i &\sim \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau ) \\
-\beta_0 &\sim \Normal (\mu_0,\ 1/ \tau_0 ) \\
-\beta_1 &\sim \Normal (\mu_1,\ 1/ \tau_1 ) \\
-\beta_2 &\sim \Normal (\mu_2,\ 1/ \tau_2 )\\
-\tau &\sim \Ga (\alpha, \beta)
-\end{align} %]]></script>
+y_i &amp;\sim \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau ) \\
+\beta_0 &amp;\sim \Normal (\mu_0,\ 1/ \tau_0 ) \\
+\beta_1 &amp;\sim \Normal (\mu_1,\ 1/ \tau_1 ) \\
+\beta_2 &amp;\sim \Normal (\mu_2,\ 1/ \tau_2 )\\
+\tau &amp;\sim \Ga (\alpha, \beta)
+\end{align}\)
 </span></p>
 
 <p>Generate data with R:</p>
@@ -234,70 +233,67 @@ y_i &\sim \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau ) \\
 <p>Likelihood function is simple:</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
 \mathcal{L} = \prod_{i=1}^N \Normal(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau )
-\end{align}</script>
+\end{align}\)
 </span></p>
 
 <h2 id="update-equations">Update Equations</h2>
 
-<p><strong>Update for <script type="math/tex">\beta_0</script> (intercept)</strong></p>
+<p><strong>Update for \(\beta_0\) (intercept)</strong></p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-&p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
-&\propto p(\beta_0 , \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
-&= p(y|\beta_0,\beta_1,\beta_2,\tau,x)\ p(\beta_0|\mu_0,\tau_0)\ p(\beta_1|\mu_1,\tau_1)\ p(\beta_2|\mu_2,\tau_2)\ p(x) \\
-&\propto p(y|\beta_0, \beta_1, \beta_2, \tau, x)\ p(\beta_0 | \mu_0, \tau_0)\\
-&= \Normal(\mu_0,\ 1/\tau_0)\ \prod_{i=1}^N (\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau) \\[10pt]
-&= -\frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau_0} \right) - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} + \sum_{i=1}^{N} - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau(y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2}{2} \right)\\
-&\propto  - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} - \frac{\tau}{2} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2  \ \ \ \cdots\cdots (1)
-\end{align} %]]></script>
+&amp;p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&amp;\propto p(\beta_0 , \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&amp;= p(y|\beta_0,\beta_1,\beta_2,\tau,x)\ p(\beta_0|\mu_0,\tau_0)\ p(\beta_1|\mu_1,\tau_1)\ p(\beta_2|\mu_2,\tau_2)\ p(x) \\
+&amp;\propto p(y|\beta_0, \beta_1, \beta_2, \tau, x)\ p(\beta_0 | \mu_0, \tau_0)\\
+&amp;= \Normal(\mu_0,\ 1/\tau_0)\ \prod_{i=1}^N (\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i},\  1/ \tau) \\[10pt]
+&amp;= -\frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau_0} \right) - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} + \sum_{i=1}^{N} - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau(y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2}{2} \right)\\
+&amp;\propto  - \frac{\tau_0 (\beta_0 - \mu_0)^2}{2} - \frac{\tau}{2} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{1i} - \beta_2 x_{2i})^2  \ \ \ \cdots\cdots (1)
+\end{align}\)
 </span></p>
 
 <p>Note that 
-<script type="math/tex">p(y|\beta_0, \beta_1, \beta_2, \tau, x)</script> and <script type="math/tex">p(\beta_0 | \mu_0, \tau_0)</script> are Normal distribution, so we can rewrite them. Also, log Normal PDF is important in deriving.</p>
+\(p(y|\beta_0, \beta_1, \beta_2, \tau, x)\) and \(p(\beta_0 | \mu_0, \tau_0)\) are Normal distribution, so we can rewrite them. Also, log Normal PDF is important in deriving.</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 -\frac{1}{2} \log (2 \pi \sigma^2) - \frac{(x - \mu)^2}{2 \sigma^2} = -\frac{1}{2} \log \left( \frac{2 \pi}{\tau} \right) - \frac{\tau(x - \mu)^2}{2}
-\end{align}</script>
+\end{align}\)
 </span></p>
 
-<p>Another important and useful property of Normal distribution is that, when we focus on <script type="math/tex">x</script>,</p>
+<p>Another important and useful property of Normal distribution is that, when we focus on \(x\),</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-&{\rm if}\ \  x \sim \Normal(u,\ 1/t),\\
-&-\frac{t}{2} (x - u)^2 \propto - \frac{t}{2} x^2 + tux  \ \ \ \cdots\cdots (2)
-\end{align} %]]></script>
+&amp;{\rm if}\ \  x \sim \Normal(u,\ 1/t),\\
+&amp;-\frac{t}{2} (x - u)^2 \propto - \frac{t}{2} x^2 + tux  \ \ \ \cdots\cdots (2)
+\end{align}\)
 </span></p>
 
-<p>Also, remember <script type="math/tex">(x + y + z + w)^2 = (y + (x + z + w))^2</script>. Now, let’s resume (1).</p>
+<p>Also, remember \((x + y + z + w)^2 = (y + (x + z + w))^2\). Now, let’s resume (1).</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-(1) &\propto - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} \sum_{i=1}^N \left(\beta_0^2 - 2 \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})  \right)  \ \ \ \cdots\cdots (3) \\
-&= - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} N \beta_0^2 + \tau \sum_{i=i}^N \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i}) \\
-&= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + \left( \tau_0 + \tau N   \right) \left(  \frac{\tau_0}{\tau_0 + \tau N}  \right) \mu_0 \beta_0 + \left( \tau_0 + \tau N  \right) \left( \frac{\tau}{\tau_0 + \tau N} \right) \beta_0 \sum_{i=1}^N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})\\
-&= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + (\tau_0 + \tau N)  \cdot \left( \frac{\tau_0 \mu_0 + \tau \sum_N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})}{\tau_0 + \tau N} \right) \cdot \beta_0
-\end{align} %]]></script>
+(1) &amp;\propto - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} \sum_{i=1}^N \left(\beta_0^2 - 2 \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})  \right)  \ \ \ \cdots\cdots (3) \\
+&amp;= - \frac{\tau_0}{2} \beta_0^2 + \tau_0 \mu_0 \beta_0 - \frac{\tau}{2} N \beta_0^2 + \tau \sum_{i=i}^N \beta_0 (y_i - \beta_1 x_{1i} - \beta_2 x_{2i}) \\
+&amp;= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + \left( \tau_0 + \tau N   \right) \left(  \frac{\tau_0}{\tau_0 + \tau N}  \right) \mu_0 \beta_0 + \left( \tau_0 + \tau N  \right) \left( \frac{\tau}{\tau_0 + \tau N} \right) \beta_0 \sum_{i=1}^N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})\\
+&amp;= \left( - \frac{\tau_0 + \tau N}{2} \right) \beta_0^2 + (\tau_0 + \tau N)  \cdot \left( \frac{\tau_0 \mu_0 + \tau \sum_N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})}{\tau_0 + \tau N} \right) \cdot \beta_0
+\end{align}\)
 </span></p>
 
 <p>By comparing the last equation with (2), we can say</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
 p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim \Normal \left( \frac{\tau_0 \mu_0 + \tau \sum_N (y_i - \beta_1 x_{1i} - \beta_2 x_{2i})}{\tau_0 + \tau N} ,\  1/(\tau_0 + \tau N) \right)
-\end{align}</script>
+\end{align}\)
 </span></p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_0</span><span class="w">
@@ -310,29 +306,28 @@ p(\beta_0 | \beta_1,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><strong>Update for <script type="math/tex">\beta_1</script> (coefficient)</strong></p>
+<p><strong>Update for \(\beta_1\) (coefficient)</strong></p>
 
-<p>Derivation is quite similar until (1). We have slightly different form for (3) because we now focus on <script type="math/tex">\beta_1</script>.</p>
+<p>Derivation is quite similar until (1). We have slightly different form for (3) because we now focus on \(\beta_1\).</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-&p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
-&\propto - \frac{\tau_1}{2} \beta_1^2 + \tau_1 \mu_1 \beta_1 - \frac{\tau}{2} \sum_{i=1}^N \left( \beta_1^2 x_{1i}^2 - 2 \beta_1 x_{1i}^2 (y_i - \beta_0 - \beta_2 x_{2i})  \right) \\
-&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \tau_1 \mu_1 \beta_1 + \tau \sum_{i=1}^2 \left( \beta_1 x_{i1} (y_i - \beta_0 - \beta_2 x_{2i}) \right) \\
-&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \left[ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  \right] \beta_1\\
-&= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + (\tau_1 + \tau \sum_N x_{i1}^2) \frac{ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  }{\tau_1 + \tau \sum_N x_{i1}^2} \beta_1
-\end{align} %]]></script>
+&amp;p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta)\\
+&amp;\propto - \frac{\tau_1}{2} \beta_1^2 + \tau_1 \mu_1 \beta_1 - \frac{\tau}{2} \sum_{i=1}^N \left( \beta_1^2 x_{1i}^2 - 2 \beta_1 x_{1i}^2 (y_i - \beta_0 - \beta_2 x_{2i})  \right) \\
+&amp;= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \tau_1 \mu_1 \beta_1 + \tau \sum_{i=1}^2 \left( \beta_1 x_{i1} (y_i - \beta_0 - \beta_2 x_{2i}) \right) \\
+&amp;= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + \left[ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  \right] \beta_1\\
+&amp;= \left( - \frac{\tau_1 + \tau \sum_N x_{i1}^2}{2}    \right) \beta_1^2 + (\tau_1 + \tau \sum_N x_{i1}^2) \frac{ \tau_1 \mu_1 + \tau \sum_{i=1}^N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})  }{\tau_1 + \tau \sum_N x_{i1}^2} \beta_1
+\end{align}\)
 </span></p>
 
 <p>Now, we get</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
 p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim \Normal \left( \frac{\tau_1 \mu_1 + \tau \sum_N x_{1i} (y_i - \beta_0 - \beta_2 x_{2i})}{\tau_1 + \tau \sum_N x_{1i}^2} ,\  1/(\tau_1 + \tau \sum_N x_{1i}^2) \right)
-\end{align}</script>
+\end{align}\)
 </span></p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_1</span><span class="w">
@@ -345,7 +340,7 @@ p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>We can get the similar equation for <script type="math/tex">\beta_2</script>.</p>
+<p>We can get the similar equation for \(\beta_2\).</p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># beta_2</span><span class="w">
 </span><span class="n">sample_beta_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">mu_2</span><span class="p">,</span><span class="w"> </span><span class="n">tau_2</span><span class="p">){</span><span class="w">
@@ -357,40 +352,38 @@ p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><strong>Update for <script type="math/tex">\tau</script> (precision)</strong></p>
+<p><strong>Update for \(\tau\) (precision)</strong></p>
 
 <p>Let’s recall log PDF of <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Gamma distribution</a>:</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">\begin{align}
+\(\begin{align}
 \log \frac{\beta^\alpha}{\Gamma (\alpha)} + (\alpha-1) \log x - \beta x \propto (\alpha - 1) \log x - \beta x
-\end{align}</script>
+\end{align}\)
 </span></p>
 
 <p>We can get updat equation:</p>
 
 <p><span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-&p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \\
-&\propto p(y | \beta_0, \beta_1, \beta_2, \tau, x) p(\tau | \alpha, \beta)\\
-&= \sum_{i=1}^N - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
-&= \sum_{i=1}^N - \left( \frac{1}{2} \left(\log 2 + \log \pi + \log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
-&\propto \sum_{i=1}^N - \left( \frac{1}{2} \left(\log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
-&= - \frac{N}{2} \log \frac{1}{\tau} - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
-&= \frac{N}{2} \log \tau - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
-&= \left( \alpha + \frac{N}{2} - 1 \right) \log \tau - \left( \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2}  \right) \tau
-\end{align} %]]></script>
+&amp;p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \\
+&amp;\propto p(y | \beta_0, \beta_1, \beta_2, \tau, x) p(\tau | \alpha, \beta)\\
+&amp;= \sum_{i=1}^N - \left( \frac{1}{2} \log \left(2 \pi \cdot \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&amp;= \sum_{i=1}^N - \left( \frac{1}{2} \left(\log 2 + \log \pi + \log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&amp;\propto \sum_{i=1}^N - \left( \frac{1}{2} \left(\log \frac{1}{\tau} \right) + \frac{\tau}{2} (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 \right)  + (\alpha - 1) \log \tau - \beta \tau\\
+&amp;= - \frac{N}{2} \log \frac{1}{\tau} - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
+&amp;= \frac{N}{2} \log \tau - \frac{\tau}{2}  \sum_{i=1}^N (y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2 + (\alpha - 1) \log \tau - \beta \tau\\
+&amp;= \left( \alpha + \frac{N}{2} - 1 \right) \log \tau - \left( \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2}  \right) \tau
+\end{align}\)
 </span></p>
 
 <p>So, we get
 <span style="font-size:1.0em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\newcommand{\Normal}{\mathcal{N}}
+\(\newcommand{\Normal}{\mathcal{N}}
 \begin{align}
-&p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim {\rm Gamma} \left(\alpha + \frac{N}{2} , \  \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2} \right)
-\end{align} %]]></script>
+&amp;p( \tau | \beta_0, \beta_1, \beta_2,  y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,\alpha,\beta) \sim {\rm Gamma} \left(\alpha + \frac{N}{2} , \  \beta + \sum_{i=1}^N \frac{(y_i - \beta_0 - \beta_{1} x_{1i} - \beta_2 x_{2i})^2}{2} \right)
+\end{align}\)
 </span></p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># tau</span><span class="w">
@@ -598,11 +591,11 @@ p(\beta_1 | \beta_0,\beta_2, \tau, y, x, \mu_0,\mu_1,\mu_2 \tau_0,\tau_1,\tau_2,
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Bayesian+Multiple+Regression%20http%3A%2F%2Flocalhost%3A4000%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Bayesian+Multiple+Regression%20https%3A%2F%2Fshusei-e.github.io%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshusei-e.github.io%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshusei-e.github.io%2Fbayesian%2520analysis%2FBayesianMultipleRegression%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 

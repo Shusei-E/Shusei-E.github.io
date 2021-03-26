@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Metropolis-Hastings Sampling Tips - Shusei’s Website</title>
-<meta name="description" content="You may wonder why  is the same as .">
+<meta name="description" content="You may wonder why \(\log f(x) - {\rm exprand}(1)\) is the same as \(u \sim {\rm Uniform}(0, f(x))\).">
 
 
   <meta name="author" content="Shusei Eshima">
@@ -20,10 +20,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei's Website">
 <meta property="og:title" content="Metropolis-Hastings Sampling Tips">
-<meta property="og:url" content="http://localhost:4000/machine%20learning/MH_sampling_tips/">
+<meta property="og:url" content="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/">
 
 
-  <meta property="og:description" content="You may wonder why  is the same as .">
+  <meta property="og:description" content="You may wonder why \(\log f(x) - {\rm exprand}(1)\) is the same as \(u \sim {\rm Uniform}(0, f(x))\).">
 
 
 
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/machine%20learning/MH_sampling_tips/">
+<link rel="canonical" href="https://shusei-e.github.io/machine%20learning/MH_sampling_tips/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Shusei Eshima",
-      "url": "http://localhost:4000/"
+      "url": "https://shusei-e.github.io/"
     
   }
 </script>
@@ -168,7 +168,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Metropolis-Hastings Sampling Tips">
-    <meta itemprop="description" content="You may wonder why  is the same as .">
+    <meta itemprop="description" content="You may wonder why \(\log f(x) - {\rm exprand}(1)\) is the same as \(u \sim {\rm Uniform}(0, f(x))\).">
     <meta itemprop="datePublished" content="March 16, 2017">
     
 
@@ -192,53 +192,49 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>You may wonder why <script type="math/tex">\log f(x) - {\rm exprand}(1)</script> is the same as <script type="math/tex">u \sim {\rm Uniform}(0, f(x))</script>.</p>
+        <p>You may wonder why \(\log f(x) - {\rm exprand}(1)\) is the same as \(u \sim {\rm Uniform}(0, f(x))\).</p>
 
 <p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-&\qquad \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) > r\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) > \log r\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - \log r > 0\\
-& \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) + {\rm exprand}(1) > 0,
-\end{align} %]]></script>
+\(\begin{align}
+&amp;\qquad \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) &gt; r\\
+&amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) &gt; \log r\\
+&amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) - \log r &gt; 0\\
+&amp; \Leftrightarrow \log \min \left( 1, \frac{p(x|\theta^{'})}{p(x|\theta)} \right) + {\rm exprand}(1) &gt; 0,
+\end{align}\)
 </span>
 <br /><br />
 because</p>
 
 <p><span style="font-size:0.8em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-r &\sim {\rm Uniform}(0,1)\\
-\exp(1) &= - \log r
-\end{align} %]]></script>
+\(\begin{align}
+r &amp;\sim {\rm Uniform}(0,1)\\
+\exp(1) &amp;= - \log r
+\end{align}\)
 </span></p>
 
 <p><img src="/assets/images/posts/rexp10000.png" width="450" />
 <img src="/assets/images/posts/logrunif10000.png" width="450" /></p>
 
 <p><strong>Added on 13/May/2017:</strong><br />
-<script type="math/tex">u \sim {\rm Uniform}(0, f(x))</script> is the same as</p>
+\(u \sim {\rm Uniform}(0, f(x))\) is the same as</p>
 
 <p><span style="font-size:0.9em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-u &= r f(x)\\
-r &\sim {\rm Uniform}(0,1)
-\end{align} %]]></script>
+\(\begin{align}
+u &amp;= r f(x)\\
+r &amp;\sim {\rm Uniform}(0,1)
+\end{align}\)
 </span></p>
 
 <p>Hence,</p>
 
 <p><span style="font-size:0.9em; line-height:0%">
-<script type="math/tex">% <![CDATA[
-\begin{align}
-u &= r f(x)\\
-\Longleftrightarrow &\quad \\
-\log u &= \log r + \log f(x)\\
-	&= \log ({\rm randunif}(0,1)) + \log f(x)\\
-	&= - {\rm exprand}(\ ) + \log f(x)
-\end{align} %]]></script>
+\(\begin{align}
+u &amp;= r f(x)\\
+\Longleftrightarrow &amp;\quad \\
+\log u &amp;= \log r + \log f(x)\\
+	&amp;= \log ({\rm randunif}(0,1)) + \log f(x)\\
+	&amp;= - {\rm exprand}(\ ) + \log f(x)
+\end{align}\)
 </span></p>
 
 <p>You may find <a href="http://www.nrbook.com/devroye/">“Non-Uniform Random Variate Generation”</a> useful for sampling.</p>
@@ -261,11 +257,11 @@ u &= r f(x)\\
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Metropolis-Hastings+Sampling+Tips%20http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Metropolis-Hastings+Sampling+Tips%20https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshusei-e.github.io%2Fmachine%2520learning%2FMH_sampling_tips%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
