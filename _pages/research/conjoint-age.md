@@ -8,9 +8,13 @@ author_profile: false
 
 ## Abstract
 <span style="font-size: 0.9em">
-Around the world, humans are living longer and politicians are getting older. Do voters hold negative views toward these older politicians? We reanalyze the results of eleven conjoint design-based candidate choice experiments from six democracies, revealing that older candidates are consistently perceived more negatively by respondents--both compared to the youngest alternative and compared to the second oldest alternative. We then report the findings of a novel conjoint experiment on Japanese voters designed to elicit whether the arbitrary milestone of entering a new decade of age (70 versus 69 years of age) affects respondents' attitudes toward a hypothetical candidate. Although at most 729 days separate candidates of these ages, we find a significant penalty for the older candidate. The penalty is more severe among respondents who are themselves younger than 70, who express disagreement with the statement that older politicians make better leaders, and who voted in the previous election.
+Around the world, humans are living longer and politicians are getting older. But what do voters think about politicians of advanced age? We conduct a meta-analysis of sixteen conjoint design-based candidate choice experiments in seven democracies, revealing that older hypothetical candidates are consistently less likely to be favored by respondents—-whether compared to the youngest alternative or the second-oldest alternative. We then report the findings of a novel conjoint experiment on Japanese voters designed to elicit whether the milestone of entering a new decade of age (70 versus 69 years) affects respondents' preferences for hypothetical candidates. Although at most 730 days separate candidates of these ages (limiting concerns of substantial differences in health or fitness), we find a significant penalty for the older candidate. Together, our findings highlight the mismatch between voters' preferences for younger politicians and the ostensible gerontocracy that governs much of the world.
 </span>
 
 ## Paper
-* Eshima, Shusei and Smith, Daniel M.,. 2020. ``Just a Number? Voter Evaluations of Age in Candidate Choice Experiments.'' Working Paper, <a href="https://ssrn.com/abstract=3704473" target="_blank">Available at SSRN</a>.
+* Eshima, Shusei and Smith, Daniel M.,. 2020. ``Just a Number? Voter Evaluations of Age in Candidate Choice Experiments.'' forthcoming, <a href="https://www.journals.uchicago.edu/doi/10.1086/719005" target="_blank">Paper</a>.
+
+
+## Replication Materials
+* Eshima, Shusei; Smith, Daniel M., 2021, "Replication Data for: Just a Number? Voter Evaluations of Age in Candidate Choice Experiments", <a href="https://doi.org/10.7910/DVN/EWDCQX" target="_blank">https://doi.org/10.7910/DVN/EWDCQX</a>, Harvard Dataverse
 
