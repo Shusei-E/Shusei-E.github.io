@@ -7,7 +7,7 @@ header:
   image: /assets/images/header/mountain_morning.jpg
 ---
 
-Full cv (PDF) is <a href="https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZsRkE/view?usp=sharing" target="_blank">here</a>.
+Full cv (PDF) is <a href="https://drive.google.com/file/d/0ByBohJYaUR1VaGtCR19NaTZsRkE/view?usp=sharing&resourcekey=0-ClJraSoTgPtb_OnCMx4T_A" target="_blank">here</a>.
 <br>
 
 ## Education
