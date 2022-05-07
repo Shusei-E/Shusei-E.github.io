@@ -3,8 +3,7 @@ layout: single
 title: Research
 permalink: /research/
 author_profile: false
-header:
-  image: /assets/images/header/penguin.jpg
+classes: wide
 ---
 
 ### Political Methodology

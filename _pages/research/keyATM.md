@@ -3,6 +3,7 @@ layout: single
 permalink: /research/keyATM/
 title: Keyword Assisted Topic Models
 author_profile: false
+classes: wide
 ---
 [← Back to Research](/research/)
 
@@ -12,7 +13,7 @@ In recent years, fully automated content analysis based on probabilistic topic m
 </span>
 
 ## Paper
-* Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
+* <u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
 
 ## Presentation
 * American Political Science Association, Annual Meeting

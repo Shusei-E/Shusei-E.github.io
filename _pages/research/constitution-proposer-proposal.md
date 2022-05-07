@@ -3,6 +3,7 @@ layout: single
 permalink: /research/constitution-proposer-proposal/
 title: The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs
 author_profile: false
+classes: wide
 ---
 [← Back to Research](/research/)
 
@@ -12,7 +13,7 @@ In many countries, constitutional amendments require the direct approval of vote
 </span>
 
 ## Paper
-* McElwain, Kenneth M., Shusei Eshima, and Christian G. Winkler. 2021. ``The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs.'' _Japanese Journal of Political Science_ 22 (1): 15-39. [https://doi.org/10.1017/S1468109921000025](https://doi.org/10.1017/S1468109921000025)
+* Kenneth M. McElwain, <u>Shusei Eshima</u>, and Christian G. Winkler. 2021. ``The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs.'' _Japanese Journal of Political Science_ 22 (1): 15-39. [https://doi.org/10.1017/S1468109921000025](https://doi.org/10.1017/S1468109921000025)
 
 ## Replication Data
 [Dataverse](https://doi.org/10.7910/DVN/K27XYA)
