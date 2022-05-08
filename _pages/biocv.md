@@ -6,8 +6,17 @@ author_profile: false
 classes: wide
 ---
 
-Full cv (PDF) is <a href="/assets/files/cv.pdf" target="_blank">here</a>.
+<link rel="stylesheet" href="/assets/css/academicons.min.css"/>
+
+
 <br>
+<a href="/assets/files/cv.pdf" target="_blank" style="color:#000000;"><i class="ai ai-cv-square ai-3x"></i></a>
+<a href="https://scholar.google.com/citations?user=iLCQhV8AAAAJ" target="_blank" style="color:#000000;"><i class="ai ai-google-scholar-square ai-3x"></i></a>
+<br>
+
+## Fields of Interest
+* Political Methodology: Bayesian Machine Learning, Causal Inference, Natural Language Processing
+* Comparative Politics: Representation, Civil Society
 
 ## Education
 <ul>
@@ -33,6 +42,3 @@ Full cv (PDF) is <a href="/assets/files/cv.pdf" target="_blank">here</a>.
 	 </ul>
 </ul>
 
-## Fields of Interest
-* Political Methodology: Bayesian Machine Learning, Causal Inference, Natural Language Processing
-* Comparative Politics: Representation, Civil Society
