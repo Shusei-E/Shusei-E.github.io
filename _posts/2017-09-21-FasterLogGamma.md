@@ -8,6 +8,10 @@ sidebar:
   nav: side
 ---
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
 We sometimes encounter the calculation of 
 
 <span style="font-size:1.0em; line-height:0%">

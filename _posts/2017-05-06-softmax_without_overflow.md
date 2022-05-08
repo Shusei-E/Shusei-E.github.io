@@ -6,6 +6,11 @@ author_profile: false
 sidebar:
   nav: side
 ---
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
 Overflow problems are common in neural network-like structures.
 
 <span style="font-size:0.85em; line-height:0%">
