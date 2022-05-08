@@ -1,9 +1,9 @@
 # main links
-main:
+side:
   #- title: "Quick-Start Guide"
   #  url: /docs/quick-start-guide/
-  - title: "Bio/CV"
-    url: "/biocv/"
+  # - title: "Bio/CV"
+  #   url: "/biocv/"
   - title: "Research"
     url:  "/research/"
     #  - title: "Software"

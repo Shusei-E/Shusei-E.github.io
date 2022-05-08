@@ -5,6 +5,8 @@ categories:
 toc: true
 toc_label: "目次"
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 ## 出発まで

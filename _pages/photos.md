@@ -3,6 +3,8 @@ layout: single
 title: Photos 
 permalink: /photos/
 author_profile: false
+sidebar:
+  nav: side
 
 galleryHorizontal:
   - url: /assets/images/2014/2014-1.jpg
@@ -27,7 +29,6 @@ galleryVertical:
     image_path: /assets/images/2021/2021-2.jpg
   - url: /assets/images/2022/2022-2.jpg
     image_path: /assets/images/2022/2022-2.jpg
-
 
 ---
 

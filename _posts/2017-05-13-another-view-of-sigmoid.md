@@ -3,6 +3,8 @@ title: Another view of Sigmoid function
 categories:
  - Machine Learning
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 Sigmoid function (standard logistic function) is defined as
