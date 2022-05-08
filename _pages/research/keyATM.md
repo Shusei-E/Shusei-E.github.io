@@ -4,8 +4,10 @@ permalink: /research/keyATM/
 title: Keyword Assisted Topic Models
 author_profile: false
 classes: wide
+sidebar:
+  nav: side
 ---
-[← Back to Research](/research/)
+<!--[← Back to Research](/research/)-->
 
 ## Abstract
 <span style="font-size: 0.9em">

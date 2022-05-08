@@ -4,8 +4,10 @@ permalink: /research/conjoint-age/
 title: Just a Number? Voter Evaluations of Age in Candidate Choice Experiments
 author_profile: false
 classes: wide
+sidebar:
+  nav: side
 ---
-[← Back to Research](/research/)
+<!--[← Back to Research](/research/)-->
 
 ## Abstract
 <span style="font-size: 0.9em">

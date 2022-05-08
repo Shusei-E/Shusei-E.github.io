@@ -3,6 +3,8 @@ title: Variational Bayes Derivation of Latent Dirichlet Allocation
 categories:
  - Natural Language Processing
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 This is not a smoothed LDA. The model is [Beli, Ng, and Jordan (2003)](http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf) Figure 1.  

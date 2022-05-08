@@ -3,6 +3,8 @@ title: Softmax without Overflow
 categories:
  - Deep Learning
 author_profile: false
+sidebar:
+  nav: side
 ---
 Overflow problems are common in neural network-like structures.
 

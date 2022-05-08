@@ -4,6 +4,8 @@ categories:
  - Machine Learning
 author_profile: false
 classes: wide
+sidebar:
+  nav: side
 ---
 
 We sometimes encounter the calculation of 

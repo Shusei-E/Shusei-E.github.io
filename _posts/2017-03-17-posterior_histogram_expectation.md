@@ -3,6 +3,8 @@ title: Why can we consider expectation in Gibbs Sampling
 categories:
  - Machine Learning
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 Suppose we are doing Gaussian Mixture (1D). The histogram of posterior distribution is (we choose a new $$z_i$$ from this histogram),

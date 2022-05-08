@@ -3,6 +3,8 @@ title: Perplexity
 categories:
  - Natural Language Processing
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 Perplexity is commonly used to evaluate language models.

@@ -4,6 +4,8 @@ categories:
  - Bayesian Analysis
 author_profile: false
 classes: wide
+sidebar:
+  nav: side
 ---
 
 We can replace normal multiple regression with Bayesian Multiple Regression.

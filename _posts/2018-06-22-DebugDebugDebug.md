@@ -3,6 +3,8 @@ title: Debug, Debug, Debug
 categories:
  - Tips
 author_profile: false
+sidebar:
+  nav: side
 ---
 
 We would like to minimize bugs when we write code. If we encounter errors, we know something is going wrong, but some serious bugs don't stop the code.
