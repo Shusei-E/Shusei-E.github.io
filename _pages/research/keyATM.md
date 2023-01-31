@@ -14,8 +14,9 @@ sidebar:
 In recent years, fully automated content analysis based on probabilistic topic models has become popular among social scientists because of their scalability.  The unsupervised nature of the models makes them suitable for exploring topics in a corpus without prior knowledge.  However, researchers find that these models often fail to measure specific concepts of substantive interest by inadvertently creating multiple topics with similar content and combining distinct themes into a single topic. In this paper, we empirically demonstrate that providing a small number of keywords can substantially enhance the measurement performance of topic models. An important advantage of the proposed keyword assisted topic model (keyATM) is that the specification of keywords requires researchers to label topics prior to fitting a model to the data. This contrasts with a widespread practice of post-hoc topic interpretation and adjustments that compromises the objectivity of empirical findings. In our application, we find that keyATM provides more interpretable results, has better document classification performance, and is less sensitive to the number of topics than the standard topic models.  Finally, we show that keyATM can also incorporate covariates and model time trends. An open-source software package is available for implementing the proposed methodology.
 </span>
 
+
 ## Paper
-* <u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
+<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
 
 ## Presentation
 * American Political Science Association, Annual Meeting
@@ -37,7 +38,11 @@ In recent years, fully automated content analysis based on probabilistic topic m
 	* Waseda University, Tokyo, January 2020 
 	* Presentation
 
+
 ## Software
 [keyATM Website](https://keyatm.github.io/keyATM/)
 
+
+## Replication Materials
+<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2023. "Replication Data for: Keyword Assisted Topic Models." <a href="https://doi.org/10.7910/DVN/RKNNVL" target="_blank">https://doi.org/10.7910/DVN/RKNNVL</a>. Harvard Dataverse.
 
