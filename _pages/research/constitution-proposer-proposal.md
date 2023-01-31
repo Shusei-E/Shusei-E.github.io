@@ -15,8 +15,7 @@ In many countries, constitutional amendments require the direct approval of vote
 </span>
 
 ## Paper
-* Kenneth M. McElwain, <u>Shusei Eshima</u>, and Christian G. Winkler. 2021. ``The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs.'' _Japanese Journal of Political Science_ 22 (1): 15-39. [https://doi.org/10.1017/S1468109921000025](https://doi.org/10.1017/S1468109921000025)
+Kenneth M. McElwain, <u>Shusei Eshima</u>, and Christian G. Winkler. 2021. ``The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs.'' _Japanese Journal of Political Science_ 22 (1): 15-39. [https://doi.org/10.1017/S1468109921000025](https://doi.org/10.1017/S1468109921000025)
 
-## Replication Data
-[Dataverse](https://doi.org/10.7910/DVN/K27XYA)
-
+## Replication Materials
+Kenneth M. McElwain, <u>Shusei Eshima</u>, and Christian G. Winkler. 2021. "Replication Data for: The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs." <a href="https://doi.org/10.7910/DVN/K27XYA" target="_blank">https://doi.org/10.7910/DVN/K27XYA</a>. Harvard Dataverse.
