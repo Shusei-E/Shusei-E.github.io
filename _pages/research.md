@@ -8,7 +8,7 @@ sidebar:
   nav: side
 ---
 
-### Political Methodology
+### Quantitative Methods
 * [Keyword Assisted Topic Models](/research/keyATM/) <small>(with <a href="https://imai.fas.harvard.edu/" target="_blank">Kosuke Imai</a> and <a href="https://tomoya-sasaki.github.io/" target="_blank">Tomoya Sasaki</a>)</small>
 
 ### Comparative Politics

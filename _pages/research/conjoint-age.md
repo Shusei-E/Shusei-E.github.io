@@ -15,7 +15,7 @@ Around the world, humans are living longer and politicians are getting older. Bu
 </span>
 
 ## Paper
-<u>Shusei Eshima</u> and Daniel M. Smith. 2022. ``Just a Number? Voter Evaluations of Age in Candidate Choice Experiments.'' Forthcoming in _The Journal of Politics_ 84 (3): 1856-1861. <a href="https://www.journals.uchicago.edu/doi/10.1086/719005" target="_blank">Paper</a>.
+<u>Shusei Eshima</u> and Daniel M. Smith. 2022. "Just a Number? Voter Evaluations of Age in Candidate Choice Experiments."  _The Journal of Politics_ 84 (3): 1856-1861. <a href="https://www.journals.uchicago.edu/doi/10.1086/719005" target="_blank">Paper</a>.
 
 
 ## Replication Materials
