@@ -16,7 +16,13 @@ In recent years, fully automated content analysis based on probabilistic topic m
 
 
 ## Paper
-<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2020. ``Keyword Assisted Topic Models.'' Working Paper, <a href='http://arxiv.org/abs/2004.05964'>arXiv:2004.05964</a>.
+<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. "Keyword Assisted Topic Models." _American Journal of Political Science_, Forthcoming. <a href='http://arxiv.org/abs/2004.05964'>arXiv version</a>.
+
+<!-- <u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. n.d. ``Keyword Assisted Topic Models.'' American Journal of Political Science, Forthcoming. <a href='http://arxiv.org/abs/2004.05964'>arXiv version</a>. -->
+
+## Software
+[keyATM Website](https://keyatm.github.io/keyATM/)
+
 
 ## Presentation
 * American Political Science Association, Annual Meeting
@@ -37,10 +43,6 @@ In recent years, fully automated content analysis based on probabilistic topic m
 * Japanese Society for Quantitative Political Science, Winter Meeting
 	* Waseda University, Tokyo, January 2020 
 	* Presentation
-
-
-## Software
-[keyATM Website](https://keyatm.github.io/keyATM/)
 
 
 ## Replication Materials
