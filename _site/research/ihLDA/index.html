@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Shusei Eshima</title>
-<meta name="description" content="I am a Ph.D. student at Harvard University and an affiliate of the Institute for Quantitative Social Science. My research focuses on quantitative methods and comparative politics.">
+<!-- begin _includes/seo.html --><title>Scale-Invariant Infinite Hierarchical Topic Model - Shusei Eshima</title>
+<meta name="description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
 
 
   <meta name="author" content="Shusei Eshima">
@@ -19,15 +19,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei Eshima">
-<meta property="og:title" content="Shusei Eshima">
-<meta property="og:url" content="https://shusei-e.github.io/">
+<meta property="og:title" content="Scale-Invariant Infinite Hierarchical Topic Model">
+<meta property="og:url" content="https://shusei-e.github.io/research/ihLDA/">
 
 
-  <meta property="og:description" content="I am a Ph.D. student at Harvard University and an affiliate of the Institute for Quantitative Social Science. My research focuses on quantitative methods and comparative politics.">
+  <meta property="og:description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
 
 
-
-  <meta property="og:image" content="https://shusei-e.github.io/assets/images/header.png">
 
 
 
@@ -42,11 +40,9 @@
   
 
 
-<link rel="canonical" href="https://shusei-e.github.io/">
+<link rel="canonical" href="https://shusei-e.github.io/research/ihLDA/">
 
 
-
-  <link rel="next" href="https://shusei-e.github.io/page2/">
 
 
 <script type="application/ld+json">
@@ -152,42 +148,6 @@
 
     <div class="initial-content">
       
-  
-
-
-
-
-
-
-
-
-
-
-
-<div class="page__hero--overlay"
-  style=" background-image: url('/assets/images/header.png');"
->
-  
-    <div class="wrapper">
-      <h1 id="page-title" class="page__title" itemprop="headline">
-        
-          Shusei Eshima
-
-        
-      </h1>
-      
-        <p class="page__lead"><br /><br />I am a Ph.D. student at Harvard University and an affiliate of the Institute for Quantitative Social Science.<br /><br /> My research focuses on quantitative methods and comparative politics.<br />
-</p>
-      
-      
-      
-      
-    </div>
-  
-  
-</div>
-
-
 
 
 
@@ -252,58 +212,45 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Scale-Invariant Infinite Hierarchical Topic Model">
     
-    <meta itemprop="description" content="I am a Ph.D. student at Harvard University and an affiliate of the Institute for Quantitative Social Science. My research focuses on quantitative methods and comparative politics.">
     
     
 
     <div class="page__inner-wrap">
       
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Scale-Invariant Infinite Hierarchical Topic Model
+</h1>
+          
+        </header>
+      
 
       <section class="page__content" itemprop="text">
         
-        <link rel="stylesheet" href="/assets/css/academicons.min.css"/>
-<script src="https://kit.fontawesome.com/4c7607f29f.js" crossorigin="anonymous"></script> <!-- Font awsome -->
+        <!--[← Back to Research](/research/)-->
 
-<p><br>
-<a href="/assets/files/cv.pdf" target="_blank" style="color:#000000;"><i class="ai ai-cv-square ai-3x"></i></a>
-<a href="https://scholar.google.com/citations?user=iLCQhV8AAAAJ" target="_blank" style="color:#000000;"><i class="ai ai-google-scholar-square ai-3x"></i></a>
-<a href="https://orcid.org/0000-0003-3613-4046" target="_blank" style="color:#000000;"><i class="ai ai-orcid-square ai-3x"></i></a>
-<a href="https://arxiv.org/a/0000-0003-3613-4046.html" target="_blank" style="color:#000000;"><i class="ai ai-arxiv-square ai-3x"></i></a>
-<a href="https://www.linkedin.com/in/shusei-eshima/" target="_blank" style="color:#000000;"><i class="fa-brands fa-linkedin ai-3x"></i></a>
-<br></p>
+<h2 id="abstract">Abstract</h2>
+<p><span style="font-size: 0.9em">
+Hierarchical topic models have been employed to organize a large number of diverse topics from corpora into a latent tree structure.
+However, existing models yield fragmented topics with overlapping themes whose expected probability becomes exponentially smaller along the depth of the tree.
+To solve this intrinsic problem, we propose a scale-invariant infinite hierarchical topic model (ihLDA).
+The ihLDA adaptively adjusts the topic creation to make the expected topic probability decay considerably slower than that in existing models.
+Thus, it facilitates the estimation of deeper topic structures encompassing diverse topics in a corpus.
+Furthermore, the ihLDA extends a widely used tree-structured prior (Adams et al., 2010) in a hierarchical Bayesian way, which enables drawing an infinite topic tree from the base tree while efficiently sampling the topic assignments for the words.
+Experiments demonstrate that the ihLDA has better topic uniqueness and hierarchical diversity than existing approaches, including state-of-the-art neural models.
+</span></p>
 
+<h2 id="paper">Paper</h2>
+<p><u>Shusei Eshima</u> and Daichi Mochihashi. 2023. “Scale-Invariant Infinite Hierarchical Topic Model.” <em>In Findings of the Association for Computational Linguistics: ACL 2023</em>.<!-- <a href="https://doi.org/xxx" target="_blank">https://doi.org/xxx</a>.--></p>
 
-<h2 id="fields-of-interest">Fields of Interest</h2>
+<h2 id="code">Code</h2>
+<p><a href="https://github.com/Shusei-E/ihLDA" target="_blank">GitHub</a></p>
+
+<h2 id="award">Award</h2>
 <ul>
-<li>Quantitative Methods: Causal Inference, Natural Language Processing, Survey, Bayesian Machine Learning</li>
-<li>Comparative Politics: Representation, Civil Society</li>
+  <li>The earlier version of this project won <a href="https://www.anlp.jp/nlp2023/award.html" target="_blank">the Excellence Award</a>  at the 29th Annual Meeting of the Association for Natural Language Processing.</li>
 </ul>
-
-<h2 id="education">Education</h2>
-<ul>
- <li>Ph.D. in Government</li>
-   <ul>
-      <li>Graduate School of Arts and Sciences, Harvard University</li>
-      <li>2018 - 2023 (expected)</li>
-   </ul>
-</ul>
-
-<h2 id="education">Experience</h2>
-<ul>
- <li>Data Science and Consumer Insights Intern</li>
-   <ul>
-      <li>Payments Data Science & Engineering and Consumer Insights, Netflix</li>
-      <li>May 2020 - August 2022</li>
-   </ul>
- <li>Research Fellow</li>
-   <ul>
-      <li>Institute of Statistical Mathematics</li>
-      <li>October 2016 - September 2017</li>
-   </ul>
-</ul>
-
-
 
         
       </section>
