@@ -22,7 +22,7 @@ Experiments demonstrate that the ihLDA has better topic uniqueness and hierarchi
 
 
 ## Paper
-<u>Shusei Eshima</u> and Daichi Mochihashi. 2023. "Scale-Invariant Infinite Hierarchical Topic Model." _In Findings of the Association for Computational Linguistics: ACL 2023_.<!-- <a href="https://doi.org/xxx" target="_blank">https://doi.org/xxx</a>.-->
+<u>Shusei Eshima</u> and Daichi Mochihashi. 2023. "Scale-Invariant Infinite Hierarchical Topic Model." In _Findings of the Association for Computational Linguistics: ACL 2023_, pp.11731–11746. <!-- <a href="https://doi.org/xxx" target="_blank">https://doi.org/xxx</a>.-->
 
 
 ## Code
@@ -30,4 +30,4 @@ Experiments demonstrate that the ihLDA has better topic uniqueness and hierarchi
 
 
 ## Award
-* The earlier version of this project won <a href="https://www.anlp.jp/nlp2023/award.html" target="_blank">the Excellence Award</a>  at the 29th Annual Meeting of the Association for Natural Language Processing.
+* The earlier version of this project won <a href="https://www.anlp.jp/nlp2023/award.html" target="_blank">the Excellence Award</a>  at the 29th Annual Meeting of the Association for Natural Language Processing. <small>(one of the eleven awarded papers out of 579 papers)</small>
