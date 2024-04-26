@@ -16,7 +16,7 @@ In recent years, fully automated content analysis based on probabilistic topic m
 
 
 ## Paper
-<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. "Keyword-Assisted Topic Models." _American Journal of Political Science_, Forthcoming. <a href='https://doi.org/10.1111/ajps.12779' target="_blank">https://doi.org/10.1111/ajps.12779</a>, <a href='http://arxiv.org/abs/2004.05964' target="_blank">arXiv version</a>.
+<u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2024. "Keyword-Assisted Topic Models." _American Journal of Political Science_ 68(2): 730-750. <a href='https://doi.org/10.1111/ajps.12779' target="_blank">https://doi.org/10.1111/ajps.12779</a>, <a href='http://arxiv.org/abs/2004.05964' target="_blank">arXiv version</a>.
 
 
 ## Software
