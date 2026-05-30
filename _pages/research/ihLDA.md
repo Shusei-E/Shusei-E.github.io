@@ -3,7 +3,7 @@ layout: single
 permalink: /research/ihLDA/
 title: Scale-Invariant Infinite Hierarchical Topic Model
 author_profile: false
-classes: wide
+classes: not_too_wide
 sidebar:
   nav: side
 ---
@@ -20,9 +20,11 @@ Furthermore, the ihLDA extends a widely used tree-structured prior (Adams et al.
 Experiments demonstrate that the ihLDA has better topic uniqueness and hierarchical diversity than existing approaches, including state-of-the-art neural models.
 </span>
 
+<img src="/assets/images/research/ihLDA.png" alt="Cover Image" style="display: block; width: 100%; max-width: 800px; margin: 0 auto 1em;">
+
 
 ## Paper
-<u>Shusei Eshima</u> and Daichi Mochihashi. 2023. "Scale-Invariant Infinite Hierarchical Topic Model." In _Findings of the Association for Computational Linguistics: ACL 2023_, pp.11731–11746. <!-- <a href="https://doi.org/xxx" target="_blank">https://doi.org/xxx</a>.-->
+<u>Shusei Eshima</u> and Daichi Mochihashi. 2023. "Scale-Invariant Infinite Hierarchical Topic Model." In _Findings of the Association for Computational Linguistics: ACL 2023_, pp.11731–11746. <a href="https://doi.org/10.18653/v1/2023.findings-acl.745" target="_blank">https://doi.org/10.18653/v1/2023.findings-acl.745</a>.
 
 
 ## Code

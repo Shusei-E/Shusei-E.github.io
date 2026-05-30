@@ -3,7 +3,7 @@ layout: single
 permalink: /research/keyATM/
 title: Keyword-Assisted Topic Models
 author_profile: false
-classes: wide
+classes: not_too_wide
 sidebar:
   nav: side
 ---
@@ -14,6 +14,7 @@ sidebar:
 In recent years, fully automated content analysis based on probabilistic topic models has become popular among social scientists because of their scalability.  The unsupervised nature of the models makes them suitable for exploring topics in a corpus without prior knowledge.  However, researchers find that these models often fail to measure specific concepts of substantive interest by inadvertently creating multiple topics with similar content and combining distinct themes into a single topic. In this paper, we empirically demonstrate that providing a small number of keywords can substantially enhance the measurement performance of topic models. An important advantage of the proposed keyword assisted topic model (keyATM) is that the specification of keywords requires researchers to label topics prior to fitting a model to the data. This contrasts with a widespread practice of post-hoc topic interpretation and adjustments that compromises the objectivity of empirical findings. In our application, we find that keyATM provides more interpretable results, has better document classification performance, and is less sensitive to the number of topics than the standard topic models.  Finally, we show that keyATM can also incorporate covariates and model time trends. An open-source software package is available for implementing the proposed methodology.
 </span>
 
+<img src="/assets/images/research/keyATM.png" alt="Cover Image" style="display: block; width: 100%; max-width: 800px; margin: 0 auto 1em;">
 
 ## Paper
 <u>Shusei Eshima</u>, Kosuke Imai, and Tomoya Sasaki. 2024. "Keyword-Assisted Topic Models." _American Journal of Political Science_ 68(2): 730-750. <a href='https://doi.org/10.1111/ajps.12779' target="_blank">https://doi.org/10.1111/ajps.12779</a>, <a href='http://arxiv.org/abs/2004.05964' target="_blank">arXiv version</a>.
@@ -40,7 +41,7 @@ In recent years, fully automated content analysis based on probabilistic topic m
 	* Institute for Quantitative Social Science, February 2020
 	* Presentation
 * Japanese Society for Quantitative Political Science, Winter Meeting
-	* Waseda University, Tokyo, January 2020 
+	* Waseda University, Tokyo, January 2020
 	* Presentation
 
 

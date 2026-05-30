@@ -89,21 +89,27 @@ body {
   }
 
 	h1, h2, h3, h4, h5, h6 {
-		.header-link {
-			position: relative;
-			left: 0.5em;
-			opacity: 0;
-			font-size: 0.8em;
-			-webkit-transition: opacity 0.2s ease-in-out 0.1s;
-			-moz-transition: opacity 0.2s ease-in-out 0.1s;
-			-o-transition: opacity 0.2s ease-in-out 0.1s;
+			.header-link {
+				position: relative;
+				left: 0.5em;
+				opacity: 0;
+				font-size: 0.8em;
+				text-decoration: none;
+				-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+				-moz-transition: opacity 0.2s ease-in-out 0.1s;
+				-o-transition: opacity 0.2s ease-in-out 0.1s;
 			transition: opacity 0.2s ease-in-out 0.1s;
 		}
 
-		&:hover .header-link {
-			opacity: 1;
+			&:hover .header-link {
+				opacity: 1;
+			}
+
+			.header-link:hover,
+			.header-link:focus {
+				text-decoration: none;
+			}
 		}
-	}
 
   p,
   li,
@@ -124,7 +130,7 @@ body {
     }
   }
 
-  a:not(.btn) {
+  a:not(.btn):not(.header-link) {
     &:hover {
       text-decoration: underline;
 
@@ -548,6 +554,32 @@ body {
 
     @include breakpoint($x-large) {
       padding-right: 0;
+    }
+  }
+}
+
+/*
+   Not Too Wide Pages
+   ========================================================================== */
+
+.not_too_wide {
+  .page {
+    @include breakpoint($large) {
+      padding-right: 7em;
+    }
+
+    @include breakpoint($x-large) {
+      padding-right: 7em;
+    }
+  }
+
+  .page__related {
+    @include breakpoint($large) {
+      padding-right: 7em;
+    }
+
+    @include breakpoint($x-large) {
+      padding-right: 7em;
     }
   }
 }

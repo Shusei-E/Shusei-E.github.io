@@ -3,7 +3,7 @@ layout: single
 permalink: /research/conjoint-constitution/
 title: 'Constitutional Design Preferences: An Experimental Approach'
 author_profile: false
-classes: wide
+classes: not_too_wide
 sidebar:
   nav: side
 ---
@@ -15,6 +15,6 @@ A rich literature links the survival of national constitutions to their legitima
 </span>
 
 ## Paper
-<u>Shusei Eshima</u>, Kenneth Mori McElwain, Ai Takahashi, and Christian G Winkler. 2024. "Constitutional design preferences: An experimental approach."  _International Journal of Constitutional Law_ 22 (3): 680–709. <a href="https://doi.org/10.1093/icon/moae052" target="_blank">Paper</a>.
+<u>Shusei Eshima</u>, Kenneth Mori McElwain, Ai Takahashi, and Christian G Winkler. 2024. "Constitutional design preferences: An experimental approach."  _International Journal of Constitutional Law_ 22 (3): 680–709. <a href="https://doi.org/10.1093/icon/moae052" target="_blank">https://doi.org/10.1093/icon/moae052</a>.
 
 

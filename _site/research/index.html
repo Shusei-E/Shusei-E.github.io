@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Research - Shusei Eshima</title>
-<meta name="description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
+<meta name="description" content="Shusei Eshima is a Senior Data Scientist at Netflix.">
 
 
   <meta name="author" content="Shusei Eshima">
@@ -20,13 +20,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Shusei Eshima">
 <meta property="og:title" content="Research">
-<meta property="og:url" content="https://shusei-e.github.io/research/">
+<meta property="og:url" content="http://localhost:4000/research/">
 
 
-  <meta property="og:description" content="Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics.">
-
-
-
+  <meta property="og:description" content="Shusei Eshima is a Senior Data Scientist at Netflix.">
 
 
 
@@ -35,12 +32,15 @@
 
 
 
-  
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://shusei-e.github.io/research/">
+
+<link rel="canonical" href="http://localhost:4000/research/">
 
 
 
@@ -51,7 +51,7 @@
     
       "@type": "Person",
       "name": "Shusei Eshima",
-      "url": "https://shusei-e.github.io/"
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -96,12 +96,15 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
 <!-- end custom head snippets -->
 
   </head>
 
-  <body class="layout--single wide">
+  <body class="layout--single not_too_wide">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -228,24 +231,95 @@
 
       <section class="page__content" itemprop="text">
         
-        <h3 id="natural-language-processing">Natural Language Processing</h3>
-<ul>
-  <li><a href="/research/ihLDA/">Scale-Invariant Infinite Hierarchical Topic Model</a> <small>(with <a href="http://chasen.org/~daiti-m/index.html" target="_blank">Daichi Mochihashi</a>)</small></li>
-  <li><a href="/research/keyATM/">Keyword-Assisted Topic Models</a> <small>(with <a href="https://imai.fas.harvard.edu/" target="_blank">Kosuke Imai</a> and <a href="https://tomoya-sasaki.github.io/" target="_blank">Tomoya Sasaki</a>)</small></li>
+        <style>
+  .research-list > li + li {
+    margin-top: 1.15em;
+  }
+
+  .publication-note {
+    margin-top: 0.25em;
+    font-size: 0.87em;
+  }
+
+  .research-note {
+    margin-top: 0.25em;
+    font-size: 0.82em;
+  }
+</style>
+
+<!--
+  <li>
+    <a href="/research/PAGE" target="_blank">TITLE</a>
+    <small>(with <a href="WEBSITE" target="_blank">AUTHOR</a>)</small>
+    <div class="publication-note"><em>...</em>, 20XX</div>
+    <div class="research-note">...</div>
+  </li>
+-->
+
+<h3 id="causal-inference">Causal Inference</h3>
+<ul class="research-list">
+  <li>
+    <a href="/research/m_ary_policy_tree" target="_blank">Scalable Multi-Action Offline Policy Learning with an <em>m</em>-ary Tree</a>
+    <div class="publication-note"><em>KDD</em>, 2026.</div>
+    <div class="research-note">A scalable offline policy learning method for multi-action <em>m</em>-ary policy trees that produces more expressive and interpretable policy trees than binary trees while scaling to industry-size datasets.</div>
+  </li>
 </ul>
 
-<h3 id="survey-experiment">Survey Experiment</h3>
-<ul>
-  <li><a href="/research/conjoint-constitution">Constitutional Design Preferences: An Experimental Approach</a> <small>(with <a href="https://www.kennethmcelwain.com/" target="_blank">Kenneth Mori McElwain</a>, Ai Takahashi, and <a href="https://researchmap.jp/cgw/?lang=en" target="_blank">Christian G. Winkler</a>)</small></li>
-  <li><a href="/research/conjoint-age">Just a Number? Voter Evaluations of Age in Candidate Choice Experiments</a> <small>(with <a href="https://sites.google.com/site/danielmarkhamsmith/home" target="_blank">Daniel M. Smith</a>)</small></li>
-  <li><a href="/research/constitution-proposer-proposal/">The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs</a> <small>(with <a href="https://www.kennethmcelwain.com/" target="_blank">Kenneth Mori McElwain</a> and <a href="https://researchmap.jp/cgw/?lang=en" target="_blank">Christian G. Winkler</a>)</small></li>
+<h3 id="natural-language-processing">Natural Language Processing</h3>
+<ul class="research-list">
+  <li>
+    <a href="/research/keyATM/" target="_blank">Keyword-Assisted Topic Models</a>
+    <small>(with <a href="https://imai.fas.harvard.edu/" target="_blank">Kosuke Imai</a> and <a href="https://tomoya-sasaki.github.io/" target="_blank">Tomoya Sasaki</a>)</small>
+    <div class="publication-note"><em>American Journal of Political Science</em>, 2024.</div>
+    <div class="research-note">A keyword-assisted topic model that uses researcher-provided keywords to produce more interpretable, objective, and accurate topics while supporting covariates and time trends.</div>
+  </li>
+  <li>
+    <a href="/research/ihLDA" target="_blank">Scale-Invariant Infinite Hierarchical Topic Model</a>
+    <small>(with <a href="http://chasen.org/~daiti-m/index.html" target="_blank">Daichi Mochihashi</a>)</small>
+    <div class="publication-note"><em>Findings of ACL</em>, 2023.</div>
+    <div class="research-note">A scale-invariant infinite hierarchical topic model that builds deeper, more diverse, and less redundant topic trees from corpora.</div>
+  </li>
+</ul>
+
+<h3 id="applied-research">Applied Research</h3>
+<ul class="research-list">
+  <li>
+    <a href="/research/appetite" target="_blank">Polyunsaturated Fatty Acids Promote Appetite via the Microbiome-Gut-Brain Axis</a>
+    <small>(with <a href="https://liowyijia.github.io/" target="_blank">Yi Jia Liow</a>, <a href="https://scholar.google.com/citations?user=Dcv_TJ8AAAAJ" target="_blank">Mustafa Talay</a>, Vladimir Yeliseyev, <a href="https://scholar.google.com/citations?user=EQM8r_UAAAAJ" target="_blank">Lynn Bry</a>, and <a href="https://scholar.google.com/citations?user=2Fnk6fQAAAAJ" target="_blank">Rachel N. Carmody</a>)</small>
+    <div class="publication-note"><em>bioRxiv</em> preprint, 2025.</div>
+    <div class="research-note">A diet-microbiome-gut-brain model showing that specific industrialized diet components, especially PUFAs, can increase appetite by altering gut microbiota and brain serotonin metabolism.</div>
+  </li>
+  <li>
+    <a href="/research/conjoint-constitution" target="_blank">Constitutional Design Preferences: An Experimental Approach</a>
+    <small>(with <a href="https://www.kennethmcelwain.com/" target="_blank">Kenneth Mori McElwain</a>, Ai Takahashi, and <a href="https://researchmap.jp/cgw/?lang=en" target="_blank">Christian G. Winkler</a>)</small>
+    <div class="publication-note"><em>International Journal of Constitutional Law</em>, 2024.</div>
+    <div class="research-note">A conjoint analysis showing that Japanese citizens prefer detailed constitutions, especially human rights provisions, and view amendment flexibility as a strategic safeguard.</div>
+  </li>
+  <li>
+    <a href="/research/conjoint-age" target="_blank">Just a Number? Voter Evaluations of Age in Candidate Choice Experiments</a>
+    <small>(with <a href="https://sites.google.com/site/danielmarkhamsmith/home" target="_blank">Daniel M. Smith</a>)</small>
+    <div class="publication-note"><em>The Journal of Politics</em>, 2022</div>
+    <div class="research-note">A meta-analysis and conjoint experiment showing that voters across democracies consistently penalize older political candidates, even when age differences are substantively small.</div>
+  </li>
+  <li>
+    <a href="/research/constitution-proposer-proposal/" target="_blank">The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs</a>
+    <small>(with <a href="https://www.kennethmcelwain.com/" target="_blank">Kenneth Mori McElwain</a> and <a href="https://researchmap.jp/cgw/?lang=en" target="_blank">Christian G. Winkler</a>)</small>
+    <div class="publication-note"><em>Japanese Journal of Political Science</em>, 2021</div>
+    <div class="research-note">A survey experiment on constitutional amendment preferences showing that Japanese citizens favor non-partisan proposals, while constitutional ideology shapes support across issue areas independently of partisanship.</div>
+  </li>
 </ul>
 
 <h3 id="software">Software</h3>
 <ul>
-  <li><a href="https://keyatm.github.io/keyATM/" target="_blank">keyATM</a> an R package for Keyword-Assisted Topic Models.</li>
-  <li><a href="https://github.com/Shusei-E/ihLDA" target="_blank">ihLDA</a>: a Python implementation of the Scale-Invariant Infinite Hierarchical Topic Model.</li>
-  <li><a href="https://shusei-e.github.io/RcppJagger/" target="_blank">RcppJagger</a>: an R package for Jagger, a fast, accurate, and space-efficient morphological analyzer.</li>
+  <li>
+    <a href="https://keyatm.github.io/keyATM/" target="_blank">keyATM</a> an R package for Keyword-Assisted Topic Models.
+  </li>
+  <li>
+    <a href="https://github.com/Shusei-E/ihLDA" target="_blank">ihLDA</a>: a Python implementation of the Scale-Invariant Infinite Hierarchical Topic Model.
+  </li>
+  <li>
+    <a href="https://shusei-e.github.io/RcppJagger/" target="_blank">RcppJagger</a>: an R package for Jagger, a fast, accurate, and space-efficient morphological analyzer.
+  </li>
 </ul>
 
         
@@ -319,7 +393,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2025 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2026 Shusei Eshima. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
