@@ -20,7 +20,7 @@ title                    : "Shusei Eshima"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Shusei Eshima"
-description              : "Shusei Eshima is a PhD student at Harvard University. His interests are political methodology and comparative politics."
+description              : "Shusei Eshima is a Senior Data Scientist at Netflix."
 url                      : "https://shusei-e.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "Shusei-E/Shusei-E.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -109,8 +109,8 @@ analytics:
 author:
   name             : "Shusei Eshima"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "PhD Student. I am interested in Political Methodology and Comparative Politics."
-  location         : "Cambridge, MA"
+  bio              : "Senior Data Scientist"
+  location         : "USA"
   email            : #
   links:
     - label: "Email"

@@ -3,7 +3,7 @@ layout: single
 permalink: /research/constitution-proposer-proposal/
 title: The Proposer or the Proposal? An Experimental Analysis of Constitutional Beliefs
 author_profile: false
-classes: wide
+classes: not_too_wide
 sidebar:
   nav: side
 ---

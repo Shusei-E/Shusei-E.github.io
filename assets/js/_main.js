@@ -128,7 +128,8 @@ $(document).ready(function() {
       var anchor = document.createElement("a");
       anchor.className = 'header-link';
       anchor.href = '#' + id;
-      anchor.innerHTML = '<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>';
+      anchor.innerHTML = '🔗';
+      anchor.setAttribute('aria-label', 'Permalink');
       anchor.title = "Permalink";
       $(this).append(anchor);
     }
