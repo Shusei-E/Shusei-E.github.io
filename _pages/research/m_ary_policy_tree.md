@@ -19,13 +19,14 @@ For statistical efficiency, we use nested folds to leverage all observations. Fo
 Across 20 industry-scale experiments, *m*-ary policy trees outperform a commonly used global-winner-for-all policy in seven cases after false discovery rate control. In contrast, globally optimized binary trees do not achieve comparable gains, even at a greater depth.
 </span>
 
-<img src="/assets/images/research/m-ary_policy_tree.png" alt="Cover Image" style="display: block; width: 100%; max-width: 800px; margin: 0 auto 1em;">
+<img src="/assets/images/research/m-ary_policy_tree.png" alt="Cover Image" style="display: block; width: 100%; max-width: 550px; margin: 0 auto 1em;">
+<img src="/assets/images/research/m-ary_policy_tree_result.png" alt="Cover Image" style="display: block; width: 100%; max-width: 750px; margin: 0 auto 1em;">
 
 ## Paper
 <u>Shusei Eshima</u>. 2026. "Scalable Multi-Action Offline Policy Learning with an *m*-ary Tree." In *Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2 (KDD '26: Research Track)*. <a href=" https://doi.org/10.1145/3770855.3817861" target="_blank"> https://doi.org/10.1145/3770855.3817861</a>.
 
 ## Algorithm
-[Tree Search Algorithm](https://github.com/Shusei-E/m-ary_policy_tree)
+<a href="https://github.com/Shusei-E/m-ary_policy_tree" target="_blank">Tree Search Algorithm</a>
 
 
 ## Presentation
